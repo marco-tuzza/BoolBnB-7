@@ -17,8 +17,8 @@ class UsersTableSeeder extends Seeder
             $nuovo_utente = new User();
             $nuovo_utente->email=$faker->unique()->email ();
             $nuovo_utente->password=$faker->password();
-            $nuovo_utente->nome=$faker->sentence(1);
-            $nuovo_utente->cognome=$faker->sentence(1);
+            $nuovo_utente->nome=$faker->firstName(1);
+            $nuovo_utente->cognome=$faker->lastName(1);
             $nuovo_utente->data_di_nascita=$faker->date();
             $nuovo_utente->save();
 
