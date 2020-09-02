@@ -75,6 +75,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="data" class="col-md-4 col-form-label text-md-right">{{ __('data') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="data" type="date" class="form-control @error('data') is-invalid @enderror" name="data_di_nascita" required autocomplete="new-data">
+
+                                @error('date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
