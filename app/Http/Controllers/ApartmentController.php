@@ -64,7 +64,11 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $appartamento = Apartment::find($id);
+        if($appartamento) {
+            return view('auth.apartment.edit', compact('appartamento'));
+        }
+        return abort('404');
     }
 
     /**
@@ -76,7 +80,23 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'titolo_appartamento' => 'required|max:255',
+            'id_proprietario' => 'required|numeric',
+            'numero_stanze' => 'required|numeric',
+            'numero_letti' => 'required|numeric',
+            'numero_bagni' => 'required|numeric',
+            'metri_quadri' => 'required|numeric',
+            'latitudine' => 'required|numeric',
+            'longitudine' => 'required|numeric',
+            'immagine_appartamento' => 'required|url'
+        ]);
+        $dati = $request->all();
+        $appartamento = Apartment::find($id);
+        if($appartamento) {
+            $appartamento->update($dati);
+        }
+        return redirect()->route('apartment.index');
     }
 
     /**

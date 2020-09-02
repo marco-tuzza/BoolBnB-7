@@ -26,6 +26,8 @@
         <img src="{{$appartamento->immagine_appartamento}}" alt="">
         <a href='{{ route('apartment.show', ['apartment' => $appartamento->id])}}'>Dettagli appartamento</a>
         <hr>
+        <a href='{{ route('apartment.edit', ['apartment' => $appartamento->id])}}'>modifica appartamento</a>
+        <hr>
         @endforeach
 </body>
 </html>

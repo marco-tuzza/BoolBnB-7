@@ -32,9 +32,3 @@ const app = new Vue({
 });
 
 const $ = require('jquery');
-
-$(document).ready(function(){
-
-    alert('Js con Jquery funzionante');
-
-});
