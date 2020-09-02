@@ -30,3 +30,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+const $ = require('jquery');
+
+$(document).ready(function(){
+
+    alert('Js con Jquery funzionante');
+
+});
