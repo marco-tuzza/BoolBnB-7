@@ -10910,11 +10910,32 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 4fr 1fr 7fr 2fr;
+  position: relative;
+}
+
+.wrapper-page::before {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  background: #00000075;
+  transition: all 500ms ease-in-out;
+  z-index: 9;
+  visibility: hidden;
 }
 
 @media screen and (max-width: 525px) {
   .wrapper-page {
     grid-template-rows: 0.5fr 0.5fr 4.5fr 1fr;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .wrapper-page {
+    grid-template-rows: 0.5fr 0.5fr 4.3fr 1fr;
   }
 }
 
@@ -10930,6 +10951,10 @@ body {
   }
 }
 
+.wrapper-page.active::before {
+  visibility: visible;
+}
+
 .first-block {
   background: url("https://picsum.photos/id/155/1800/800");
   background-repeat: no-repeat;
@@ -10942,6 +10967,7 @@ body {
 
 .first-block .jumbo {
   color: #fff;
+  margin-top: 7rem;
 }
 
 .first-block .jumbo h1 {
@@ -11006,13 +11032,12 @@ body {
   border-radius: 2rem;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  background-color: #ff5a5f;
-  border-color: #ff5a5f;
+  background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+  border: none;
 }
 
 .first-block .input-group .btn-primary:hover {
-  background-color: #df4a4e;
-  border-color: #df4a4e;
+  background-color: #D70466;
 }
 
 .first-block .input-group > .form-control:not(:last-child) {
@@ -11063,7 +11088,7 @@ body {
 }
 
 .nav-bar .account .btn-account img {
-  width: 55%;
+  width: 49%;
 }
 
 .nav-bar .account .drop-menu {
@@ -11087,6 +11112,7 @@ body {
 .nav-bar .account .drop-menu ul li {
   margin-bottom: 5px;
   width: 100px;
+  cursor: pointer;
 }
 
 .nav-bar .account .drop-menu ul li a {
@@ -11104,6 +11130,18 @@ body {
   grid-column: 1;
   grid-row: 2/4;
   margin-bottom: 15rem;
+}
+
+.second-block .text-card {
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  font-size: 3rem;
+  text-shadow: 1px 2px black;
+}
+
+.second-block .text-card h2 {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .third-block {
@@ -11187,6 +11225,55 @@ body {
   margin: auto;
   text-align: center;
   font-size: 0.9em;
+}
+
+.form-accedi {
+  display: none;
+  position: fixed;
+  min-width: 280px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.form-accedi .card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-accedi .card-header img {
+  width: 13px;
+  cursor: pointer;
+}
+
+.form-accedi.attiva-login {
+  display: block;
+}
+
+.form-registrati {
+  display: none;
+  position: fixed;
+  min-width: 280px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.form-registrati .card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-registrati .card-header img {
+  width: 13px;
+  cursor: pointer;
+}
+
+.form-accedi.mostra-form,
+.form-registrati.mostra-form {
+  display: block;
 }
 
 body {
