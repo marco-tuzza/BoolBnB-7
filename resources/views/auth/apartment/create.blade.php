@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crea nuovo appartamento</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -135,6 +136,22 @@
                             <div class="form-group row">
                                 <label for="id_proprietario">Id proprietario</label>
                                 <input type="text" name="id_proprietario" class="form-control" id="id_proprietario" placeholder="Id proprietario" value="1">
+                            </div>
+                            <div class="form-group row">
+                                <label for="form-address">Address*</label>
+                                <input type="search" class="form-control" id="form-address" placeholder="Where do you live?" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="form-address2">Address 2</label>
+                                <input type="text" class="form-control" id="form-address2" placeholder="Street number and name" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="form-city">City*</label>
+                                <input type="text" class="form-control" id="form-city" placeholder="City">
+                            </div>
+                            <div class="form-group row">
+                                <label for="form-zip">ZIP code*</label>
+                                <input type="text" class="form-control" id="form-zip" placeholder="ZIP code">
                             </div>
                             <div class="form-group row">
                                 <label for="latitudine">latitudine</label>
