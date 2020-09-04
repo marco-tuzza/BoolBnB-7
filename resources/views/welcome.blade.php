@@ -34,7 +34,7 @@
                                         <ul>
                                             @auth
                                                 <li> <a href="">Il Mio Profilo</a> </li>
-                                                <li> <a href="">Aggiungi Appartamento</a> </li>
+                                                <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
                                                 <li> <a href="">Home</a> </li>
                                                 <li>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
