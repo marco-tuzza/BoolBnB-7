@@ -49744,6 +49744,45 @@ var app = new Vue({
   el: '#app'
 });
 
+var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // (function() {
+//     var placesAutocomplete = places({
+//       appId: 'plT92Q60ZYBJ',
+//       apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
+//       container: document.querySelector('#form-address'),
+//       templates: {
+//         value: function(suggestion) {
+//           return suggestion.name;
+//         }
+//       }
+//     }).configure({
+//       type: 'address'
+//     });
+//     placesAutocomplete.on('change', function resultSelected(e) {
+//       document.querySelector('#form-address2').value = e.suggestion.administrative || '';
+//       document.querySelector('#form-city').value = e.suggestion.city || '';
+//       document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+//       $('#latitudine').val(e.suggestion.latlng.lat);
+//       $('#longitudine').val(e.suggestion.latlng.lng);
+//     });
+// })();
+
+
+$(document).ready(function () {
+  $('#login').click(function () {
+    $('.form-accedi').addClass('mostra-form');
+    $('.wrapper-page').addClass('active');
+  });
+  $('#register').click(function () {
+    $('.form-registrati').addClass('mostra-form');
+    $('.wrapper-page').addClass('active');
+  });
+  $('.close').click(function () {
+    $('.form-accedi').removeClass('mostra-form');
+    $('.form-registrati').removeClass('mostra-form');
+    $('.wrapper-page').removeClass('active');
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -49878,8 +49917,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\Esercizi\boolbnb-7\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\Esercizi\boolbnb-7\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -30,3 +30,46 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+const $ = require('jquery');
+
+// (function() {
+//     var placesAutocomplete = places({
+//       appId: 'plT92Q60ZYBJ',
+//       apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
+//       container: document.querySelector('#form-address'),
+//       templates: {
+//         value: function(suggestion) {
+//           return suggestion.name;
+//         }
+//       }
+//     }).configure({
+//       type: 'address'
+//     });
+//     placesAutocomplete.on('change', function resultSelected(e) {
+//       document.querySelector('#form-address2').value = e.suggestion.administrative || '';
+//       document.querySelector('#form-city').value = e.suggestion.city || '';
+//       document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+//       $('#latitudine').val(e.suggestion.latlng.lat);
+//       $('#longitudine').val(e.suggestion.latlng.lng);
+//     });
+// })();
+
+$(document).ready(function(){
+
+    $('#login').click(function(){
+        $('.form-accedi').addClass('mostra-form');
+        $('.wrapper-page').addClass('active');
+    });
+
+    $('#register').click(function(){
+        $('.form-registrati').addClass('mostra-form');
+        $('.wrapper-page').addClass('active');
+    });
+
+    $('.close').click(function(){
+        $('.form-accedi').removeClass('mostra-form');
+        $('.form-registrati').removeClass('mostra-form');
+        $('.wrapper-page').removeClass('active');
+    });
+});

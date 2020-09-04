@@ -16,6 +16,7 @@ class CreateAppartamentiTable extends Migration
         Schema::create('appartamenti', function (Blueprint $table) {
             $table->id();
             $table->text('titolo_appartamento');
+            $table->tinyInteger('id_proprietario');
             $table->tinyInteger('numero_stanze');
             $table->tinyInteger('numero_letti');
             $table->tinyInteger('numero_bagni');
