@@ -10906,6 +10906,11 @@ body {
   box-sizing: border-box;
 }
 
+:focus,
+button::focus {
+  outline: none;
+}
+
 .wrapper-page {
   display: grid;
   grid-template-columns: 1fr;
@@ -10927,15 +10932,15 @@ body {
   visibility: hidden;
 }
 
-@media screen and (max-width: 525px) {
+@media screen and (max-width: 320px) {
   .wrapper-page {
-    grid-template-rows: 0.5fr 0.5fr 4.5fr 1fr;
+    grid-template-rows: 0.2fr 0.5fr 4.3fr 1fr;
   }
 }
 
-@media screen and (max-width: 525px) {
+@media screen and (min-width: 321px) and (max-width: 525px) {
   .wrapper-page {
-    grid-template-rows: 0.5fr 0.5fr 4.3fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr 4.5fr 1fr;
   }
 }
 
@@ -11276,11 +11281,33 @@ body {
   display: block;
 }
 
-body {
-  font-family: "Raleway", sans-serif;
+.wrapper-apartament {
+  height: 100vh;
+  background: url(/images/background.svg?ad347a1dcb60401d62a1538a5c3fc72a);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
-body .ct-form {
-  margin-top: 50px;
+.wrapper-apartament .nav-create {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.wrapper-apartament .card-apartment {
+  padding: 2.25rem;
+}
+
+.wrapper-apartament .card-apartment .non-visibile {
+  display: none;
+}
+
+.wrapper-apartament .ct-form {
+  margin-top: 8rem;
+}
+
+.form-group.row {
+  margin-right: 0;
+  margin-left: 0;
 }
 

@@ -34,6 +34,7 @@
                                         <ul>
                                             @auth
                                                 <li> <a href="">Il Mio Profilo</a> </li>
+                                                <li> <a href="">Aggiungi Appartamento</a> </li>
                                                 <li> <a href="">Home</a> </li>
                                                 <li>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -139,29 +140,29 @@
                 <div class="wrap-footer">
                     <div class="block1">
                         <ul>
-                            <li class="title-footer">Lorem, ipsum dolor sit amet consectetur</li>
-                            <li>Lorem, ipsum dolor sit amet</li>
-                            <li>Lorem, ipsum dolor sit amet</li>
-                            <li>Lorem, ipsum dolor sit amet</li>
-                            <li>Lorem, ipsum dolor sit amet</li>
+                            <li class="title-footer">INFORMAZIONI</li>
+                            <li>Come funziona Airbnb</li>
+                            <li>Newsroom</li>
+                            <li>BoolnBnB Plus</li>
+                            <li>BoolnBnB for Work</li>
                         </ul>
                     </div>
                     <div class="block2">
                         <ul>
-                            <li class="title-footer">Lorem, ipsum dolor sit amet consectetur</li>
-                            <li>Lorem, ipsum dolor sit amet</li>
-                            <li>Lorem, ipsum dolor sit amet</li>
-                            <li>Lorem, ipsum dolor sit amet</li>
-                            <li>Lorem, ipsum dolor sit amet</li>
+                            <li class="title-footer">COMMUNITY</li>
+                            <li>Diversità e appartenenza</li>
+                            <li>Accessibilità</li>
+                            <li>Alloggi per l'emergenza</li>
+                            <li>Invita degli amici</li>
                         </ul>
                     </div>
                     <div class="block3">
                         <ul>
-                            <li class="title-footer">Lorem, ipsum dolor sit amet consectetur</li>
-                            <li>Lorem, ipsum dolor sit amet</li>
-                            <li>Lorem, ipsum dolor sit amet</li>
-                            <li>Lorem, ipsum dolor sit amet</li>
-                            <li>Lorem, ipsum dolor sit amet</li>
+                            <li class="title-footer">OSPITA</li>
+                            <li>Diventa un host</li>
+                            <li>Offri un'Esperienza</li>
+                            <li>Ospitare responsabilmente</li>
+                            <li>Community Center</li>
                         </ul>
                     </div>
                 </div>

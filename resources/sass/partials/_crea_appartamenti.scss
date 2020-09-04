@@ -1,0 +1,25 @@
+.wrapper-apartament {
+    height: 100vh;
+    background: url(../images/background.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    .nav-create {
+        max-width: 1100px;
+        margin: auto;
+    }
+    .card-apartment {
+        padding: 2.25rem;
+        .non-visibile {
+            display: none;
+        }
+    }
+    .ct-form {
+        margin-top: 8rem;
+    }
+}
+
+.form-group.row {
+    margin-right: 0;
+    margin-left: 0;
+} 
