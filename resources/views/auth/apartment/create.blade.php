@@ -165,6 +165,41 @@
                 </div>
             </div>
         </div>
+
+        <footer class="foot-create">
+            <div class="wrap-footer">
+                <div class="block1">
+                    <ul>
+                        <li class="title-footer">INFORMAZIONI</li>
+                        <li>Come funziona Airbnb</li>
+                        <li>Newsroom</li>
+                        <li>BoolnBnB Plus</li>
+                        <li>BoolnBnB for Work</li>
+                    </ul>
+                </div>
+                <div class="block2">
+                    <ul>
+                        <li class="title-footer">COMMUNITY</li>
+                        <li>Diversità e appartenenza</li>
+                        <li>Accessibilità</li>
+                        <li>Alloggi per l'emergenza</li>
+                        <li>Invita degli amici</li>
+                    </ul>
+                </div>
+                <div class="block3">
+                    <ul>
+                        <li class="title-footer">OSPITA</li>
+                        <li>Diventa un host</li>
+                        <li>Offri un'Esperienza</li>
+                        <li>Ospitare responsabilmente</li>
+                        <li>Community Center</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom-footer">
+                <section> <i>© 2020 Team7 Boolean, Inc. All rights reserved</i></section>
+            </div>
+        </footer>
     </div>
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
