@@ -63,7 +63,7 @@
                     <p>Pianifica un viaggio diverso per scoprire i tesori nascosti vicino a te.</p>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Cerca il posto dove ti piacerebbe andare..." aria-label="Cerca il posto dove ti piacerebbe andare..." aria-describedby="button-addon2">
+                    <input type="text" class="form-control" id="address" placeholder="Cerca il posto dove ti piacerebbe andare..." aria-label="Cerca il posto dove ti piacerebbe andare..." aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="button" id="button-addon2">Cerca</button>
                     </div>
@@ -344,6 +344,8 @@
         </div>
 
         <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+
         <script src="{{ asset('js/app.js') }}" defer></script>
     </body>
 </html>

@@ -6,7 +6,7 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+// window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,7 +19,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,9 +27,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
-});
+// const app = new Vue({
+//     el: '#app',
+// });
 
 const $ = require('jquery');
 
@@ -37,7 +37,7 @@ const $ = require('jquery');
 //     var placesAutocomplete = places({
 //       appId: 'plT92Q60ZYBJ',
 //       apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
-//       container: document.querySelector('#form-address'),
+//       container: document.querySelector('#address'),
 //       templates: {
 //         value: function(suggestion) {
 //           return suggestion.name;
@@ -72,4 +72,35 @@ $(document).ready(function(){
         $('.form-registrati').removeClass('mostra-form');
         $('.wrapper-page').removeClass('active');
     });
+
+    var latitudine;
+    var longitudine;
+
+    (function() {
+        
+        var placesAutocomplete = places({
+            appId: 'plT92Q60ZYBJ',
+            apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
+            container: document.querySelector('#address'),
+            templates: {
+                value: function(suggestion) {
+                    return suggestion.name, suggestion.latlng.lat, suggestion.latlng.lng;
+                }
+            }
+        }).configure({
+            language: 'it', // Ricevo risultati in italiano
+            countries: ['it'], // Ricevo risultati per l'Italia
+            type: ['city', 'address'], // Cerco per città e indirizzo
+            // aroundRadius: 2,
+        });
+
+        placesAutocomplete.on('change', function resultSelected(e) {
+            latitudine = (e.suggestion.latlng.lat);
+            longitudine = (e.suggestion.latlng.lng);
+            console.log(latitudine, longitudine);
+        });
+        
+    })();
+
+    
 });
