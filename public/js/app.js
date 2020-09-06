@@ -37339,7 +37339,7 @@ $(document).ready(function () {
       container: document.querySelector('#address'),
       templates: {
         value: function value(suggestion) {
-          return suggestion.name, suggestion.latlng.lat, suggestion.latlng.lng;
+          return suggestion.name;
         }
       }
     }).configure({
