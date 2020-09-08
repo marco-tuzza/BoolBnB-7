@@ -63,7 +63,7 @@
                     <p>Pianifica un viaggio diverso per scoprire i tesori nascosti vicino a te.</p>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="address" placeholder="Cerca il posto dove ti piacerebbe andare..." aria-label="Cerca il posto dove ti piacerebbe andare..." aria-describedby="button-addon2">
+                    <input type="text" class="form-control" id="address-input" placeholder="Cerca il posto dove ti piacerebbe andare..." aria-label="Cerca il posto dove ti piacerebbe andare..." aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="button" id="button-addon2">Cerca</button>
                     </div>

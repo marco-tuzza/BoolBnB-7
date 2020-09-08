@@ -37329,34 +37329,84 @@ $(document).ready(function () {
     $('.form-registrati').removeClass('mostra-form');
     $('.wrapper-page').removeClass('active');
   });
-  var latitudine;
-  var longitudine;
+  var placesAutocomplete = places({
+    appId: 'plT92Q60ZYBJ',
+    apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
+    container: document.querySelector('#address-input')
+  }).configure({
+    language: 'it',
+    // Ricevo risultati in italiano
+    countries: ['it'],
+    // Ricevo risultati per l'Italia
+    type: ['city', 'address'] // Cerco per città e indirizzo
 
-  (function () {
-    var placesAutocomplete = places({
-      appId: 'plT92Q60ZYBJ',
-      apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
-      container: document.querySelector('#address'),
-      templates: {
-        value: function value(suggestion) {
-          return suggestion.name;
+  });
+  placesAutocomplete.on('change', function prova(e) {
+    $('.risultati').empty();
+    var lat = e.suggestion.latlng.lat;
+    var lon = e.suggestion.latlng.lng;
+    $.ajax({
+      "url": "http://localhost:8000/api/apartment/search/" + Math.round(lat) + '/' + Math.round(lon),
+      "method": "GET",
+      "success": function success(answer) {
+        var apartment = answer.data;
+        $('.risultati').append(apartment);
+        console.log(apartment); // var placesAutocomplete = places({
+        //     appId: 'plT92Q60ZYBJ',
+        //     apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
+        //     container: document.querySelector('#address-input')
+        // }).configure({
+        //     language: 'it', // Ricevo risultati in italiano
+        //     countries: ['it'], // Ricevo risultati per l'Italia
+        //     type: ['city', 'address'], // Cerco per città e indirizzo
+        // });
+
+        for (var i = 0; i < apartment.length; i++) {
+          var apartmentData = apartment[i];
+          var lat2 = apartment[i].latitudine;
+          var lon2 = apartment[i].longitudine;
+          var lat1 = e.suggestion.latlng.lat;
+          var lon1 = e.suggestion.latlng.lng;
+          distance(lat1, lon1, lat2, lon2, apartmentData);
         }
-      }
-    }).configure({
-      language: 'it',
-      // Ricevo risultati in italiano
-      countries: ['it'],
-      // Ricevo risultati per l'Italia
-      type: ['city', 'address'] // Cerco per città e indirizzo
-      // aroundRadius: 2,
 
+        ;
+
+        if ($('.risultati').is(':empty')) {
+          $('.risultati').append('nessun risultato trovato');
+        }
+
+        ;
+      }
     });
-    placesAutocomplete.on('change', function resultSelected(e) {
-      latitudine = e.suggestion.latlng.lat;
-      longitudine = e.suggestion.latlng.lng;
-      console.log(latitudine, longitudine);
-    });
-  })();
+  });
+
+  function distance(lat1, lon1, lat2, lon2, apartmentData) {
+    if (lat1 == lat2 && lon1 == lon2) {
+      return 0;
+    } else {
+      var radlat1 = Math.PI * lat1 / 180;
+      var radlat2 = Math.PI * lat2 / 180;
+      var theta = lon1 - lon2;
+      var radtheta = Math.PI * theta / 180;
+      var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+
+      if (dist > 1) {
+        dist = 1;
+      }
+
+      dist = Math.acos(dist);
+      dist = dist * 180 / Math.PI;
+      dist = dist * 60 * 1.1515;
+      dist = dist * 1.609344;
+
+      if (dist < 100) {
+        $('.risultati').append(apartmentData.id + apartmentData.titolo_appartamento + parseInt(dist) + 'km' + '<br>');
+      } else {
+        console.log('troppo lontano');
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -37424,8 +37474,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\Esercizi\boolbnb-7\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\Esercizi\boolbnb-7\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
