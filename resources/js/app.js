@@ -6,58 +6,10 @@
 
 require('./bootstrap');
 
-
-// window.Vue = require('vue');
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-// const app = new Vue({
-//     el: '#app',
-// });
-
 const $ = require('jquery');
 const Handlebars = require("handlebars");
 const template = Handlebars.compile("Name: {{name}}");
 console.log(template({ name: "Nils" }));
-
-// (function() {
-//     var placesAutocomplete = places({
-//       appId: 'plT92Q60ZYBJ',
-//       apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
-//       container: document.querySelector('#address'),
-//       templates: {
-//         value: function(suggestion) {
-//           return suggestion.name;
-//         }
-//       }
-//     }).configure({
-//       type: 'address'
-//     });
-//     placesAutocomplete.on('change', function resultSelected(e) {
-//       document.querySelector('#form-address2').value = e.suggestion.administrative || '';
-//       document.querySelector('#form-city').value = e.suggestion.city || '';
-//       document.querySelector('#form-zip').value = e.suggestion.postcode || '';
-//       $('#latitudine').val(e.suggestion.latlng.lat);
-//       $('#longitudine').val(e.suggestion.latlng.lng);
-//     });
-// })();
 
 $(document).ready(function(){
 
