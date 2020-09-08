@@ -13,10 +13,15 @@ class CreateAppartamentiHasServiziAppartamentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('appartamenti_has_servizi_appartamento', function (Blueprint $table) {
-            $table->id();
-            $table->mediumInteger('id_appartamento');
-            $table->mediumInteger('id_servizio_appartamento');
+        Schema::create('appartamenti_servizi', function (Blueprint $table) {
+
+            $table->unsignedBigInteger('apartment_id');
+            $table->foreign('apartment_id')->references('id')->on('appartamenti');
+
+            $table->unsignedBigInteger('service_id');
+            $table->foreign('service_id')->references('id')->on('servizi_appartamento');
+
+            $table->primary(['apartment_id', 'service_id']);
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ class CreateAppartamentiHasServiziAppartamentoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appartamenti_has_servizi_appartamento');
+        Schema::dropIfExists('appartamenti_servizi');
     }
 }

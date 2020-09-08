@@ -15,7 +15,7 @@ class CreateStatisticheTable extends Migration
     {
         Schema::create('statistiche', function (Blueprint $table) {
             $table->id();
-            $table->mediumInteger('id_appartamento');
+            // $table->mediumInteger('id_appartamento');
             $table->date('data_visualizzazione');
             $table->mediumInteger('id_utente_visualizzazione')->nullable();
             $table->text('indirizzo_ip');
