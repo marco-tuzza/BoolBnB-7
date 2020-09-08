@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 
+
 // window.Vue = require('vue');
 
 /**
@@ -32,6 +33,9 @@ require('./bootstrap');
 // });
 
 const $ = require('jquery');
+const Handlebars = require("handlebars");
+const template = Handlebars.compile("Name: {{name}}");
+console.log(template({ name: "Nils" }));
 
 // (function() {
 //     var placesAutocomplete = places({
@@ -81,7 +85,7 @@ $(document).ready(function(){
             language: 'it', // Ricevo risultati in italiano
             countries: ['it'], // Ricevo risultati per l'Italia
             type: ['city', 'address'], // Cerco per città e indirizzo
-         });
+        });
     
     placesAutocomplete.on('change', function prova (e)  {
 
@@ -103,16 +107,6 @@ $(document).ready(function(){
                 $('.risultati').append(apartment)
     
                 console.log(apartment);
-    
-                // var placesAutocomplete = places({
-                //     appId: 'plT92Q60ZYBJ',
-                //     apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
-                //     container: document.querySelector('#address-input')
-                // }).configure({
-                //     language: 'it', // Ricevo risultati in italiano
-                //     countries: ['it'], // Ricevo risultati per l'Italia
-                //     type: ['city', 'address'], // Cerco per città e indirizzo
-                // });
             
                 for (var i = 0; i < apartment.length; i++) {
                         var apartmentData = apartment[i]
