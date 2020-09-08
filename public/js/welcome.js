@@ -42399,10 +42399,6 @@ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"
 
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
 
-var template = Handlebars.compile("Name: {{name}}");
-console.log(template({
-  name: "Nils"
-}));
 $(document).ready(function () {
   $('#login').click(function () {
     $('.form-accedi').addClass('mostra-form');
@@ -42416,7 +42412,11 @@ $(document).ready(function () {
     $('.form-accedi').removeClass('mostra-form');
     $('.form-registrati').removeClass('mostra-form');
     $('.wrapper-page').removeClass('active');
-  });
+  }); // preparo le variabili per handlebars
+
+  var template_html = $('#card-template').html();
+  var template = Handlebars.compile(template_html); // Configurazione Alogolia
+
   var placesAutocomplete = places({
     appId: 'plT92Q60ZYBJ',
     apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
@@ -42428,15 +42428,22 @@ $(document).ready(function () {
     // Ricevo risultati per l'Italia
     type: ['city', 'address'] // Cerco per città e indirizzo
 
-  });
+  }); // al change dell'input, svuoto e faccio partire la ricerca 
+
   placesAutocomplete.on('change', function prova(e) {
     $('.risultati').empty();
     var lat = e.suggestion.latlng.lat;
     var lon = e.suggestion.latlng.lng;
+    parte_ricerca(lat, lon, e);
+  });
+
+  function parte_ricerca(lat, lon, e) {
     $.ajax({
       "url": "http://localhost:8000/api/apartment/search/" + Math.round(lat) + '/' + Math.round(lon),
       "method": "GET",
       "success": function success(answer) {
+        console.log(lat, lon);
+        $('.img-evidence').empty();
         var apartment = answer.data;
         $('.risultati').append(apartment);
         console.log(apartment);
@@ -42459,7 +42466,7 @@ $(document).ready(function () {
         ;
       }
     });
-  });
+  }
 
   function distance(lat1, lon1, lat2, lon2, apartmentData) {
     if (lat1 == lat2 && lon1 == lon2) {
@@ -42480,12 +42487,26 @@ $(document).ready(function () {
       dist = dist * 60 * 1.1515;
       dist = dist * 1.609344;
 
-      if (dist < 100) {
-        $('.risultati').append(apartmentData.id + apartmentData.titolo_appartamento + parseInt(dist) + 'km' + '<br>');
+      if (dist < 20) {
+        // $('.risultati').append(apartmentData.id + apartmentData.titolo_appartamento + parseInt(dist) + 'km'+ '<br>');
+        disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.metri_quadri);
       } else {
         console.log('troppo lontano');
       }
     }
+  }
+
+  function disegno_card(dati, immagine, metri) {
+    // preparo i dati per il template
+    var card_app = {
+      'titolo': dati,
+      'imm': immagine,
+      'metri': metri
+    }; // riempo il template di handlebars
+
+    var html_card = template(card_app); // appendo la card con i dati del risultato corrente
+
+    $('.img-evidence').append(html_card);
   }
 });
 

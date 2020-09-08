@@ -65,7 +65,7 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" id="address-input" placeholder="Cerca il posto dove ti piacerebbe andare..." aria-label="Cerca il posto dove ti piacerebbe andare..." aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button" id="button-addon2">Cerca</button>
+                        {{-- <button class="btn btn-primary" type="button" id="button-addon2">Cerca</button> --}}
                     </div>
                 </div>
             </div>
@@ -342,6 +342,16 @@
             </div>
             
         </div>
+
+        <script id="card-template" type="text/x-handlebars-template">
+            <div class="card">
+                <img src="@{{{ imm }}}" class="poster" alt="@{{ titolo }}">
+                <div class="info">
+                    <h4>@{{ titolo }}</h4>
+                    <p>@{{ metri }}</p>
+                </div>
+            </div>
+        </script>
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
