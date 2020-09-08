@@ -346,6 +346,6 @@
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/welcome.js') }}" defer></script>
     </body>
 </html>
