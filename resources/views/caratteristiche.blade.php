@@ -13,15 +13,16 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
-        <div class="wrapper-page">
+        <div class="wrapper-page-caratteristiche">
 
             <div class="first-block">
                 <header>
                     <nav class="nav-bar">
                         <div class="logo">
-                            <button class="btn-logos" type="button" id="button-addon2">
+                            <a href="{{ url('/') }}">
+                                <button class="btn-logos" type="button" id="button-addon2">
                                 <img src="images/bnb-logo.svg" alt="">
-                            </button>
+                            </button></a>
                         </div>
                         <div class="text-elements">
                             @if (Route::has('login'))
@@ -33,7 +34,7 @@
                                     <div class="drop-menu">
                                         <ul>
                                             @auth
-                                                <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
+                                                <li> <a href="">Il Mio Profilo</a> </li>
                                                 <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
                                                 <li> <a href="">Home</a> </li>
                                                 <li>
@@ -58,99 +59,102 @@
                         </div>
                     </nav>
                 </header>
-                <div class="jumbo text-center">
-                    <h1>Fai volare l'immaginazione</h1>
-                    <p>Pianifica un viaggio diverso per scoprire i tesori nascosti vicino a te.</p>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="address-input" placeholder="Cerca il posto dove ti piacerebbe andare..." aria-label="Cerca il posto dove ti piacerebbe andare..." aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        {{-- <button class="btn btn-primary" type="button" id="button-addon2">Cerca</button> --}}
-                    </div>
-                </div>
             </div>
 
+            <main>
+            <div class="main-container">
+                <section class="prima">
+                    <div class="intestazione">
+                        <h1>Titolo</h1>
+                        <p>Nr. Recensioni</p>
+                    </div>
+                    <div class="img-cover">
 
-            <main class="second-block">
-                <div class="text-card">
-                    <h2>Appartamenti in evidenza:</h2>
-                </div>
-                <div class="img-evidence">
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                        </a>
                     </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
+                </section>
+                <section class="seconda">
+                    <div class="informazioni">
+                        <h2>Appartamento affittato da "Nome Utente"</h2>
+                        <div class="infos">
+                            <span>Ospiti</span>
+                            <span>Camere da letto</span>
+                            <span>Letti</span>
+                            <span>Bagni</span>
+                        </div>
+                        <div class="infos-2">
+                            <div class="">
+                                <h3>Casa intera</h3>
+                                <p>Appartamenti: sarà a tua completa disposizione</p>
                             </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
+                            <div class="">
+                                <h3>Host esperto</h3>
+                                <p>"Nome Utente" ha recensioni per altri alloggi</p>
                             </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
+                            <div class="">
+                                <h3>Termini di cancellazione</h3>
+                                <p>Aggiungi le date di viaggio per conoscere i dettagli relativi alla cancellazione per questo soggiorno.</p>
                             </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
+                        </div>
+                        <div class="infos-3">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <a href="#">Contatta l'host</a>
+                            </p>
+                        </div>
+                        <div class="infos-4">
+                            <h2>Contatta l'host</h2>
+                            <div class="">
+                                <form action="mailto:someone@example.com" method="post" enctype="text/plain">
+                                Name:<br>
+                                <input type="text" name="name"><br>
+                                E-mail:<br>
+                                <input type="text" name="mail"><br>
+                                Testo:<br>
+                                <input class="text" type="text" name="comment" size="50"><br><br>
+                                <input type="submit" value="Send">
+                                <input type="reset" value="Reset">
+                                </form>
                             </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                        </a>
-                    </div>
+                        </div>
+                        <div class="infos-5">
+                            <div class="map">
 
-                </div>
-            </main>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="casella">
+                        <div class="servizi">
+                            <h2>Servizi</h2>
+                            <ul>
+                                <li>Ascensore</li>
+                                <li>Ascensore</li>
+                                <li>Ascensore</li>
+                                <li>Ascensore</li>
+                                <li>Ascensore</li>
+                                <li>Ascensore</li>
+                            </ul>
+                        </div>
+                        <div class="sistemazione">
+                            <h2>Sistemazione per la notte</h2>
+                            <div class="card-caratteristiche">
+                                <h3>Camera da letto 1</h3>
+                                <p>1 letto singolo</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
 
             <footer class="third-block">
                 <div class="wrap-footer">
@@ -355,20 +359,17 @@
                         </form>
                     </div>
                 </div>
-                <a href="#"></a>
             </div>
 
         </div>
 
         <script id="card-template" type="text/x-handlebars-template">
             <div class="card">
-                <a href="{{ url ('/caratteristiche') }}">
-                    <img src="@{{{ imm }}}" class="poster" alt="@{{ titolo }}">
-                    <div class="info">
-                        <h4>@{{ titolo }}</h4>
-                        <p>@{{ metri }}</p>
-                    </div>
-                </a>
+                <img src="@{{{ imm }}}" class="poster" alt="@{{ titolo }}">
+                <div class="info">
+                    <h4>@{{ titolo }}</h4>
+                    <p>@{{ metri }}</p>
+                </div>
             </div>
         </script>
 

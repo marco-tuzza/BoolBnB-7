@@ -75,7 +75,7 @@
                                 @csrf
                                 <div class="form-group row">
                                     <label for="titolo_appartamento">Titolo Appartamento</label>
-                                    <input type="text" name="titolo_appartamento" class="form-control" id="titolo_appartamento" placeholder="Titolo appartamento" value="{{ old('titolo_appartamento') }}">
+                                    <input type="text" name="titolo_appartamento" class="form-control" id="titolo_appartamento" placeholder="Titolo appartamento" value="{{ old('titolo_appartamento') }}" required>
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_stanze">Numero stanze</label>
@@ -201,6 +201,6 @@
             </div>
         </footer>
     </div>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/appartment.js') }}" defer></script>
 </body>
 </html>

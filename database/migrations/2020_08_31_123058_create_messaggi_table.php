@@ -15,7 +15,7 @@ class CreateMessaggiTable extends Migration
     {
         Schema::create('messaggi', function (Blueprint $table) {
             $table->id();
-            $table->mediumInteger('id_appartamento');
+            // $table->mediumInteger('id_appartamento');
             $table->text('testo_messaggio');
             $table->text('email_mittente');
             $table->mediumInteger('id_ricevente');
