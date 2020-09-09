@@ -21,6 +21,14 @@ Route::get('/search', function () {
     return view('search');
 });
 
+Route::get('/caratteristiche', function () {
+    return view('caratteristiche');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

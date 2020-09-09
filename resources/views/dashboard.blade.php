@@ -11,17 +11,20 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     </head>
     <body>
-        <div class="wrapper-page">
+        <div class="wrapper-page-caratteristiche">
 
             <div class="first-block">
                 <header>
                     <nav class="nav-bar">
                         <div class="logo">
-                            <button class="btn-logos" type="button" id="button-addon2">
+                            <a href="{{ url('/') }}">
+                                <button class="btn-logos" type="button" id="button-addon2">
                                 <img src="images/bnb-logo.svg" alt="">
-                            </button>
+                            </button></a>
                         </div>
                         <div class="text-elements">
                             @if (Route::has('login'))
@@ -33,9 +36,9 @@
                                     <div class="drop-menu">
                                         <ul>
                                             @auth
-                                                <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
+                                                <li> <a href="">Il Mio Profilo</a> </li>
                                                 <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
-                                                <li> <a href="">Home</a> </li>
+                                                <li> <a href="{{ url('/') }}">Home</a></li>
                                                 <li>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -58,97 +61,13 @@
                         </div>
                     </nav>
                 </header>
-                <div class="jumbo text-center">
-                    <h1>Fai volare l'immaginazione</h1>
-                    <p>Pianifica un viaggio diverso per scoprire i tesori nascosti vicino a te.</p>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="address-input" placeholder="Cerca il posto dove ti piacerebbe andare..." aria-label="Cerca il posto dove ti piacerebbe andare..." aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        {{-- <button class="btn btn-primary" type="button" id="button-addon2">Cerca</button> --}}
-                    </div>
-                </div>
             </div>
 
-
-            <main class="second-block">
-                <div class="text-card">
-                    <h2>Appartamenti in evidenza:</h2>
-                </div>
-                <div class="img-evidence">
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                        </a>
+            <main>
+                <div class="main-container">
+                    <h1>Appartamenti dell'utente</h1>
+                    <div class="card-container-dashboard">
                     </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                        </a>
-                    </div>
-
                 </div>
             </main>
 
@@ -355,26 +274,23 @@
                         </form>
                     </div>
                 </div>
-                <a href="#"></a>
             </div>
 
         </div>
 
-        <script id="card-template" type="text/x-handlebars-template">
-            <div class="card">
-                <a href="{{ url ('/caratteristiche') }}">
-                    <img src="@{{{ imm }}}" class="poster" alt="@{{ titolo }}">
-                    <div class="info">
-                        <h4>@{{ titolo }}</h4>
-                        <p>@{{ metri }}</p>
-                    </div>
-                </a>
+        <script id="templatecard_dashboard" type="text/x-handlebars-template">
+            <div class="card-dashboard" style="width: 18rem;">
+                <img class="card-img-top" src=" {{ asset('images/stanza.jpg') }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@{{primoparametro}}</h5>
+                    <p class="card-text">@{{secondoparametro}} dell'appartamento per l'host</p>
+                    <a href="#" class="btn btn-primary">@{{terzoparametro}}</a>
+                </div>
             </div>
         </script>
 
-        <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 
-        <script src="{{ asset('js/welcome.js') }}" defer></script>
+        <script src="{{ asset('js/dashboard.js') }}" defer></script>
     </body>
 </html>
