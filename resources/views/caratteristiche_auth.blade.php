@@ -112,18 +112,9 @@
                             </p>
                         </div>
                         <div class="infos-4">
-                            <h2>Contatta l'host</h2>
+                            <h2>visualizza statistiche</h2>
                             <div class="">
-                                <form action="mailto:someone@example.com" method="post" enctype="text/plain">
-                                Name:<br>
-                                <input type="text" name="name"><br>
-                                E-mail:<br>
-                                <input type="text" name="mail"><br>
-                                Testo:<br>
-                                <input class="text" type="text" name="comment" size="50"><br><br>
-                                <input type="submit" value="Send">
-                                <input type="reset" value="Reset">
-                                </form>
+                                <a href="{{ url('/stats') }}" class="btn btn-primary">visualizza statistiche</a>
                             </div>
                         </div>
                         <div class="infos-5">

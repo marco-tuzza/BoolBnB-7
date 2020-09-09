@@ -1,0 +1,26 @@
+.main-container{
+    width: 90%;
+    margin: auto;
+    padding: 50px 0;
+}
+
+.main-container h1{
+    margin-left: 20px;
+    margin-bottom: 50px;
+}
+
+.statistiche{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.stat{
+    text-align: center;
+}
+
+.grafico{
+    width: 400px;
+    height: 400px;
+    margin: auto;
+}

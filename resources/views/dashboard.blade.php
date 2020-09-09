@@ -284,7 +284,8 @@
                 <div class="card-body">
                     <h5 class="card-title">@{{primoparametro}}</h5>
                     <p class="card-text">@{{secondoparametro}} dell'appartamento per l'host</p>
-                    <a href="#" class="btn btn-primary">@{{terzoparametro}}</a>
+                    <a href="{{ url('/caratteristiche_auth') }}" class="btn btn-primary">@{{terzoparametro}}</a>
+                    <a href="{{ url('/stats') }}" class="btn btn-primary">Statistiche</a>
                 </div>
             </div>
         </script>

@@ -29,6 +29,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+Route::get('/caratteristiche_auth', function () {
+    return view('caratteristiche_auth');
+});
+
+Route::get('/stats', function () {
+    return view('stats');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

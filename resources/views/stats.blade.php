@@ -62,99 +62,24 @@
             </div>
 
             <main>
-            <div class="main-container">
-                <section class="prima">
-                    <div class="intestazione">
-                        <h1>Titolo</h1>
-                        <p>Nr. Recensioni</p>
-                    </div>
-                    <div class="img-cover">
-
-                    </div>
-                </section>
-                <section class="seconda">
-                    <div class="informazioni">
-                        <h2>Appartamento affittato da "Nome Utente"</h2>
-                        <div class="infos">
-                            <span>Ospiti</span>
-                            <span>Camere da letto</span>
-                            <span>Letti</span>
-                            <span>Bagni</span>
-                        </div>
-                        <div class="infos-2">
-                            <div class="">
-                                <h3>Casa intera</h3>
-                                <p>Appartamenti: sarà a tua completa disposizione</p>
-                            </div>
-                            <div class="">
-                                <h3>Host esperto</h3>
-                                <p>"Nome Utente" ha recensioni per altri alloggi</p>
-                            </div>
-                            <div class="">
-                                <h3>Termini di cancellazione</h3>
-                                <p>Aggiungi le date di viaggio per conoscere i dettagli relativi alla cancellazione per questo soggiorno.</p>
+                <div class="main-container">
+                    <h1>Statistiche appartamento 1</h1>
+                    <div class="statistiche">
+                        <div class="stat">
+                            <h2>Visualizzazioni totali</h2>
+                            <div class="grafico">
+                                <img src="images/grafico.png" alt="">
                             </div>
                         </div>
-                        <div class="infos-3">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                <a href="#">Contatta l'host</a>
-                            </p>
-                        </div>
-                        <div class="infos-4">
-                            <h2>Contatta l'host</h2>
-                            <div class="">
-                                <form action="mailto:someone@example.com" method="post" enctype="text/plain">
-                                Name:<br>
-                                <input type="text" name="name"><br>
-                                E-mail:<br>
-                                <input type="text" name="mail"><br>
-                                Testo:<br>
-                                <input class="text" type="text" name="comment" size="50"><br><br>
-                                <input type="submit" value="Send">
-                                <input type="reset" value="Reset">
-                                </form>
-                            </div>
-                        </div>
-                        <div class="infos-5">
-                            <div class="map">
+                        <div class="stat">
+                            <h2>Messaggi ricevuti</h2>
+                            <div class="grafico">
 
                             </div>
                         </div>
                     </div>
-                    <div class="casella">
-                        <div class="servizi">
-                            <h2>Servizi</h2>
-                            <ul>
-                                <li>Ascensore</li>
-                                <li>Ascensore</li>
-                                <li>Ascensore</li>
-                                <li>Ascensore</li>
-                                <li>Ascensore</li>
-                                <li>Ascensore</li>
-                            </ul>
-                        </div>
-                        <div class="sistemazione">
-                            <h2>Sistemazione per la notte</h2>
-                            <div class="card-caratteristiche">
-                                <h3>Camera da letto 1</h3>
-                                <p>1 letto singolo</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </main>
+                </div>
+            </main>
 
             <footer class="third-block">
                 <div class="wrap-footer">
