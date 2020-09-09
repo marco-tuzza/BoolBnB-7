@@ -9,6 +9,6 @@ class Service extends Model
     protected $table = 'servizi_appartamento';
 
     public function apartments() {
-        return $this->belongsToMany('App\Apartment');
+        return $this->belongsToMany('App\Apartment' , 'appartamenti_servizi');
     }
 }
