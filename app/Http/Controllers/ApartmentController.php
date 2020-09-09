@@ -71,8 +71,13 @@ class ApartmentController extends Controller
     public function edit($id)
     {
         $appartamento = Apartment::find($id);
+        $servizi = Service::all();
+        $data = [
+            'servizi' => $servizi,
+            'appartamento' => $appartamento
+        ];
         if($appartamento) {
-            return view('auth.apartment.edit', compact('appartamento'));
+            return view('auth.apartment.edit', $data);
         }
         return abort('404');
     }
@@ -99,9 +104,16 @@ class ApartmentController extends Controller
         ]);
         $dati = $request->all();
         $appartamento = Apartment::find($id);
+        $servizi = Service::All();
+        $appartamento->update($dati);
         if($appartamento) {
-            $appartamento->update($dati);
+            if (!empty($dati['servizi'])) {
+                $appartamento->services()->sync($dati['servizi']);
+            } else {
+                $appartamento->services()->detach();
+            }
         }
+        
         return redirect()->route('apartment.index');
     }
 

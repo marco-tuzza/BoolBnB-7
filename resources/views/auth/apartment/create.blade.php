@@ -161,10 +161,10 @@
                                 <div class="form-group row">
                                 @foreach ($servizi as $servizio)
                                     <label for="immagine_appartamento">
-                                        <input class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
+                                        <input {{ in_array($servizio->id, old('servizi', [])) ? 'checked' : '' }} class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
                                         {{$servizio->titolo_servizio}}
                                     </label>
-                                @endforeach
+                                @endforeach 
                                 </div>
                                 <button type="submit" class="btn btn-primary">Salva</button>
                             </form>
