@@ -127,6 +127,7 @@ class ApartmentController extends Controller
     {
         $appartamento = Apartment::find($id);
         if($appartamento) {
+            $appartamento->services()->detach();
             $appartamento->delete();
             return redirect()->route('apartment.index');
         } else {
