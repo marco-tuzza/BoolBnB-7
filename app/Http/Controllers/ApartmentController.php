@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Apartment;
+use App\Service;
 
 class ApartmentController extends Controller
 {
@@ -24,8 +25,12 @@ class ApartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('auth.apartment.create');
+    {   
+        $servizi = Service::All();
+        $data = [
+            'servizi' => $servizi
+        ];
+        return view('auth.apartment.create', $data);
     }
 
     /**
@@ -41,6 +46,7 @@ class ApartmentController extends Controller
         $nuovo_appartamento = new Apartment();
         $nuovo_appartamento->fill($dati);
         $nuovo_appartamento->save();
+        $nuovo_appartamento->services()->sync($dati['servizi']);
         return redirect()->route('apartment.index');
     }
 

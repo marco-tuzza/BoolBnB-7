@@ -158,6 +158,14 @@
                                     <label for="immagine_appartamento">Immagine appartamento</label>
                                     <input type="text" name="immagine_appartamento" class="form-control" id="immagine_appartamento" placeholder="immagine_appartamento" value="https://picsum.photos/200/300">
                                 </div>
+                                <div class="form-group row">
+                                @foreach ($servizi as $servizio)
+                                    <label for="immagine_appartamento">
+                                        <input class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
+                                        {{$servizio->titolo_servizio}}
+                                    </label>
+                                @endforeach
+                                </div>
                                 <button type="submit" class="btn btn-primary">Salva</button>
                             </form>
                         </div>
