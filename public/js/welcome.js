@@ -42495,26 +42495,27 @@ $(document).ready(function () {
 
       if (dist < 20) {
         // $('.risultati').append(apartmentData.id + apartmentData.titolo_appartamento + parseInt(dist) + 'km'+ '<br>');
-        disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services);
+        disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id);
       } else {
         console.log('troppo lontano');
       }
     }
   }
 
-  function disegno_card(dati, immagine, servizi) {
+  function disegno_card(dati, immagine, servizi, id) {
     array_servizi = servizi;
-    var servizi = '';
+    var servizi = [];
 
     for (var i = 0; i < array_servizi.length; i++) {
-      array_servizi[i].titolo_servizio;
+      servizi.push(array_servizi[i].titolo_servizio);
     } // preparo i dati per il template
 
 
     var card_app = {
       'titolo': dati,
       'imm': immagine,
-      'servizi': servizi
+      'servizi': servizi,
+      'id': id
     }; // riempo il template di handlebars
 
     var html_card = template(card_app); // appendo la card con i dati del risultato corrente

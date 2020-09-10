@@ -396,7 +396,7 @@
 
         <script id="card-template" type="text/x-handlebars-template">
             <div class="card">
-                <a href="{{ url ('/caratteristiche') }}">
+                <a href="/caratteristiche/@{{ id }}">
                     <img src="@{{{ imm }}}" class="poster" alt="@{{ titolo }}">
                     <div class="info">
                         <h4>@{{ titolo }}</h4>
