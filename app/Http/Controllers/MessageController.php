@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Message;
-use Auth;
+// use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {

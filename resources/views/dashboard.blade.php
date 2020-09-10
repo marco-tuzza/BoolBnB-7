@@ -66,8 +66,21 @@
                 <div class="text-dash">
                     <div class="card-header text-center">
                         <h2>I tuoi Appartamenti:</h2>
-
-                        @foreach ($appartamenti as $appartamento)
+                    </div>
+                </div>
+                <div class="img-apartment">
+                    @foreach ($appartamenti as $appartamento)
+                    <div class="card">
+                        <img src="{{$appartamento->immagine_appartamento}}" alt="Card image cap">
+                        <div class="info">
+                            <h4>{{$appartamento->titolo_appartamento}}</h4>
+                            <p>Numero stanze: {{$appartamento->numero_stanze}}</p>
+                            <p>Metri Quadri: {{$appartamento->metri_quadri}}</p>
+                            <a href="{{ url( '/caratteristiche', ['id' => $appartamento->id] ) }}" class="btn btn-primary">Dettagli</a>
+                            <a href="{{ url('/stats') }}" class="btn btn-primary">Statistiche</a>
+                        </div>
+                    </div>
+                    {{-- @foreach ($appartamenti as $appartamento)
                             <h2>Id appartamento:</h2>
                             <p>{{$appartamento->id}}</p>
                             <h2>Titolo appartamento:</h2>
@@ -84,11 +97,9 @@
                             <p>{{$appartamento->metri_quadri}}</p>
                             <h2>Immagine:</h2>
                             <img src="{{$appartamento->immagine_appartamento}}" alt="">
-                            <h2>Servizi</h2>
-                        @endforeach
-                    </div>
+                            <h2>Servizi</h2> --}}
+                    @endforeach
                 </div>
-                <div class="img-apartment"></div>
             </div>
                 
             <div class="block-footer-dash">

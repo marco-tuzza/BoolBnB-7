@@ -42504,20 +42504,22 @@ $(document).ready(function () {
 
   function disegno_card(dati, immagine, servizi) {
     array_servizi = servizi;
-    var servizi = ''; // preparo i dati per il template
+    var servizi = '';
+
+    for (var i = 0; i < array_servizi.length; i++) {
+      array_servizi[i].titolo_servizio;
+    } // preparo i dati per il template
+
 
     var card_app = {
       'titolo': dati,
       'imm': immagine,
-      'servizi': array_servizi.titolo_servizio
+      'servizi': servizi
     }; // riempo il template di handlebars
 
     var html_card = template(card_app); // appendo la card con i dati del risultato corrente
 
-    $('.img-evidence').append(html_card); // for (let i = 0; i < array_servizi.length; i++) {
-    //     array_servizi[i].titolo_servizio; 
-    //     $('.serv').append(array_servizi[i].titolo_servizio);
-    // }
+    $('.img-evidence').append(html_card);
   }
 });
 

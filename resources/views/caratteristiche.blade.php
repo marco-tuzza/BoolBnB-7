@@ -20,15 +20,15 @@
                     <nav class="nav-bar">
                         <div class="logo">
                             <a href="{{ url('/') }}">
-                                <button class="btn-logos" type="button" id="button-addon2">
-                                <img src="images/bnb-logo.svg" alt="">
+                                <button class="btn-logos dashb" type="button" id="button-addon2">
+                                <img src="http://localhost:8000/images/bnb-logo.svg" alt="">
                             </button></a>
                         </div>
                         <div class="text-elements">
                             @if (Route::has('login'))
                                 <div class="account">
-                                    <button class="btn-account" type="button" id="button-addon2">
-                                        <img src="images/account.svg" alt="">
+                                    <button class="btn-account dashb" type="button" id="button-addon2">
+                                        <img src="http://localhost:8000/images/account.svg" alt="">
                                     </button>
 
                                     <div class="drop-menu">
@@ -36,7 +36,7 @@
                                             @auth
                                                 <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
                                                 <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
-                                                <li> <a href="">Home</a> </li>
+                                                <li> <a href="{{ url('/') }}">Home</a></li>
                                                 <li>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -65,23 +65,23 @@
             <div class="main-container">
                 <section class="prima">
                     <div class="intestazione">
-                        <h1>Titolo</h1>
-                        <p>Nr. Recensioni</p>
+                        <h1>{{$appartamento->titolo_appartamento}}</h1>
+                        <p>Metri Quadri: {{$appartamento->metri_quadri}}</p>
                     </div>
                     <div class="img-cover">
-
+                        <img src="{{$appartamento->immagine_appartamento}}" alt="Card image cap">
                     </div>
                 </section>
                 <section class="seconda">
                     <div class="informazioni">
                         <h2>Appartamento affittato da "Nome Utente"</h2>
                         <div class="infos">
-                            <span>Ospiti</span>
-                            <span>Camere da letto</span>
-                            <span>Letti</span>
-                            <span>Bagni</span>
+                            <span>Metri Quadri: {{$appartamento->metri_quadri}}</span>
+                            <span>Stanze: {{$appartamento->numero_stanze}}</span>
+                            <span>Letti: {{$appartamento->numero_letti}}</span>
+                            <span>Bagni: {{$appartamento->numero_bagni}}</span>
                         </div>
-                        <div class="infos-2">
+                        {{-- <div class="infos-2">
                             <div class="">
                                 <h3>Casa intera</h3>
                                 <p>Appartamenti: sarà a tua completa disposizione</p>
@@ -94,7 +94,7 @@
                                 <h3>Termini di cancellazione</h3>
                                 <p>Aggiungi le date di viaggio per conoscere i dettagli relativi alla cancellazione per questo soggiorno.</p>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="infos-3">
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -104,30 +104,30 @@
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                 <br>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                <a href="#">Contatta l'host</a>
                             </p>
                         </div>
-                        <div class="infos-4">
-                            <h2>Contatta l'host</h2>
-                            <div class="">
-                                <form action="{{ route('message_store') }}" method="post">
-                                @csrf
-                                E-mail:<br>
-                                <input type="text" name="email_mittente" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
-                                Testo:<br>
-                                <input class="text" type="text" name="testo_messaggio">
-                                <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
-                                <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
-                                <input type="date" name="data_invio">
-                                <button type="submit">Invia</button>
-                                <input type="reset">
-                                </form>
+
+                        @if ($appartamento->user_id != Auth::user()->id)
+                            <div class="infos-4">
+                                <h2>Contatta l'host</h2>
+                                <div class="">
+                                    <form action="{{ route('message_store') }}" method="post">
+                                    @csrf
+                                    E-mail:<br>
+                                    <input type="text" name="email_mittente" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
+                                    Testo:<br>
+                                    <input class="text" type="text" name="testo_messaggio">
+                                    <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
+                                    <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
+                                    <input type="date" name="data_invio">
+                                    <button type="submit">Invia</button>
+                                    <input type="reset">
+                                    </form>
+                                </div>
                             </div>
-                        </div>
+                        @endif
+
+                        
                         <div class="infos-5">
                             <div class="map">
 
@@ -138,19 +138,15 @@
                         <div class="servizi">
                             <h2>Servizi</h2>
                             <ul>
-                                <li>Ascensore</li>
-                                <li>Ascensore</li>
-                                <li>Ascensore</li>
-                                <li>Ascensore</li>
-                                <li>Ascensore</li>
-                                <li>Ascensore</li>
+                                @foreach ($servizi as $servizio)
+                                    <li>{{$servizio->titolo_servizio}}</li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="sistemazione">
-                            <h2>Sistemazione per la notte</h2>
                             <div class="card-caratteristiche">
-                                <h3>Camera da letto 1</h3>
-                                <p>1 letto singolo</p>
+                                <h3>Numero di stanze: {{$appartamento->numero_stanze}}</h3>
+                                <p>Numero di letti: {{$appartamento->numero_letti}}</p>
                             </div>
                         </div>
                     </div>

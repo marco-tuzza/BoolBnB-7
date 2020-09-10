@@ -64,8 +64,13 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
+        $servizi = Service::all();
         $appartamento = Apartment::find($id);
-        return view('caratteristiche', compact('appartamento'));
+        $data = [
+            'servizi' => $servizi,
+            'appartamento' => $appartamento
+        ];
+        return view('caratteristiche', $data);
     }
 
     /**
