@@ -80,30 +80,12 @@
                             <a href="{{ url('/stats') }}" class="btn btn-primary">Statistiche</a>
                         </div>
                     </div>
-                    {{-- @foreach ($appartamenti as $appartamento)
-                            <h2>Id appartamento:</h2>
-                            <p>{{$appartamento->id}}</p>
-                            <h2>Titolo appartamento:</h2>
-                            <p>{{$appartamento->titolo_appartamento}}</p>
-                            <h2>ID proprietario:</h2>
-                            <p>{{$appartamento->id_proprietario}}</p>
-                            <h2>Numero stanze:</h2>
-                            <p>{{$appartamento->numero_stanze}}</p>
-                            <h2>Numero letti:</h2>
-                            <p>{{$appartamento->numero_letti}}</p>
-                            <h2>Numero bagni:</h2>
-                            <p>{{$appartamento->numero_bagni}}</p>
-                            <h2>Metri quadri:</h2>
-                            <p>{{$appartamento->metri_quadri}}</p>
-                            <h2>Immagine:</h2>
-                            <img src="{{$appartamento->immagine_appartamento}}" alt="">
-                            <h2>Servizi</h2> --}}
                     @endforeach
                 </div>
             </div>
                 
             <div class="block-footer-dash">
-                <footer class="foot-create">
+                <footer class="foot-create"> 
                     <div class="wrap-footer">
                         <div class="block1">
                             <ul>

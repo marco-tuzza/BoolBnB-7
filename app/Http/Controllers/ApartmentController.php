@@ -55,7 +55,7 @@ class ApartmentController extends Controller
         $nuovo_appartamento->services()->sync($dati['servizi']);
         $id = Auth::id();
         $appartamenti = Apartment::all()->where('user_id', $id);
-        return view('dashboard', compact('appartamenti'));
+        return view('welcome', compact('appartamenti'));
     }
 
     /**
