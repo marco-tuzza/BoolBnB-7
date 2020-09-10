@@ -21,10 +21,6 @@ Route::get('/search', function () {
     return view('search');
 });
 
-Route::get('/caratteristiche', function () {
-    return view('caratteristiche');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
@@ -41,4 +37,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/message', 'MessageController@index')->middleware('auth');
+Route::post('/message/store', 'MessageController@store')->name('message_store');
+Route::get('/caratteristiche/{id}', 'ApartmentController@show')->name('caratteristiche');
 Route::resource('apartment', 'ApartmentController')->middleware('auth');
