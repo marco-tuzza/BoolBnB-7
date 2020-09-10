@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="form-group row non-visibile">
                                     <label for="id_proprietario">Id proprietario</label>
-                                    <input type="text" name="id_proprietario" class="form-control" id="id_proprietario" placeholder="Id proprietario" value="1">
+                                <input type="text" name="id_proprietario" class="form-control" id="id_proprietario" placeholder="Id proprietario" value="{{Auth::id()}}">
                                 </div>
                                 <div class="form-group row">
                                     <label for="form-address">Indirizzo*</label>
