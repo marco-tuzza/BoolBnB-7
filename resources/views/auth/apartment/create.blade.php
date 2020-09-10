@@ -38,7 +38,7 @@
                             <div class="drop-menu">
                                 <ul>
                                     @auth
-                                        <li> <a href="">Il Mio Profilo</a> </li>
+                                        <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
                                         <li> <a href="">Aggiungi Appartamento</a> </li>
                                         <li> <a href="{{ route('home') }}">Home</a> </li>
                                         <li>
@@ -162,7 +162,8 @@
                                 @foreach ($servizi as $servizio)
                                     <label for="immagine_appartamento">
                                         <input {{ in_array($servizio->id, old('servizi', [])) ? 'checked' : '' }} class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
-                                        {{$servizio->titolo_servizio}}
+                                        <h6 class="text-servizio">{{$servizio->titolo_servizio}}</h6>
+                                        
                                     </label>
                                 @endforeach 
                                 </div>

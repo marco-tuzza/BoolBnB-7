@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Apartment;
 use App\Service;
 
@@ -15,8 +15,14 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $appartamenti = Apartment::all()->take(40);
-        return view('auth.apartment.index', compact('appartamenti'));
+
+        // Get the currently authenticated user's ID...
+
+        $id = Auth::id();
+        
+        $appartamenti = Apartment::all()->where('user_id', $id);
+        
+        return view('dashboard', compact('appartamenti'));
     }
 
     /**
@@ -47,7 +53,7 @@ class ApartmentController extends Controller
         $nuovo_appartamento->fill($dati);
         $nuovo_appartamento->save();
         $nuovo_appartamento->services()->sync($dati['servizi']);
-        return redirect()->route('apartment.index');
+        return view('dashboard');
     }
 
     /**

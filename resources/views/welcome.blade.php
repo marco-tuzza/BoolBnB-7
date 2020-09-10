@@ -64,9 +64,43 @@
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" id="address-input" placeholder="Cerca il posto dove ti piacerebbe andare..." aria-label="Cerca il posto dove ti piacerebbe andare..." aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        {{-- <button class="btn btn-primary" type="button" id="button-addon2">Cerca</button> --}}
+                    <div class="search-filter">
+                        <div class="butt">
+                            <button class="btn btn-primary search" type="button" id="button-addon2">Cerca</button>
+                        </div>
+                        <div class="filter-1">
+                            <label for="numero_stanze">Numero stanze</label>
+                            <select name="numero_stanze" id="numerostanze">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div class="filter-2">
+                            <label for="numero_letti">Numero letti</label>
+                            <select name="numero_letti" id="numeroletti">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
                     </div>
+                        
+                    
                 </div>
             </div>
 

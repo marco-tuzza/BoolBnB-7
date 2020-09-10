@@ -42431,10 +42431,12 @@ $(document).ready(function () {
   }); // al change dell'input, svuoto e faccio partire la ricerca 
 
   placesAutocomplete.on('change', function prova(e) {
-    $('.risultati').empty();
     var lat = e.suggestion.latlng.lat;
     var lon = e.suggestion.latlng.lng;
-    parte_ricerca(lat, lon, e);
+    $('.search').click(function () {
+      $('.img-evidence').empty();
+      parte_ricerca(lat, lon, e);
+    });
   });
 
   function parte_ricerca(lat, lon, e) {
@@ -42444,8 +42446,8 @@ $(document).ready(function () {
       "success": function success(answer) {
         console.log(lat, lon);
         $('.img-evidence').empty();
-        var apartment = answer.data;
-        $('.risultati').append(apartment);
+        var apartment = answer.data; // $('.risultati').append(apartment);
+
         console.log(apartment);
 
         for (var i = 0; i < apartment.length; i++) {
@@ -42459,8 +42461,8 @@ $(document).ready(function () {
 
         ;
 
-        if ($('.risultati').is(':empty')) {
-          $('.risultati').append('nessun risultato trovato');
+        if ($('.img-evidence').is(':empty')) {
+          $('.img-evidence').append('nessun risultato trovato');
         }
 
         ;
@@ -42519,7 +42521,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\Esercizi\boolbnb-7\resources\js\welcome.js */"./resources/js/welcome.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\welcome.js */"./resources/js/welcome.js");
 
 
 /***/ })

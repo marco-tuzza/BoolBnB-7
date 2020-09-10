@@ -30,19 +30,14 @@ class ApartmentSearchController extends Controller
 
     public function search($lat, $lon) {
         $array = [];
-        $arrayServizi = [];
         $appartamenti = Apartment::all()->where('latitudine', '>', $lat - 0.5)->where('latitudine', '<', $lat + 0.5)->where('longitudine', '>', $lon - 0.5)->where('longitudine', '<', $lon + 0.5);
         foreach ($appartamenti as $appartamento) {
             $servizio = $appartamento->services;
-            array_push($arrayServizi, $servizio);
-            array_push($array, $appartamento);
+            array_push($appartamento, $servizio);
         };
         return response()->json([
             'success' => true,
-            'data' => [
-                'appartamento' => $array,
-                'servizi' => $arrayServizi
-            ],
+            'data' => $array,
             'count' => $appartamenti->count()
         ]);
     }

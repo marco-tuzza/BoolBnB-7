@@ -45,14 +45,17 @@ $(document).ready(function(){
         });
     
     // al change dell'input, svuoto e faccio partire la ricerca 
-    placesAutocomplete.on('change', function prova (e)  {
 
-        $('.risultati').empty()
+
+    placesAutocomplete.on('change', function prova (e)  {
     
         var lat = e.suggestion.latlng.lat
         var lon = e.suggestion.latlng.lng
-        
-        parte_ricerca(lat, lon, e);
+
+        $('.search').click(function(){
+            $('.img-evidence').empty();
+            parte_ricerca(lat, lon, e);
+        });
         
     });
 
@@ -72,7 +75,7 @@ $(document).ready(function(){
     
                 var apartment = answer.data;
     
-                $('.risultati').append(apartment)
+                // $('.risultati').append(apartment);
     
                 console.log(apartment);
             
@@ -85,8 +88,8 @@ $(document).ready(function(){
                         distance(lat1,lon1,lat2,lon2, apartmentData);
                 };
     
-                if ($('.risultati').is(':empty')){
-                    $('.risultati').append('nessun risultato trovato')
+                if ($('.img-evidence').is(':empty')){
+                    $('.img-evidence').append('nessun risultato trovato')
                 };
             },
         });

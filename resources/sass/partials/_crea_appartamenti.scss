@@ -23,8 +23,21 @@
 .form-group.row {
     margin-right: 0;
     margin-left: 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .foot-create {
     background-color: #e7dcde;
+}
+
+input[type=radio], input[type=checkbox] {
+    box-sizing: border-box;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    height: 18px;
+}
+
+.text-servizio {
+    font-size: 0.8rem;
 }
