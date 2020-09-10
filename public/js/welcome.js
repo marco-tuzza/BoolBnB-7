@@ -42435,6 +42435,10 @@ $(document).ready(function () {
     var lon = e.suggestion.latlng.lng;
     $('.search').click(function () {
       $('.img-evidence').empty();
+      var numerostanze = $('#numerostanze').children('option:selected').val();
+      console.log(numerostanze);
+      var numeroletti = $('#numeroletti').children('option:selected').val();
+      console.log(numeroletti);
       parte_ricerca(lat, lon, e);
     });
   });

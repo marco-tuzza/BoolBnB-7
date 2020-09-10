@@ -54,13 +54,17 @@ $(document).ready(function(){
 
         $('.search').click(function(){
             $('.img-evidence').empty();
-            parte_ricerca(lat, lon, e);
+            var numerostanze = $('#numerostanze').children('option:selected').val();
+            console.log(numerostanze);
+            var numeroletti = $('#numeroletti').children('option:selected').val();
+            console.log(numeroletti);
+            parte_ricerca(lat, lon, e, numerostanze, numeroletti);
         });
         
     });
 
 
-    function parte_ricerca (lat, lon, e) {
+    function parte_ricerca (lat, lon, e, numerostanze, numeroletti) {
 
         $.ajax({
     
