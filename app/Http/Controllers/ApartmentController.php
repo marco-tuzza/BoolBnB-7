@@ -25,7 +25,7 @@ class ApartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $servizi = Service::All();
         $data = [
             'servizi' => $servizi
@@ -59,7 +59,7 @@ class ApartmentController extends Controller
     public function show($id)
     {
         $appartamento = Apartment::find($id);
-        return view('auth.apartment.show', compact('appartamento'));
+        return view('caratteristiche', compact('appartamento'));
     }
 
     /**
@@ -113,7 +113,7 @@ class ApartmentController extends Controller
                 $appartamento->services()->detach();
             }
         }
-        
+
         return redirect()->route('apartment.index');
     }
 

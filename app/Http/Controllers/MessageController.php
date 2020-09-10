@@ -14,4 +14,13 @@ class MessageController extends Controller
         $messaggi = Message::All()->where('id_ricevente', $userId);
         return view('auth.messaggi', compact('messaggi'));
     }
+
+    public function store(Request $request)
+    {
+        $dati = $request->all();
+        $nuovo_messaggio = new Message();
+        $nuovo_messaggio->fill($dati);
+        $nuovo_messaggio->save();
+        return redirect()->back();
+    }
 }
