@@ -114,15 +114,17 @@
                         <div class="infos-4">
                             <h2>Contatta l'host</h2>
                             <div class="">
-                                <form action="mailto:someone@example.com" method="post" enctype="text/plain">
-                                Name:<br>
-                                <input type="text" name="name"><br>
+                                <form action="{{ route('message_store') }}" method="post">
+                                @csrf
                                 E-mail:<br>
-                                <input type="text" name="mail"><br>
+                                <input type="text" name="email_mittente" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
                                 Testo:<br>
-                                <input class="text" type="text" name="comment" size="50"><br><br>
-                                <input type="submit" value="Send">
-                                <input type="reset" value="Reset">
+                                <input class="text" type="text" name="testo_messaggio">
+                                <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
+                                <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
+                                <input type="date" name="data_invio">
+                                <button type="submit">Invia</button>
+                                <input type="reset">
                                 </form>
                             </div>
                         </div>

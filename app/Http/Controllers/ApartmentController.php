@@ -65,7 +65,7 @@ class ApartmentController extends Controller
     public function show($id)
     {
         $appartamento = Apartment::find($id);
-        return view('auth.apartment.show', compact('appartamento'));
+        return view('caratteristiche', compact('appartamento'));
     }
 
     /**

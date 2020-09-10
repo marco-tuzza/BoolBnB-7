@@ -118,20 +118,27 @@ $(document).ready(function(){
             dist = dist * 1.609344
             if (dist < 20) {
                 // $('.risultati').append(apartmentData.id + apartmentData.titolo_appartamento + parseInt(dist) + 'km'+ '<br>');
-                disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.metri_quadri)   
+                disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services)   
             } else {
                 console.log('troppo lontano');
             }
         }
     }
 
-    function disegno_card(dati, immagine, metri) {
+    function disegno_card(dati, immagine, servizi) {
+
+        array_servizi = servizi;
+        var servizi = '';
+
+        for (let i = 0; i < array_servizi.length; i++) {
+            array_servizi[i].titolo_servizio; 
+        }
 
         // preparo i dati per il template
         var card_app = {
             'titolo': dati,
             'imm': immagine,
-            'metri' : metri,
+            'servizi' : servizi,
         };
         // riempo il template di handlebars
         var html_card = template(card_app);

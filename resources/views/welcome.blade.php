@@ -400,7 +400,7 @@
                     <img src="@{{{ imm }}}" class="poster" alt="@{{ titolo }}">
                     <div class="info">
                         <h4>@{{ titolo }}</h4>
-                        <p>@{{ metri }}</p>
+                        <p class="serv">Servizi: @{{ servizi }} </p>
                     </div>
                 </a>
             </div>

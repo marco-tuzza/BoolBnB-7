@@ -42439,11 +42439,11 @@ $(document).ready(function () {
       console.log(numerostanze);
       var numeroletti = $('#numeroletti').children('option:selected').val();
       console.log(numeroletti);
-      parte_ricerca(lat, lon, e);
+      parte_ricerca(lat, lon, e, numerostanze, numeroletti);
     });
   });
 
-  function parte_ricerca(lat, lon, e) {
+  function parte_ricerca(lat, lon, e, numerostanze, numeroletti) {
     $.ajax({
       "url": "http://localhost:8000/api/apartment/search/" + Math.round(lat) + '/' + Math.round(lon),
       "method": "GET",
@@ -42495,24 +42495,29 @@ $(document).ready(function () {
 
       if (dist < 20) {
         // $('.risultati').append(apartmentData.id + apartmentData.titolo_appartamento + parseInt(dist) + 'km'+ '<br>');
-        disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.metri_quadri);
+        disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services);
       } else {
         console.log('troppo lontano');
       }
     }
   }
 
-  function disegno_card(dati, immagine, metri) {
-    // preparo i dati per il template
+  function disegno_card(dati, immagine, servizi) {
+    array_servizi = servizi;
+    var servizi = ''; // preparo i dati per il template
+
     var card_app = {
       'titolo': dati,
       'imm': immagine,
-      'metri': metri
+      'servizi': array_servizi.titolo_servizio
     }; // riempo il template di handlebars
 
     var html_card = template(card_app); // appendo la card con i dati del risultato corrente
 
-    $('.img-evidence').append(html_card);
+    $('.img-evidence').append(html_card); // for (let i = 0; i < array_servizi.length; i++) {
+    //     array_servizi[i].titolo_servizio; 
+    //     $('.serv').append(array_servizi[i].titolo_servizio);
+    // }
   }
 });
 
