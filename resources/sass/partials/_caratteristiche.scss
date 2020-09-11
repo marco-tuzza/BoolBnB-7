@@ -180,10 +180,7 @@ span{
 
 .infos-5 .map{
     margin-bottom: 100px;
-    height: 450px;
-    width: 550px;
     border-radius: 12px;
-    background-color: green;
 }
 
 .casella{
@@ -212,6 +209,19 @@ span{
 
 .sistemazione h2{
     margin-bottom: 20px;
+}
+
+#map-example {
+  height: 330px;
+  width: 850px;
+}
+
+#input-map{
+    display: none;
+}
+
+.ap-icon-pin{
+    display: none;
 }
 
 // footer{
