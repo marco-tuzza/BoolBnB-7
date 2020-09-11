@@ -11086,6 +11086,12 @@ button::focus {
   border-bottom-right-radius: 0;
 }
 
+.first-block .checkbox {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
 .first-block header {
   max-width: 70%;
   margin: auto;
@@ -11324,6 +11330,10 @@ button::focus {
 .form-accedi.mostra-form,
 .form-registrati.mostra-form {
   display: block;
+}
+
+.non-visible {
+  display: none;
 }
 
 .wrapper-apartament {

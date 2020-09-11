@@ -99,8 +99,33 @@
                             </select>
                         </div>
                     </div>
-                        
-                    
+                </div>
+
+                <div class="checkbox">
+                    <label for="wifi" class="input-group-text check-label">
+                        <input class="check-input" type="checkbox" name="WiFi" value="wifi">
+                        <h6>WiFi</h6>
+                    </label>
+                    <label for="posto-macchina" class="input-group-text check-label">
+                        <input class="check-input" type="checkbox" name="Posto Macchina" value="posto-macchina">
+                        <h6>Posto Macchina</h6>
+                    </label>
+                    <label for="piscina" class="input-group-text check-label">
+                        <input class="check-input" type="checkbox" name="Piscina" value="piscina">
+                        <h6>Piscina</h6>
+                    </label>
+                    <label for="portineria" class="input-group-text check-label">
+                        <input class="check-input" type="checkbox" name="Portineria" value="portineria">
+                        <h6>Portineria</h6>
+                    </label>
+                    <label for="sauna" class="input-group-text check-label">
+                        <input class="check-input" type="checkbox" name="Sauna" value="sauna">
+                        <h6>Sauna</h6>
+                    </label>
+                    <label for="vista-mare" class="input-group-text check-label">
+                        <input class="check-input" type="checkbox" name="Vista Mare" value="vista-mare">
+                        <h6>Vista Mare</h6>
+                    </label>
                 </div>
             </div>
 
@@ -396,7 +421,7 @@
 
         <script id="card-template" type="text/x-handlebars-template">
             <div class="card">
-                <a href="/caratteristiche/@{{ id }}">
+                <a href="/caratteristiche/@{{ id }}" target="_blank">
                     <img src="@{{{ imm }}}" class="poster" alt="@{{ titolo }}">
                     <div class="info">
                         <h4>@{{ titolo }}</h4>
@@ -405,7 +430,6 @@
                 </a>
             </div>
         </script>
-
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 

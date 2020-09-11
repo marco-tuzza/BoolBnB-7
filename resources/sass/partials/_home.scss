@@ -144,7 +144,11 @@ body {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
-
+    .checkbox {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
     header {
         max-width: 70%;
         margin: auto;
@@ -360,4 +364,8 @@ body {
 
 .form-accedi.mostra-form, .form-registrati.mostra-form {
     display: block;
+}
+
+.non-visible {
+    display: none;
 }

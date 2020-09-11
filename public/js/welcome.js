@@ -42522,6 +42522,22 @@ $(document).ready(function () {
 
     $('.img-evidence').append(html_card);
   }
+
+  $('.check-input').on('click', function () {
+    var valore = $(this).attr('name'); // console.log(valore);
+
+    $('.serv').each(function () {
+      var val_p = $(this).text();
+      console.log(val_p); // console.log(val_p.includes(valore));
+
+      if (!val_p.includes(valore)) {
+        console.log('entrato');
+        $(this).closest('.card').toggleClass('non-visible');
+      } else {
+        console.log('no');
+      }
+    });
+  });
 });
 
 /***/ }),
