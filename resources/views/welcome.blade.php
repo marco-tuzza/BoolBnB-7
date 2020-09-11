@@ -34,6 +34,7 @@
                                         <ul>
                                             @auth
                                                 <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
+                                                <li> <a href="{{ url('/messaggi') }}">I Miei Messaggi</a> </li>
                                                 <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
                                                 <li> <a href="">Home</a> </li>
                                                 <li>

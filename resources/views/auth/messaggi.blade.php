@@ -28,16 +28,17 @@
                         <div class="text-elements">
                             @if (Route::has('login'))
                                 <div class="account">
-                                    <button class="btn-account dashb" type="button" id="button-addon2">
+                                    <button class="btn-account" type="button" id="button-addon2">
                                         <img src="images/account.svg" alt="">
                                     </button>
 
                                     <div class="drop-menu">
                                         <ul>
                                             @auth
-                                                <li> <a href="">Il Mio Profilo</a> </li>
+                                                <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
+                                                <li> <a href="{{ url('/messaggi') }}">I Miei Messaggi</a> </li>
                                                 <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
-                                                <li> <a href="{{ url('/') }}">Home</a></li>
+                                                <li> <a href="{{ url('/') }}">Home</a> </li>
                                                 <li>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -57,7 +58,6 @@
                                     </div>
                                 </div>
                             @endif
-                        </div>
                     </nav>
                 </header>
             </div>
