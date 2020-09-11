@@ -150,6 +150,20 @@
                                 <label for="immagine_appartamento">Immagine appartamento</label>
                                 <input type="text" name="immagine_appartamento" class="form-control" id="immagine_appartamento" placeholder="immagine_appartamento" value="{{ old('immagine_appartamento', $appartamento->immagine_appartamento) }}">
                             </div>
+                            <div class="form-group row">
+                            @foreach ($servizi as $servizio)
+                                <label for="immagine_appartamento">
+                                    <input
+                                    @if($errors->any())
+                                        {{ in_array($servizio->id, old('servizi', [])) ? 'checked' : '' }}
+                                    {{-- @else   
+                                        {{ $appartamento->servizi->contains($servizi) ? 'checked' : '' }}  Da revisionare --}}
+                                    @endif 
+                                    class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
+                                    {{$servizio->titolo_servizio}}
+                                </label>
+                            @endforeach 
+                            </div>
                             <button type="submit" class="btn btn-primary">Salva</button>
                         </form>
                     </div>

@@ -24,6 +24,13 @@
         <p>{{$appartamento->metri_quadri}}</p>
         <h2>Immagine:</h2>
         <img src="{{$appartamento->immagine_appartamento}}" alt="">
+        <h2>Servizi</h2>
+        @forelse ($appartamento->services as $servizio)
+            {{$servizio->titolo_servizio}}
+        @empty
+            -
+        @endforelse
+        <p></p>
         <a href='{{ route('apartment.show', ['apartment' => $appartamento->id])}}'>Dettagli appartamento</a>
         <hr>
         <a href='{{ route('apartment.edit', ['apartment' => $appartamento->id])}}'>modifica appartamento</a>

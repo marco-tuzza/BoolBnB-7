@@ -11,9 +11,6 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
-        <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
     </head>
     <body>
         <div class="wrapper-page-caratteristiche">
@@ -23,15 +20,15 @@
                     <nav class="nav-bar">
                         <div class="logo">
                             <a href="{{ url('/') }}">
-                                <button class="btn-logos dashb" type="button" id="button-addon2">
-                                <img src="http://localhost:8000/images/bnb-logo.svg" alt="">
+                                <button class="btn-logos" type="button" id="button-addon2">
+                                <img src="images/bnb-logo.svg" alt="">
                             </button></a>
                         </div>
                         <div class="text-elements">
                             @if (Route::has('login'))
                                 <div class="account">
-                                    <button class="btn-account dashb" type="button" id="button-addon2">
-                                        <img src="http://localhost:8000/images/account.svg" alt="">
+                                    <button class="btn-account" type="button" id="button-addon2">
+                                        <img src="images/account.svg" alt="">
                                     </button>
 
                                     <div class="drop-menu">
@@ -39,7 +36,7 @@
                                             @auth
                                                 <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
                                                 <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
-                                                <li> <a href="{{ url('/') }}">Home</a></li>
+                                                <li> <a href="">Home</a> </li>
                                                 <li>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -68,21 +65,35 @@
             <div class="main-container">
                 <section class="prima">
                     <div class="intestazione">
-                        <h1>{{$appartamento->titolo_appartamento}}</h1>
-                        <p>Metri Quadri: {{$appartamento->metri_quadri}}</p>
+                        <h1>Titolo</h1>
+                        <p>Nr. Recensioni</p>
                     </div>
                     <div class="img-cover">
-                        <img src="{{$appartamento->immagine_appartamento}}" alt="Card image cap">
+
                     </div>
                 </section>
                 <section class="seconda">
                     <div class="informazioni">
                         <h2>Appartamento affittato da "Nome Utente"</h2>
                         <div class="infos">
-                            <span>Metri Quadri: {{$appartamento->metri_quadri}}</span>
-                            <span>Stanze: {{$appartamento->numero_stanze}}</span>
-                            <span>Letti: {{$appartamento->numero_letti}}</span>
-                            <span>Bagni: {{$appartamento->numero_bagni}}</span>
+                            <span>Ospiti</span>
+                            <span>Camere da letto</span>
+                            <span>Letti</span>
+                            <span>Bagni</span>
+                        </div>
+                        <div class="infos-2">
+                            <div class="">
+                                <h3>Casa intera</h3>
+                                <p>Appartamenti: sarà a tua completa disposizione</p>
+                            </div>
+                            <div class="">
+                                <h3>Host esperto</h3>
+                                <p>"Nome Utente" ha recensioni per altri alloggi</p>
+                            </div>
+                            <div class="">
+                                <h3>Termini di cancellazione</h3>
+                                <p>Aggiungi le date di viaggio per conoscere i dettagli relativi alla cancellazione per questo soggiorno.</p>
+                            </div>
                         </div>
                         <div class="infos-3">
                             <p>
@@ -93,56 +104,22 @@
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                 <br>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <a href="#">Contatta l'host</a>
                             </p>
                         </div>
-                        @if (Auth::user())
-                            @if ($appartamento->user_id != Auth::user()->id)
-                                <div class="infos-4">
-                                    <h2>Contatta l'host</h2>
-                                    <div class="">
-                                        <form action="{{ route('message_store') }}" method="post">
-                                        @csrf
-                                        E-mail:<br>
-                                        <input type="text" name="email_mittente" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
-                                        Testo:<br>
-                                        <input class="text" type="text" name="testo_messaggio">
-                                        <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
-                                        <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
-                                        <input type="date" name="data_invio">
-                                        <button type="submit">Invia</button>
-                                        <input type="reset">
-                                        </form>
-                                    </div>
-                                </div>
-                            @endif
-                        @else
-
-                            <div class="infos-4">
-                                <h2>Contatta l'host</h2>
-                                <div class="">
-                                    <form action="{{ route('message_store') }}" method="post">
-                                    @csrf
-                                    E-mail:<br>
-                                    <input type="text" name="email_mittente" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
-                                    Testo:<br>
-                                    <input class="text" type="text" name="testo_messaggio">
-                                    <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
-                                    <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
-                                    <input type="date" name="data_invio">
-                                    <button type="submit">Invia</button>
-                                    <input type="reset">
-                                    </form>
-                                </div>
+                        <div class="infos-4">
+                            <h2>visualizza statistiche</h2>
+                            <div class="">
+                                <a href="{{ url('/stats') }}" class="btn btn-primary">visualizza statistiche</a>
                             </div>
-                            
-                        @endif
-                        
-
+                        </div>
                         <div class="infos-5">
                             <div class="map">
-                                <div id="mapid"></div>
-                                <input id="id_latitudine" type="hidden" name="" value="{{ $appartamento->latitudine}}">
-                                <input id="id_longitudine" type="hidden" name="" value="{{ $appartamento->longitudine}}">
+
                             </div>
                         </div>
                     </div>
@@ -150,15 +127,19 @@
                         <div class="servizi">
                             <h2>Servizi</h2>
                             <ul>
-                                @foreach ($servizi as $servizio)
-                                    <li>{{$servizio->titolo_servizio}}</li>
-                                @endforeach
+                                <li>Ascensore</li>
+                                <li>Ascensore</li>
+                                <li>Ascensore</li>
+                                <li>Ascensore</li>
+                                <li>Ascensore</li>
+                                <li>Ascensore</li>
                             </ul>
                         </div>
                         <div class="sistemazione">
+                            <h2>Sistemazione per la notte</h2>
                             <div class="card-caratteristiche">
-                                <h3>Numero di stanze: {{$appartamento->numero_stanze}}</h3>
-                                <p>Numero di letti: {{$appartamento->numero_letti}}</p>
+                                <h3>Camera da letto 1</h3>
+                                <p>1 letto singolo</p>
                             </div>
                         </div>
                     </div>
@@ -376,6 +357,6 @@
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 
-        <script src="{{ asset('js/caratteristiche.js') }}" defer></script>
+        <script src="{{ asset('js/welcome.js') }}" defer></script>
     </body>
 </html>

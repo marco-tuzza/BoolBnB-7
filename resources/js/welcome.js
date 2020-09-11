@@ -45,23 +45,30 @@ $(document).ready(function(){
         });
     
     // al change dell'input, svuoto e faccio partire la ricerca 
-    placesAutocomplete.on('change', function prova (e)  {
 
-        $('.risultati').empty()
+
+    placesAutocomplete.on('change', function prova (e)  {
     
         var lat = e.suggestion.latlng.lat
         var lon = e.suggestion.latlng.lng
-        
-        parte_ricerca(lat, lon, e);
+
+        $('.search').click(function(){
+            $('.img-evidence').empty();
+            var numerostanze = $('#numerostanze').children('option:selected').val();
+            console.log(numerostanze);
+            var numeroletti = $('#numeroletti').children('option:selected').val();
+            console.log(numeroletti);
+            parte_ricerca(lat, lon, e, numerostanze, numeroletti);
+        });
         
     });
 
 
-    function parte_ricerca (lat, lon, e) {
+    function parte_ricerca (lat, lon, e, numerostanze, numeroletti) {
 
         $.ajax({
     
-            "url" : "http://localhost:8000/api/apartment/search/" + Math.round(lat) + '/' + Math.round(lon),
+            "url" : "http://localhost:8000/api/apartment/search/" + Math.round(lat) + '/' + Math.round(lon) + '/' + numerostanze + '/' + numeroletti,
     
             "method" : "GET",
     
@@ -72,7 +79,7 @@ $(document).ready(function(){
     
                 var apartment = answer.data;
     
-                $('.risultati').append(apartment)
+                // $('.risultati').append(apartment);
     
                 console.log(apartment);
             
@@ -85,8 +92,8 @@ $(document).ready(function(){
                         distance(lat1,lon1,lat2,lon2, apartmentData);
                 };
     
-                if ($('.risultati').is(':empty')){
-                    $('.risultati').append('nessun risultato trovato')
+                if ($('.img-evidence').is(':empty')){
+                    $('.img-evidence').append('nessun risultato trovato')
                 };
             },
         });
@@ -111,20 +118,29 @@ $(document).ready(function(){
             dist = dist * 1.609344
             if (dist < 20) {
                 // $('.risultati').append(apartmentData.id + apartmentData.titolo_appartamento + parseInt(dist) + 'km'+ '<br>');
-                disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.metri_quadri)   
+                disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id)   
             } else {
                 console.log('troppo lontano');
             }
         }
     }
 
-    function disegno_card(dati, immagine, metri) {
+    function disegno_card(dati, immagine, servizi, id) {
+
+        array_servizi = servizi;
+        var servizi = [];
+
+        for (let i = 0; i < array_servizi.length; i++) {
+            servizi.push(array_servizi[i].titolo_servizio);
+            
+        }
 
         // preparo i dati per il template
         var card_app = {
             'titolo': dati,
             'imm': immagine,
-            'metri' : metri,
+            'servizi' : '<p class="serv" >'+ servizi +'</p>',
+            'id': id
         };
         // riempo il template di handlebars
         var html_card = template(card_app);
@@ -132,6 +148,40 @@ $(document).ready(function(){
         $('.img-evidence').append(html_card);
     }
 
+    $('.check-input').on ('click', function(){
+
+        $('.card').removeClass('non-visible');
+
+        var selezionati = [];
+        
+
+        $('.check-input:checked').each(function(){
+            var nome = $(this).attr('name');
+            selezionati.push(nome);
+        });
+        
+        console.log(selezionati);
+        
+        // var valore = $(this).attr('name');
+        // console.log(valore);
+
+        $('.serv').each(function(){
+            // var presenti = [];
+            var val_p = $(this).text();
+            // presenti.push(val_p)
+
+            // console.log(val_p.includes(valore));
+            if ( !val_p.includes(selezionati) ) {
+                console.log(val_p);
+                // console.log(this);
+                $(this).closest('.card').addClass('non-visible');
+            } else if (selezionati == '') {
+                console.log(val_p);
+                $('.card').removeClass('non-visible');
+            }
+            
+        });
+    });
 
 
 });

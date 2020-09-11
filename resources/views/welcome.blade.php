@@ -34,6 +34,7 @@
                                         <ul>
                                             @auth
                                                 <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
+                                                <li> <a href="{{ url('/messaggi') }}">I Miei Messaggi</a> </li>
                                                 <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
                                                 <li> <a href="">Home</a> </li>
                                                 <li>
@@ -64,9 +65,68 @@
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" id="address-input" placeholder="Cerca il posto dove ti piacerebbe andare..." aria-label="Cerca il posto dove ti piacerebbe andare..." aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        {{-- <button class="btn btn-primary" type="button" id="button-addon2">Cerca</button> --}}
+                    <div class="search-filter">
+                        <div class="butt">
+                            <button class="btn btn-primary search" type="button" id="button-addon2">Cerca</button>
+                        </div>
+                        <div class="filter-1">
+                            <label for="numero_stanze">Numero stanze</label>
+                            <select name="numero_stanze" id="numerostanze">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div class="filter-2">
+                            <label for="numero_letti">Numero letti</label>
+                            <select name="numero_letti" id="numeroletti">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
                     </div>
+                </div>
+
+                <div class="checkbox">
+                    <label for="wifi" class="input-group-text check-label">
+                        <input class="check-input" type="checkbox" name="WiFi" value="wifi">
+                        <h6>WiFi</h6>
+                    </label>
+                    <label for="posto-macchina" class="input-group-text check-label">
+                        <input class="check-input" type="checkbox" name="Posto Macchina" value="posto-macchina">
+                        <h6>Posto Macchina</h6>
+                    </label>
+                    <label for="piscina" class="input-group-text check-label">
+                        <input class="check-input" type="checkbox" name="Piscina" value="piscina">
+                        <h6>Piscina</h6>
+                    </label>
+                    <label for="portineria" class="input-group-text check-label">
+                        <input class="check-input" type="checkbox" name="Portineria" value="portineria">
+                        <h6>Portineria</h6>
+                    </label>
+                    <label for="sauna" class="input-group-text check-label">
+                        <input class="check-input" type="checkbox" name="Sauna" value="sauna">
+                        <h6>Sauna</h6>
+                    </label>
+                    <label for="vista-mare" class="input-group-text check-label">
+                        <input class="check-input" type="checkbox" name="Vista Mare" value="vista-mare">
+                        <h6>Vista Mare</h6>
+                    </label>
                 </div>
             </div>
 
@@ -362,16 +422,15 @@
 
         <script id="card-template" type="text/x-handlebars-template">
             <div class="card">
-                <a href="{{ url ('/caratteristiche') }}">
+                <a href="/caratteristiche/@{{ id }}" target="_blank">
                     <img src="@{{{ imm }}}" class="poster" alt="@{{ titolo }}">
                     <div class="info">
                         <h4>@{{ titolo }}</h4>
-                        <p>@{{ metri }}</p>
+                        @{{{ servizi }}}
                     </div>
                 </a>
             </div>
         </script>
-
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 

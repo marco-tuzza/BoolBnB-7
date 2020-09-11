@@ -23,6 +23,9 @@
     <p>{{$appartamento->metri_quadri}}</p>
     <h2>Immagine:</h2>
     <img src="{{$appartamento->immagine_appartamento}}" alt="">
+    @foreach ($appartamento->services as $servizio)
+        {{$servizio->titolo_servizio}}
+    @endforeach
     <a href='{{ route('apartment.index')}}'>Lista appartamenti</a>
     <form class="d-inline" action="{{ route('apartment.destroy', ['apartment' => $appartamento->id]) }}" method="post">
         @csrf

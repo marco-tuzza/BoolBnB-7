@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Apartment;
+use App\Service;
 
 class ApartmentController extends Controller
 {
@@ -14,8 +15,14 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $appartamenti = Apartment::all()->take(40);
-        return view('auth.apartment.index', compact('appartamenti'));
+
+        // Get the currently authenticated user's ID...
+
+        $id = Auth::id();
+        
+        $appartamenti = Apartment::all()->where('id_proprietario', $id);
+        
+        return view('dashboard', compact('appartamenti'));
     }
 
     /**
@@ -24,8 +31,12 @@ class ApartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('auth.apartment.create');
+    {   
+        $servizi = Service::All();
+        $data = [
+            'servizi' => $servizi
+        ];
+        return view('auth.apartment.create', $data);
     }
 
     /**
@@ -41,7 +52,10 @@ class ApartmentController extends Controller
         $nuovo_appartamento = new Apartment();
         $nuovo_appartamento->fill($dati);
         $nuovo_appartamento->save();
-        return redirect()->route('apartment.index');
+        $nuovo_appartamento->services()->sync($dati['servizi']);
+        $id = Auth::id();
+        $appartamenti = Apartment::all()->where('user_id', $id);
+        return view('welcome', compact('appartamenti'));
     }
 
     /**
@@ -52,8 +66,13 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
+        $servizi = Service::all();
         $appartamento = Apartment::find($id);
-        return view('auth.apartment.show', compact('appartamento'));
+        $data = [
+            'servizi' => $servizi,
+            'appartamento' => $appartamento
+        ];
+        return view('caratteristiche', $data);
     }
 
     /**
@@ -65,8 +84,13 @@ class ApartmentController extends Controller
     public function edit($id)
     {
         $appartamento = Apartment::find($id);
+        $servizi = Service::all();
+        $data = [
+            'servizi' => $servizi,
+            'appartamento' => $appartamento
+        ];
         if($appartamento) {
-            return view('auth.apartment.edit', compact('appartamento'));
+            return view('auth.apartment.edit', $data);
         }
         return abort('404');
     }
@@ -93,9 +117,16 @@ class ApartmentController extends Controller
         ]);
         $dati = $request->all();
         $appartamento = Apartment::find($id);
+        $servizi = Service::All();
+        $appartamento->update($dati);
         if($appartamento) {
-            $appartamento->update($dati);
+            if (!empty($dati['servizi'])) {
+                $appartamento->services()->sync($dati['servizi']);
+            } else {
+                $appartamento->services()->detach();
+            }
         }
+        
         return redirect()->route('apartment.index');
     }
 
@@ -109,6 +140,7 @@ class ApartmentController extends Controller
     {
         $appartamento = Apartment::find($id);
         if($appartamento) {
+            $appartamento->services()->detach();
             $appartamento->delete();
             return redirect()->route('apartment.index');
         } else {

@@ -10934,7 +10934,7 @@ button::focus {
 
 .wrapper-page::after {
   display: block;
-  background: url(/images/background.svg?c39118723a5b2a420d187e4caf422523);
+  background: url(/images/background.svg?ad347a1dcb60401d62a1538a5c3fc72a);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -11042,6 +11042,9 @@ button::focus {
   width: 60%;
   margin: auto;
   margin-top: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 1100px) {
@@ -11050,9 +11053,19 @@ button::focus {
   }
 }
 
+.first-block .input-group .algolia-places {
+  width: 100%;
+  margin: 0;
+}
+
 .first-block .input-group .form-control {
   padding: 1.5rem 1.75rem;
   border-radius: 2rem;
+  width: 100%;
+}
+
+.first-block .input-group .search-filter {
+  width: 20%;
 }
 
 .first-block .input-group .input-group-append .btn {
@@ -11071,6 +11084,12 @@ button::focus {
 .first-block .input-group > .form-control:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.first-block .checkbox {
+  margin: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .first-block header {
@@ -11313,9 +11332,13 @@ button::focus {
   display: block;
 }
 
+.non-visible {
+  display: none;
+}
+
 .wrapper-apartament {
   height: 100%;
-  background: url(/images/background.svg?c39118723a5b2a420d187e4caf422523);
+  background: url(/images/background.svg?ad347a1dcb60401d62a1538a5c3fc72a);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -11342,10 +11365,24 @@ button::focus {
 .form-group.row {
   margin-right: 0;
   margin-left: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .foot-create {
   background-color: #e7dcde;
+}
+
+input[type=radio],
+input[type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  height: 18px;
+}
+
+.text-servizio {
+  font-size: 0.8rem;
 }
 
 .wrapper-page-caratteristiche {
@@ -11510,10 +11547,7 @@ span {
 
 .infos-5 .map {
   margin-bottom: 100px;
-  height: 450px;
-  width: 550px;
   border-radius: 12px;
-  background-color: green;
 }
 
 .casella {
@@ -11545,31 +11579,172 @@ span {
   margin-bottom: 20px;
 }
 
-.main-container {
-  width: 90%;
+#mapid {
+  height: 750px;
+}
+
+.wrapper-dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 3fr 1fr;
+  position: relative;
+}
+
+.wrapper-dashboard::after {
+  display: block;
+  background: url(/images/background.svg?ad347a1dcb60401d62a1538a5c3fc72a);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0%;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  transition: all 500ms ease-in-out;
+  z-index: -1;
+}
+
+@media screen and (max-width: 580px) {
+  .wrapper-dashboard::after {
+    height: 70%;
+  }
+}
+
+.wrapper-dashboard .block-header-dash {
+  position: relative;
+  grid-column: 1;
+  grid-row: 1/2;
+  z-index: 4;
+}
+
+.wrapper-dashboard .block-header-dash .nav-bar {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.wrapper-dashboard .block-header-dash .nav-bar .dashb {
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.wrapper-dashboard .block-center-dash {
+  margin: auto;
+  grid-column: 1;
+  grid-row: 2/3;
+  margin-top: 1rem;
+  width: 95%;
+}
+
+.wrapper-dashboard .block-center-dash .card-header {
+  width: 50%;
+  margin: auto;
+  border-radius: 50px;
+  padding: 1.5rem;
+}
+
+.wrapper-dashboard .block-center-dash .card-header h2 {
+  margin: auto;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 250px) and (max-width: 784px) {
+  .wrapper-dashboard .block-center-dash .card-header h2 {
+    font-size: 1.3rem;
+  }
+}
+
+.wrapper-dashboard .block-center-dash .img-apartment {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-gap: 1.2rem;
   margin: auto;
   padding: 50px 0;
 }
 
-.main-container h1 {
-  margin-left: 20px;
-  margin-bottom: 50px;
+.wrapper-dashboard .block-center-dash .img-apartment .card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin-bottom: 1rem;
 }
 
-.main-container .card-container-dashboard {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.wrapper-dashboard .block-center-dash .img-apartment .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.main-container .card-container-dashboard .card-dashboard {
-  margin: 20px;
-  border: 1px solid lightgrey;
-  border-radius: 12px;
+.wrapper-dashboard .block-center-dash .img-apartment .card img {
+  height: 400px;
+  width: 100%;
+  border-radius: 15px;
+  -o-object-fit: fill;
+     object-fit: fill;
+  transition-duration: 1s;
 }
 
-.main-container .card-container-dashboard .card-dashboard img {
-  border-top-left-radius: 11px;
-  border-top-right-radius: 11px;
+.wrapper-dashboard .block-center-dash .img-apartment .card img:hover {
+  -webkit-filter: blur(0px);
+          filter: blur(0px);
+}
+
+.wrapper-dashboard .block-center-dash .img-apartment .card .info {
+  bottom: 0;
+  padding: 1rem;
+  z-index: 5;
+}
+
+.wrapper-dashboard .block-center-dash .img-apartment .card .info p {
+  margin-bottom: 0;
+}
+
+.wrapper-dashboard .block-footer-dash {
+  grid-column: 1;
+  grid-row: 3/4;
+  background-color: #e7dcde;
+}
+
+@media screen and (max-width: 320px) {
+  .wrapper-dashboard {
+    grid-template-rows: 0.5fr 3fr 1fr;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 525px) {
+  .wrapper-dashboard {
+    grid-template-rows: 0.5fr 3fr 1fr;
+  }
+}
+
+@media screen and (min-width: 526px) and (max-width: 680px) {
+  .wrapper-dashboard {
+    grid-template-rows: 0.5fr 3fr 1fr;
+  }
+}
+
+@media screen and (min-width: 680px) and (max-width: 784px) {
+  .wrapper-dashboard {
+    grid-template-rows: 0.5fr 3fr 1fr;
+  }
+}
+
+.stat .text-stat {
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  width: 50%;
+  margin: auto;
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+  border-radius: 29px;
+}
+
+.stat .text-stat h4 {
+  margin-bottom: 0;
+}
+
+.stat .grafico img {
+  max-width: 100%;
 }
 

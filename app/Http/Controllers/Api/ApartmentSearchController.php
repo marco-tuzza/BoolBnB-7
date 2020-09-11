@@ -5,23 +5,35 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
+use App\Service;
 
 class ApartmentSearchController extends Controller
 {
     public function index() {
         $appartamenti = Apartment::all();
+        $array = [];
+        $arrayServizi = [];
+        foreach ($appartamenti as $appartamento) {
+            $servizio = $appartamento->services;
+            array_push($arrayServizi, $servizio);
+            array_push($array, $appartamento);
+        };
         return response()->json([
             'success' => true,
-            'data' => $appartamenti,
+            'data' => [
+                'appartamento' => $array,
+                'servizi' => $arrayServizi
+            ],
             'count' => $appartamenti->count()
         ]);
     }
 
-    public function search($lat, $lon) {
+    public function search($lat, $lon, $stanze, $letti) {
         $array = [];
-        $appartamenti = Apartment::all()->where('latitudine', '>', $lat - 0.5)->where('latitudine', '<', $lat + 0.5)->where('longitudine', '>', $lon - 0.5)->where('longitudine', '<', $lon + 0.5);
+        $appartamenti = Apartment::all()->where('latitudine', '>', $lat - 0.5)->where('latitudine', '<', $lat + 0.5)->where('longitudine', '>', $lon - 0.5)->where('longitudine', '<', $lon + 0.5)->where('numero_stanze', '>=', $stanze)->where('numero_letti', '>=', $letti);
         foreach ($appartamenti as $appartamento) {
-            array_push($array, $appartamento);
+            $servizio = $appartamento->services;
+            array_push($array, $appartamento, $servizio);
         };
         return response()->json([
             'success' => true,

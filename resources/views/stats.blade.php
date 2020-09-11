@@ -11,11 +11,10 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     </head>
     <body>
         <div class="wrapper-dashboard">
+
             <div class="block-header-dash">
                 <header>
                     <nav class="nav-bar">
@@ -28,7 +27,7 @@
                         <div class="text-elements">
                             @if (Route::has('login'))
                                 <div class="account">
-                                    <button class="btn-account" type="button" id="button-addon2">
+                                    <button class="btn-account dashb" type="button" id="button-addon2">
                                         <img src="images/account.svg" alt="">
                                     </button>
 
@@ -36,9 +35,8 @@
                                         <ul>
                                             @auth
                                                 <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
-                                                <li> <a href="{{ url('/messaggi') }}">I Miei Messaggi</a> </li>
                                                 <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
-                                                <li> <a href="{{ url('/') }}">Home</a> </li>
+                                                <li> <a href="{{ url('/') }}">Home</a></li>
                                                 <li>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -58,6 +56,7 @@
                                     </div>
                                 </div>
                             @endif
+                        </div>
                     </nav>
                 </header>
             </div>
@@ -65,27 +64,37 @@
             <div class="block-center-dash">
                 <div class="text-dash">
                     <div class="card-header text-center">
-                        <h2>I tuoi Appartamenti:</h2>
+                        <h2>Statische "Titolo Appartamento":</h2>
                     </div>
                 </div>
                 <div class="img-apartment">
-                    @foreach ($appartamenti as $appartamento)
-                    <div class="card">
-                        <img src="{{$appartamento->immagine_appartamento}}" alt="Card image cap">
-                        <div class="info">
-                            <h4>{{$appartamento->titolo_appartamento}}</h4>
-                            <p>Numero stanze: {{$appartamento->numero_stanze}}</p>
-                            <p>Metri Quadri: {{$appartamento->metri_quadri}}</p>
-                            <a href="{{ url( '/caratteristiche', ['id' => $appartamento->id] ) }}" class="btn btn-primary">Dettagli</a>
-                            <a href="{{ url('/stats') }}" class="btn btn-primary">Statistiche</a>
+                        <div class="stat">
+                            <div class="text-stat text-center">
+                                <h4>Visualizzazioni totali</h4>
+                            </div>
+                            <div class="grafico">
+                                <img src="images/grafico.png" alt="">
+                            </div>
                         </div>
-                    </div>
-                    @endforeach
+
+                        <div class="stat">
+                            <div class="text-stat text-center">
+                                <h4>Messaggi ricevuti</h4>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Nome di chi ha scritto</h5>
+                                    <h6 class="card-text">Email di chi ha scritto</h6>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi laborum hic aut deserunt perferendis. Harum, ullam officiis! Deserunt rerum, saepe perspiciatis earum distinctio deleniti maxime, obcaecati dolorem provident a magni?</p>
+                                </div>
+                            </div>
+                        </div>
+                    
                 </div>
             </div>
-                
+
             <div class="block-footer-dash">
-                <footer class="foot-create"> 
+                <footer class="foot-create">
                     <div class="wrap-footer">
                         <div class="block1">
                             <ul>
@@ -120,23 +129,13 @@
                     </div>
                 </footer>
             </div>
-                
+
+
         </div>
 
-        <script id="templatecard_dashboard" type="text/x-handlebars-template">
-            <div class="card">
-                <img src=" {{ asset('images/stanza.jpg') }}" alt="Card image cap">
-                <div class="info">
-                    <h4>@{{primoparametro}}</h4>
-                    <p> @{{secondoparametro}}</p>
-                    <a href="{{ url('/caratteristiche_auth') }}" class="btn btn-primary">@{{terzoparametro}}</a>
-                    <a href="{{ url('/stats') }}" class="btn btn-primary">Statistiche</a>
-                </div>
-            </div>
-        </script>
-
+        <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 
-        <script src="{{ asset('js/dashboard.js') }}" defer></script>
+        <script src="{{ asset('js/welcome.js') }}" defer></script>
     </body>
 </html>

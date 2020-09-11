@@ -1,0 +1,17 @@
+.stat {
+    .text-stat {
+        background-color: rgba(0, 0, 0, 0.03);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+        width: 50%;
+        margin: auto;
+        margin-bottom: 1rem;
+        padding: 0.7rem;
+        border-radius: 29px;
+        h4 {
+            margin-bottom: 0;
+        }
+    }
+    .grafico img {
+        max-width: 100%;
+    }
+}

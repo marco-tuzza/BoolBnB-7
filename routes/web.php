@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +22,27 @@ Route::get('/search', function () {
     return view('search');
 });
 
-Route::get('/caratteristiche', function () {
-    return view('caratteristiche');
-});
+// Route::get('/caratteristiche', function () {
+//     return view('caratteristiche');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+Route::get('/caratteristiche_auth', function () {
+    return view('caratteristiche_auth');
+});
+
+Route::get('/stats', function () {
+    return view('stats');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/message/store', 'MessageController@store')->name('message_store');
+Route::get('/caratteristiche/{id}', 'ApartmentController@show')->name('caratteristiche');
+Route::get('/dashboard', 'ApartmentController@index')->middleware('auth');
 Route::resource('apartment', 'ApartmentController')->middleware('auth');
+Route::get('/messaggi', 'MessageController@index')->name('messaggi')->middleware('auth');

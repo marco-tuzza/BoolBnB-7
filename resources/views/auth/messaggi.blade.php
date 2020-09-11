@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Messaggi</title>
 
-        <title>BoolBnB</title>
 
-        <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     </head>
     <body>
+
         <div class="wrapper-dashboard">
             <div class="block-header-dash">
                 <header>
@@ -65,21 +64,18 @@
             <div class="block-center-dash">
                 <div class="text-dash">
                     <div class="card-header text-center">
-                        <h2>I tuoi Appartamenti:</h2>
+                        <h2>I tuoi Messaggi:</h2>
                     </div>
                 </div>
                 <div class="img-apartment">
-                    @foreach ($appartamenti as $appartamento)
-                    <div class="card">
-                        <img src="{{$appartamento->immagine_appartamento}}" alt="Card image cap">
-                        <div class="info">
-                            <h4>{{$appartamento->titolo_appartamento}}</h4>
-                            <p>Numero stanze: {{$appartamento->numero_stanze}}</p>
-                            <p>Metri Quadri: {{$appartamento->metri_quadri}}</p>
-                            <a href="{{ url( '/caratteristiche', ['id' => $appartamento->id] ) }}" class="btn btn-primary">Dettagli</a>
-                            <a href="{{ url('/stats') }}" class="btn btn-primary">Statistiche</a>
+                    @foreach ($messaggi as $messaggio)
+                        <div class="card">
+                            <div class="info">
+                                <h4>{{$messaggio->email_mittente}}</h4>
+                                <p>Testo del messaggio: {{$messaggio->testo_messaggio}}
+                                </p>
+                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -123,20 +119,8 @@
                 
         </div>
 
-        <script id="templatecard_dashboard" type="text/x-handlebars-template">
-            <div class="card">
-                <img src=" {{ asset('images/stanza.jpg') }}" alt="Card image cap">
-                <div class="info">
-                    <h4>@{{primoparametro}}</h4>
-                    <p> @{{secondoparametro}}</p>
-                    <a href="{{ url('/caratteristiche_auth') }}" class="btn btn-primary">@{{terzoparametro}}</a>
-                    <a href="{{ url('/stats') }}" class="btn btn-primary">Statistiche</a>
-                </div>
-            </div>
-        </script>
-
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 
-        <script src="{{ asset('js/dashboard.js') }}" defer></script>
+        <script src="{{ asset('js/messaggi.js') }}" defer></script>
     </body>
 </html>

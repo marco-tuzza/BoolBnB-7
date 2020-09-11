@@ -107,13 +107,27 @@ body {
         width: 60%;
         margin: auto;
         margin-top: 8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         @media screen and (max-width:1100px) {
             width: 80%;
+        }
+
+        .algolia-places {
+            width: 100%;
+            margin: 0;
         }
         .form-control {
             padding: 1.5rem 1.75rem;
             border-radius: 2rem;
+            width: 100%;
         }
+
+        .search-filter {
+            width: 20%;
+        }
+
         .input-group-append .btn{
             padding: 0rem 1.75rem;
             border-radius: 2rem;
@@ -130,7 +144,11 @@ body {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
-
+    .checkbox {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
     header {
         max-width: 70%;
         margin: auto;
@@ -346,4 +364,8 @@ body {
 
 .form-accedi.mostra-form, .form-registrati.mostra-form {
     display: block;
+}
+
+.non-visible {
+    display: none;
 }
