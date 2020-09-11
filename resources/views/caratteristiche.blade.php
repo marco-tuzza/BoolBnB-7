@@ -95,8 +95,28 @@
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                             </p>
                         </div>
+                        @if (Auth::user())
+                            @if ($appartamento->user_id != Auth::user()->id)
+                                <div class="infos-4">
+                                    <h2>Contatta l'host</h2>
+                                    <div class="">
+                                        <form action="{{ route('message_store') }}" method="post">
+                                        @csrf
+                                        E-mail:<br>
+                                        <input type="text" name="email_mittente" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
+                                        Testo:<br>
+                                        <input class="text" type="text" name="testo_messaggio">
+                                        <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
+                                        <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
+                                        <input type="date" name="data_invio">
+                                        <button type="submit">Invia</button>
+                                        <input type="reset">
+                                        </form>
+                                    </div>
+                                </div>
+                            @endif
+                        @else
 
-                        @if ($appartamento->user_id != Auth::user()->id)
                             <div class="infos-4">
                                 <h2>Contatta l'host</h2>
                                 <div class="">
@@ -114,7 +134,9 @@
                                     </form>
                                 </div>
                             </div>
+                            
                         @endif
+                        
 
                         <div class="infos-5">
                             <div class="map">

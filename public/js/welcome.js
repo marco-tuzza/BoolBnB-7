@@ -42445,7 +42445,7 @@ $(document).ready(function () {
 
   function parte_ricerca(lat, lon, e, numerostanze, numeroletti) {
     $.ajax({
-      "url": "http://localhost:8000/api/apartment/search/" + Math.round(lat) + '/' + Math.round(lon),
+      "url": "http://localhost:8000/api/apartment/search/" + Math.round(lat) + '/' + Math.round(lon) + '/' + numerostanze + '/' + numeroletti,
       "method": "GET",
       "success": function success(answer) {
         console.log(lat, lon);
@@ -42514,8 +42514,7 @@ $(document).ready(function () {
     var card_app = {
       'titolo': dati,
       'imm': immagine,
-      'servizi': servizi,
-      'id': id
+      'servizi': '<p class="serv" >' + servizi + '</p>'
     }; // riempo il template di handlebars
 
     var html_card = template(card_app); // appendo la card con i dati del risultato corrente
@@ -42524,17 +42523,27 @@ $(document).ready(function () {
   }
 
   $('.check-input').on('click', function () {
-    var valore = $(this).attr('name'); // console.log(valore);
+    $('.card').removeClass('non-visible');
+    var selezionati = [];
+    $('.check-input:checked').each(function () {
+      var nome = $(this).attr('name');
+      selezionati.push(nome);
+    });
+    console.log(selezionati); // var valore = $(this).attr('name');
+    // console.log(valore);
 
     $('.serv').each(function () {
-      var val_p = $(this).text();
-      console.log(val_p); // console.log(val_p.includes(valore));
+      // var presenti = [];
+      var val_p = $(this).text(); // presenti.push(val_p)
+      // console.log(val_p.includes(valore));
 
-      if (!val_p.includes(valore)) {
-        console.log('entrato');
-        $(this).closest('.card').toggleClass('non-visible');
-      } else {
-        console.log('no');
+      if (!val_p.includes(selezionati)) {
+        console.log(val_p); // console.log(this);
+
+        $(this).closest('.card').addClass('non-visible');
+      } else if (selezionati == '') {
+        console.log(val_p);
+        $('.card').removeClass('non-visible');
       }
     });
   });
@@ -42549,7 +42558,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean esercizi/boolbnb-7/resources/js/welcome.js */"./resources/js/welcome.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\welcome.js */"./resources/js/welcome.js");
 
 
 /***/ })

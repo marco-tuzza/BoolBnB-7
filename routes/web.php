@@ -45,4 +45,4 @@ Route::post('/message/store', 'MessageController@store')->name('message_store');
 Route::get('/caratteristiche/{id}', 'ApartmentController@show')->name('caratteristiche');
 Route::get('/dashboard', 'ApartmentController@index')->middleware('auth');
 Route::resource('apartment', 'ApartmentController')->middleware('auth');
-Route::get('/messaggi', 'MessaggeController@index')->name('messaggi')-middleware('auth');
+Route::get('/messaggi', 'MessageController@index')->name('messaggi')->middleware('auth');

@@ -131,15 +131,15 @@ $(document).ready(function(){
         var servizi = [];
 
         for (let i = 0; i < array_servizi.length; i++) {
-            servizi.push(array_servizi[i].titolo_servizio)
+            servizi.push(array_servizi[i].titolo_servizio);
+            
         }
 
         // preparo i dati per il template
         var card_app = {
             'titolo': dati,
             'imm': immagine,
-            'servizi' : servizi,
-            'id': id,
+            'servizi' : '<p class="serv" >'+ servizi +'</p>',
         };
         // riempo il template di handlebars
         var html_card = template(card_app);
@@ -148,19 +148,35 @@ $(document).ready(function(){
     }
 
     $('.check-input').on ('click', function(){
+
+        $('.card').removeClass('non-visible');
+
+        var selezionati = [];
         
-        var valore = $(this).attr('name');
+
+        $('.check-input:checked').each(function(){
+            var nome = $(this).attr('name');
+            selezionati.push(nome);
+        });
+        
+        console.log(selezionati);
+        
+        // var valore = $(this).attr('name');
         // console.log(valore);
 
         $('.serv').each(function(){
+            // var presenti = [];
             var val_p = $(this).text();
-            console.log(val_p);
+            // presenti.push(val_p)
+
             // console.log(val_p.includes(valore));
-            if (!val_p.includes(valore)) {
-                console.log('entrato');
-                $(this).closest('.card').toggleClass('non-visible');
-            } else {
-                console.log('no');
+            if ( !val_p.includes(selezionati) ) {
+                console.log(val_p);
+                // console.log(this);
+                $(this).closest('.card').addClass('non-visible');
+            } else if (selezionati == '') {
+                console.log(val_p);
+                $('.card').removeClass('non-visible');
             }
             
         });
