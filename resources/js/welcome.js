@@ -68,7 +68,7 @@ $(document).ready(function(){
 
         $.ajax({
     
-            "url" : "http://localhost:8000/api/apartment/search/" + Math.round(lat) + '/' + Math.round(lon),
+            "url" : "http://localhost:8000/api/apartment/search/" + Math.round(lat) + '/' + Math.round(lon) + '/' + numerostanze + '/' + numeroletti,
     
             "method" : "GET",
     

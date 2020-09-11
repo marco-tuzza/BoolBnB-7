@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/apartment/search', 'Api\ApartmentSearchController@index');
-Route::get('/apartment/search/{lat}/{lon}', 'Api\ApartmentSearchController@search');
+Route::get('/apartment/search/{lat}/{lon}/{stanze}/{letti}', 'Api\ApartmentSearchController@search');
