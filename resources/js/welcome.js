@@ -140,6 +140,7 @@ $(document).ready(function(){
             'titolo': dati,
             'imm': immagine,
             'servizi' : '<p class="serv" >'+ servizi +'</p>',
+            'id': id
         };
         // riempo il template di handlebars
         var html_card = template(card_app);

@@ -42514,7 +42514,8 @@ $(document).ready(function () {
     var card_app = {
       'titolo': dati,
       'imm': immagine,
-      'servizi': '<p class="serv" >' + servizi + '</p>'
+      'servizi': '<p class="serv" >' + servizi + '</p>',
+      'id': id
     }; // riempo il template di handlebars
 
     var html_card = template(card_app); // appendo la card con i dati del risultato corrente
