@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateAppartamentiTable extends Migration
+class UpdateSponsorizzazioniTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class UpdateAppartamentiTable extends Migration
      */
     public function up()
     {
-        Schema::table('appartamenti', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_proprietario')->after('id');
-            $table->foreign('id_proprietario')->references('id')->on('users');
+        Schema::table('sponsorizzazioni', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_pagamento')->nullable()->after('id');
+            $table->foreign('id_pagamento')->references('id')->on('pagamenti');
         });
     }
 
@@ -26,7 +26,7 @@ class UpdateAppartamentiTable extends Migration
      */
     public function down()
     {
-        Schema::table('appartamenti', function (Blueprint $table) {
+        Schema::table('sponsorizzazioni', function (Blueprint $table) {
             //
         });
     }
