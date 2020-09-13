@@ -96,7 +96,7 @@
                             </p>
                         </div>
                         @if (Auth::user())
-                            @if ($appartamento->user_id != Auth::user()->id)
+                            @if ($appartamento->id_proprietario != Auth::user()->id)
                                 <div class="infos-4">
                                     <h2>Contatta l'host</h2>
                                     <div class="">
@@ -134,9 +134,9 @@
                                     </form>
                                 </div>
                             </div>
-                            
+
                         @endif
-                        
+
 
                         <div class="infos-5">
                             <div class="map">
