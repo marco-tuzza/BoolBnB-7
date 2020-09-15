@@ -42434,7 +42434,7 @@ $(document).ready(function () {
     var lat = e.suggestion.latlng.lat;
     var lon = e.suggestion.latlng.lng;
     $('.search').click(function () {
-      $('.text-card h2').text('Risultati della ricerca');
+      $('.text-card h2').text('Risultati della ricerca:');
       $('.img-evidence').empty();
       var numerostanze = $('#numerostanze').children('option:selected').val();
       console.log(numerostanze);
@@ -42484,7 +42484,7 @@ $(document).ready(function () {
 
   function distance(lat1, lon1, lat2, lon2, apartmentData) {
     if (lat1 == lat2 && lon1 == lon2) {
-      return 0;
+      disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id); // return 0;
     } else {
       var radlat1 = Math.PI * lat1 / 180;
       var radlat2 = Math.PI * lat2 / 180;
@@ -42492,7 +42492,7 @@ $(document).ready(function () {
       var radtheta = Math.PI * theta / 180;
       var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
 
-      if (dist > 1) {
+      if (dist >= 0) {
         dist = 1;
       }
 
