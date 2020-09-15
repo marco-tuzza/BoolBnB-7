@@ -24,14 +24,14 @@
         <header>
             <nav class="nav-bar nav-create">
                 <div class="logo">
-                    <button class="btn-logos" type="button" id="button-addon2">
+                    <button class="btn-logos btn-create" type="button" id="button-addon2">
                         <img src="../images/bnb-logo.svg" alt="">
                     </button>
                 </div>
                 <div class="text-elements">
                     @if (Route::has('login'))
                         <div class="account">
-                            <button class="btn-account" type="button" id="button-addon2">
+                            <button class="btn-account btn-create" type="button" id="button-addon2">
                                 <img src="../images/account.svg" alt="">
                             </button>
     
@@ -39,7 +39,8 @@
                                 <ul>
                                     @auth
                                         <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
-                                        <li> <a href="">Aggiungi Appartamento</a> </li>
+                                        <li> <a href="{{ url('/messaggi') }}">I Miei Messaggi</a> </li>
+                                        <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
                                         <li> <a href="{{ route('home') }}">Home</a> </li>
                                         <li>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -124,27 +125,27 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="metriquadri">Metri quadri</label>
-                                    <input type="number" name="metri_quadri" class="form-control" id="metriquadri" placeholder="Metri quadri" value="">
+                                    <input type="number" name="metri_quadri" class="form-control" id="metriquadri" placeholder="Metri quadri" value="" required>
                                 </div>
                                 <div class="form-group row non-visibile">
                                     <label for="id_proprietario">Id proprietario</label>
-                                <input type="text" name="id_proprietario" class="form-control" id="id_proprietario" placeholder="Id proprietario" value="{{Auth::id()}}">
+                                <input type="text" name="id_proprietario" class="form-control" id="id_proprietario" placeholder="Id proprietario" value="{{Auth::id()}}" required>
                                 </div>
                                 <div class="form-group row">
                                     <label for="form-address">Indirizzo*</label>
-                                    <input type="search" class="form-control" id="form-address" placeholder="Dove vivi?" />
+                                    <input type="search" class="form-control" id="form-address" placeholder="Dove si trova l'appartamento?" required />
                                 </div>
                                 <div class="form-group row">
                                     <label for="form-address2">Indirizzo 2</label>
-                                    <input type="text" class="form-control" id="form-address2" placeholder="Numero e nome della via" />
+                                    <input type="text" class="form-control" id="form-address2" placeholder="Informazioni aggiuntive" />
                                 </div>
                                 <div class="form-group row">
                                     <label for="form-city">Citta*</label>
-                                    <input type="text" class="form-control" id="form-city" placeholder="Città">
+                                    <input type="text" class="form-control" id="form-city" placeholder="Città" required>
                                 </div>
                                 <div class="form-group row">
                                     <label for="form-zip">Codice Postale*</label>
-                                    <input type="text" class="form-control" id="form-zip" placeholder="Codice Postale">
+                                    <input type="text" class="form-control" id="form-zip" placeholder="Codice Postale" required>
                                 </div>
                                 <div class="form-group row non-visibile">
                                     <label for="latitudine">latitudine</label>
@@ -156,7 +157,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="immagine_appartamento">Immagine appartamento</label>
-                                    <input type="text" name="immagine_appartamento" class="form-control" id="immagine_appartamento" placeholder="immagine_appartamento" value="https://picsum.photos/200/300">
+                                    <input type="text" name="immagine_appartamento" class="form-control" id="immagine_appartamento" placeholder="immagine_appartamento" value="https://picsum.photos/200/300" required>
                                 </div>
                                 <div class="form-group row">
                                 @foreach ($servizi as $servizio)

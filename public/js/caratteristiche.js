@@ -10991,6 +10991,21 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   accessToken: 'pk.eyJ1Ijoicm9oYWphczEwNCIsImEiOiJja2V5OGF1cGQwMnJxMnNvZ2t1YjRvcW4xIn0.B32yF5f2Ia7y9cmR97vZ_g'
 }).addTo(mymap);
 var marker = L.marker([idlat, idlon]).addTo(mymap);
+$(document).ready(function () {
+  $('#login').on('click', function () {
+    $('.form-accedi').addClass('mostra-form');
+    $('.wrapper-page').addClass('active');
+  });
+  $('#register').on('click', function () {
+    $('.form-registrati').addClass('mostra-form');
+    $('.wrapper-page').addClass('active');
+  });
+  $('.close').on('click', function () {
+    $('.form-accedi').removeClass('mostra-form');
+    $('.form-registrati').removeClass('mostra-form');
+    $('.wrapper-page').removeClass('active');
+  });
+});
 
 /***/ }),
 
@@ -11001,7 +11016,7 @@ var marker = L.marker([idlat, idlon]).addTo(mymap);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\Esercizi\boolbnb-7\resources\js\caratteristiche.js */"./resources/js/caratteristiche.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\caratteristiche.js */"./resources/js/caratteristiche.js");
 
 
 /***/ })

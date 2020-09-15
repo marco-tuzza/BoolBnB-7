@@ -53,6 +53,7 @@ $(document).ready(function(){
         var lon = e.suggestion.latlng.lng
 
         $('.search').click(function(){
+            $('.text-card h2').text('Risultati della ricerca');
             $('.img-evidence').empty();
             var numerostanze = $('#numerostanze').children('option:selected').val();
             console.log(numerostanze);
@@ -77,7 +78,7 @@ $(document).ready(function(){
                 'lon' : lon,
                 'stanze': numerostanze,
                 'letti': numeroletti,
-                'servizi' : []
+                'servizi' : filtroservizi()
             },
     
             "success" : function(answer) {
@@ -156,40 +157,56 @@ $(document).ready(function(){
         $('.img-evidence').append(html_card);
     }
 
-    $('.check-input').on ('click', function(){
-
-        $('.card').removeClass('non-visible');
-
+    function filtroservizi(){
         var selezionati = [];
-        
 
         $('.check-input:checked').each(function(){
-            var nome = $(this).attr('name');
+            var nome = $(this).val();
             selezionati.push(nome);
         });
-        
+
         console.log(selezionati);
+
+        return selezionati;
+    };
+
+
+
+    // $('.check-input').on ('click', function(){
+
+    //     $('.card').removeClass('non-visible');
+
+    //     var selezionati = [];
         
-        // var valore = $(this).attr('name');
-        // console.log(valore);
 
-        $('.serv').each(function(){
-            // var presenti = [];
-            var val_p = $(this).text();
-            // presenti.push(val_p)
+    //     $('.check-input:checked').each(function(){
+    //         var nome = $(this).attr('name');
+    //         selezionati.push(nome);
+    //     });
+        
+    //     console.log(selezionati);
+        
+    //     // var valore = $(this).attr('name');
+    //     // console.log(valore);
 
-            // console.log(val_p.includes(valore));
-            if ( !val_p.includes(selezionati) ) {
-                console.log(val_p);
-                // console.log(this);
-                $(this).closest('.card').addClass('non-visible');
-            } else if (selezionati == '') {
-                console.log(val_p);
-                $('.card').removeClass('non-visible');
-            }
+    //     $('.serv').each(function(){
+    //         // var presenti = [];
+    //         var val_p = $(this).text();
+    //         // presenti.push(val_p)
+
+    //         // console.log(val_p.includes(valore));
+    //         if ( !val_p.includes(selezionati) ) {
+    //             console.log(val_p);
+    //             // console.log(this);
+    //             $(this).closest('.card').addClass('non-visible');
+    //         } else if (selezionati == '') {
+    //             console.log(val_p);
+    //             $('.card').removeClass('non-visible');
+    //         }
             
-        });
-    });
+    //     });
+    // });
+
 
 
 });

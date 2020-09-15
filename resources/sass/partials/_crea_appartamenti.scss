@@ -1,22 +1,50 @@
 .wrapper-apartament {
     height: 100%;
-    background: url("../images/background.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    .nav-create {
-        max-width: 1100px;
-        margin: auto;
-    }
-    .card-apartment {
-        padding: 2.25rem;
-        .non-visibile {
-            display: none;
+
+    &::after {
+        display: block;
+        background: url("../images/background.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: fixed;
+        top: 0%;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 100%;
+        transition: all 500ms ease-in-out;
+        z-index: -1 ;
+        opacity: 0.2;
+        @media screen and (max-width:580px){
+            height: 70%;
         }
     }
+
+    .nav-create {
+        max-width: 1150px;
+        margin: auto;
+        .btn-create {
+            background: linear-gradient(315deg, rgba(235,235,235,1) 0%, rgba(255,255,255,1) 77%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+        }
+    }
+
+    .card {
+        border-radius: 14px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        .card-apartment {
+            padding: 2.25rem;
+            .non-visibile {
+                display: none;
+            }
+        }
+    }
+    
     .ct-form {
         margin-top: 6rem;
         padding-bottom: 6rem;
+        margin-bottom: 9rem;
     }
 }
 
@@ -28,7 +56,8 @@
 }
 
 .foot-create {
-    background-color: #e7dcde;
+    background: linear-gradient(315deg, rgba(235,235,235,1) 0%, rgba(255,255,255,1) 77%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
 }
 
 input[type=radio], input[type=checkbox] {

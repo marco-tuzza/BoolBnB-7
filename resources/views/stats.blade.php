@@ -79,12 +79,11 @@
 
                         <div class="stat">
                             <div class="text-stat text-center">
-                                <h4>Messaggi ricevuti</h4>
+                                <h4>Statistiche Messaggi</h4>
                             </div>
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Nome di chi ha scritto</h5>
-                                    <h6 class="card-text">Email di chi ha scritto</h6>
+                                    <h5 class="card-title">Grafico sui messaggi</h5>
                                     <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi laborum hic aut deserunt perferendis. Harum, ullam officiis! Deserunt rerum, saepe perspiciatis earum distinctio deleniti maxime, obcaecati dolorem provident a magni?</p>
                                 </div>
                             </div>

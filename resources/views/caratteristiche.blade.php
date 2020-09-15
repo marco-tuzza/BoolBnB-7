@@ -18,7 +18,7 @@
     <body>
         <div class="wrapper-page-caratteristiche">
 
-            <div class="first-block">
+            <div class="first-block-ch">
                 <header>
                     <nav class="nav-bar">
                         <div class="logo">
@@ -64,59 +64,44 @@
                 </header>
             </div>
 
-            <main>
-            <div class="main-container">
-                <section class="prima">
-                    <div class="intestazione">
-                        <h1>{{$appartamento->titolo_appartamento}}</h1>
-                        <p>Metri Quadri: {{$appartamento->metri_quadri}}</p>
-                    </div>
-                    <div class="img-cover">
-                        <img src="{{$appartamento->immagine_appartamento}}" alt="Card image cap">
-                    </div>
-                </section>
-                <section class="seconda">
-                    <div class="informazioni">
-                        <h2>Appartamento affittato da "Nome Utente"</h2>
-                        <div class="infos">
-                            <span>Metri Quadri: {{$appartamento->metri_quadri}}</span>
-                            <span>Stanze: {{$appartamento->numero_stanze}}</span>
-                            <span>Letti: {{$appartamento->numero_letti}}</span>
-                            <span>Bagni: {{$appartamento->numero_bagni}}</span>
-                        </div>
-                        <div class="infos-3">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                        </div>
-                        @if (Auth::user())
-                            @if ($appartamento->id_proprietario != Auth::user()->id)
-                                <div class="infos-4">
-                                    <h2>Contatta l'host</h2>
-                                    <div class="">
-                                        <form action="{{ route('message_store') }}" method="post">
-                                        @csrf
-                                        E-mail:<br>
-                                        <input type="text" name="email_mittente" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
-                                        Testo:<br>
-                                        <input class="text" type="text" name="testo_messaggio">
-                                        <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
-                                        <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
-                                        <input type="date" name="data_invio">
-                                        <button type="submit">Invia</button>
-                                        <input type="reset">
-                                        </form>
-                                    </div>
-                                </div>
-                            @endif
-                        @else
+            <div class="second-block-ch">
+                <div class="intestazione">
+                    <h2>{{$appartamento->titolo_appartamento}}</h2>
+                </div>
 
+                <div class="img-cover">
+                    <img src="{{$appartamento->immagine_appartamento}}" alt="Card image cap">
+                </div>
+
+                
+                <div class="info-title">
+                    <h2>Appartamento affittato da "Nome Utente"</h2>
+                    <div class="infos">
+                        <span>Metri Quadri: {{$appartamento->metri_quadri}}</span>
+                        <span>Stanze: {{$appartamento->numero_stanze}}</span>
+                        <span>Letti: {{$appartamento->numero_letti}}</span>
+                        <span>Bagni: {{$appartamento->numero_bagni}}</span>
+                    </div>
+                </div>
+
+                <div class="text-descrizione">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+                
+                <div class="contact-form">
+                    {{-- controllo se l'utente è registrato --}}
+                    @if (Auth::user())
+                        {{-- controllo se l'utente registrato è proprietario dell'appartamento, se non lo è --}}
+                        @if ($appartamento->id_proprietario != Auth::user()->id)
                             <div class="infos-4">
                                 <h2>Contatta l'host</h2>
                                 <div class="">
@@ -134,39 +119,61 @@
                                     </form>
                                 </div>
                             </div>
-
                         @endif
+                        {{-- se lo è, mostro i messaggi ricevuti su questo appartamento --}}
+                        <div class="infos-4">
+                            <h4>Messaggi Ricevuti per questo appartamento</h4>
+                            <section><h5>Email da:</h5></section>
+                            <section>
+                                <h5>Messaggio:</h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa accusantium voluptate cupiditate voluptas voluptates explicabo sunt impedit veniam eaque possimus quisquam iure voluptatem eum exercitationem facilis qui nihil, neque officia?</p>
+                            </section>
+                        </div>
 
-
-                        <div class="infos-5">
-                            <div class="map">
-                                <div id="mapid"></div>
-                                <input id="id_latitudine" type="hidden" name="" value="{{ $appartamento->latitudine}}">
-                                <input id="id_longitudine" type="hidden" name="" value="{{ $appartamento->longitudine}}">
+                    {{-- se l'utente non è registrato, mostro il form per contattare il proprietario --}}
+                    @else
+                        <div class="infos-4">
+                            <h2>Contatta l'host</h2>
+                            <div class="">
+                                <form action="{{ route('message_store') }}" method="post">
+                                @csrf
+                                E-mail:<br>
+                                <input type="text" name="email_mittente" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
+                                Testo:<br>
+                                <input class="text" type="text" name="testo_messaggio">
+                                <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
+                                <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
+                                <input type="date" name="data_invio">
+                                <button type="submit">Invia</button>
+                                <input type="reset">
+                                </form>
                             </div>
                         </div>
+                    @endif
+                </div>
+
+                <div class="infos-maps">
+                    <div class="map">
+                        <div id="mapid"></div>
+                        <input id="id_latitudine" type="hidden" name="" value="{{ $appartamento->latitudine}}">
+                        <input id="id_longitudine" type="hidden" name="" value="{{ $appartamento->longitudine}}">
                     </div>
-                    <div class="casella">
-                        <div class="servizi">
-                            <h2>Servizi</h2>
-                            <ul>
-                                @foreach ($servizi as $servizio)
-                                    <li>{{$servizio->titolo_servizio}}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="sistemazione">
-                            <div class="card-caratteristiche">
-                                <h3>Numero di stanze: {{$appartamento->numero_stanze}}</h3>
-                                <p>Numero di letti: {{$appartamento->numero_letti}}</p>
-                            </div>
-                        </div>
+                </div>
+
+                <div class="casella-servizi">
+                    <div class="servizi">
+                        <h2>Servizi</h2>
+                        <ul>
+                            @foreach ($servizi as $servizio)
+                                <li>{{$servizio->titolo_servizio}}</li>
+                            @endforeach
+                        </ul>
                     </div>
-                </section>
+                </div>
             </div>
-        </main>
+        
 
-            <footer class="third-block">
+            <footer class="third-block-ch">
                 <div class="wrap-footer">
                     <div class="block1">
                         <ul>
@@ -200,176 +207,6 @@
                     <section> <i>© 2020 Team7 Boolean, Inc. All rights reserved</i></section>
                 </div>
             </footer>
-
-            <div class="form-accedi">
-                <div class="card">
-                    <div class="card-header">
-                        {{ __('Login') }}
-                        <img src="images/close.svg" alt="close" class="close">
-                    </div>
-
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
-
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-registrati">
-                <div class="card">
-                    <div class="card-header">
-                        {{ __('Register') }}
-                        <img src="images/close.svg" alt="close" class="close">
-                    </div>
-
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
-                            @csrf
-
-                            <div class="form-group row">
-                                <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autocomplete="nome" autofocus>
-
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="cognome" class="col-md-4 col-form-label text-md-right">{{ __('Cognome') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="cognome" type="text" class="form-control @error('cognome') is-invalid @enderror" name="cognome" value="{{ old('cognome') }}" required autocomplete="cognome" autofocus>
-
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="data" class="col-md-4 col-form-label text-md-right">{{ __('data') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="data" type="date" class="form-control @error('data') is-invalid @enderror" name="data_di_nascita" required autocomplete="new-data">
-
-                                    @error('date')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
 
         </div>
 

@@ -21,14 +21,14 @@
                     <nav class="nav-bar">
                         <div class="logo">
                             <a href="{{ url('/') }}">
-                                <button class="btn-logos dashb" type="button" id="button-addon2">
+                                <button class="btn-logos btn-create" type="button" id="button-addon2">
                                 <img src="images/bnb-logo.svg" alt="">
                             </button></a>
                         </div>
                         <div class="text-elements">
                             @if (Route::has('login'))
                                 <div class="account">
-                                    <button class="btn-account" type="button" id="button-addon2">
+                                    <button class="btn-account btn-create" type="button" id="button-addon2">
                                         <img src="images/account.svg" alt="">
                                     </button>
 
@@ -64,7 +64,7 @@
 
             <div class="block-center-dash">
                 <div class="text-dash">
-                    <div class="card-header text-center">
+                    <div class="text-center title-dash">
                         <h2>I tuoi Appartamenti:</h2>
                     </div>
                 </div>
@@ -78,6 +78,7 @@
                             <p>Metri Quadri: {{$appartamento->metri_quadri}}</p>
                             <a href="{{ url( '/caratteristiche', ['id' => $appartamento->id] ) }}" class="btn btn-primary">Dettagli</a>
                             <a href="{{ url('/stats') }}" class="btn btn-primary">Statistiche</a>
+                            <a href="{{ route('apartment.edit', ['apartment' => $appartamento->id] ) }}" class="btn btn-warning">Aggiorna / Modifica</a>
                         </div>
                     </div>
                     @endforeach

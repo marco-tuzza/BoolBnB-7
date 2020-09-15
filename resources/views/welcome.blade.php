@@ -69,65 +69,69 @@
                         <div class="butt">
                             <button class="btn btn-primary search" type="button" id="button-addon2">Cerca</button>
                         </div>
-                        <div class="filter-1">
-                            <label for="numero_stanze">Numero stanze</label>
-                            <select name="numero_stanze" id="numerostanze">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
+                        <div class="filtri-uno">
+                            <div class="filter">
+                                <label for="numero_stanze">Stanze</label>
+                                <select name="numero_stanze" id="numerostanze">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                            <div class="filter">
+                                <label for="numero_letti">Letti</label>
+                                <select name="numero_letti" id="numeroletti">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="filter-2">
-                            <label for="numero_letti">Numero letti</label>
-                            <select name="numero_letti" id="numeroletti">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
+
+                        <div class="checkbox">
+                            <label for="wifi" class="input-group-text check-label">
+                                <input class="check-input" type="checkbox" name="WiFi" value="1">
+                                <h6>WiFi</h6>
+                            </label>
+                            <label for="posto-macchina" class="input-group-text check-label">
+                                <input class="check-input" type="checkbox" name="Posto Macchina" value="2">
+                                <h6>Posto Macchina</h6>
+                            </label>
+                            <label for="piscina" class="input-group-text check-label">
+                                <input class="check-input" type="checkbox" name="Piscina" value="3">
+                                <h6>Piscina</h6>
+                            </label>
+                            <label for="portineria" class="input-group-text check-label">
+                                <input class="check-input" type="checkbox" name="Portineria" value="4">
+                                <h6>Portineria</h6>
+                            </label>
+                            <label for="sauna" class="input-group-text check-label">
+                                <input class="check-input" type="checkbox" name="Sauna" value="5">
+                                <h6>Sauna</h6>
+                            </label>
+                            <label for="vista-mare" class="input-group-text check-label">
+                                <input class="check-input" type="checkbox" name="Vista Mare" value="6">
+                                <h6>Vista Mare</h6>
+                            </label>
                         </div>
                     </div>
                 </div>
 
-                <div class="checkbox">
-                    <label for="wifi" class="input-group-text check-label">
-                        <input class="check-input" type="checkbox" name="WiFi" value="wifi">
-                        <h6>WiFi</h6>
-                    </label>
-                    <label for="posto-macchina" class="input-group-text check-label">
-                        <input class="check-input" type="checkbox" name="Posto Macchina" value="posto-macchina">
-                        <h6>Posto Macchina</h6>
-                    </label>
-                    <label for="piscina" class="input-group-text check-label">
-                        <input class="check-input" type="checkbox" name="Piscina" value="piscina">
-                        <h6>Piscina</h6>
-                    </label>
-                    <label for="portineria" class="input-group-text check-label">
-                        <input class="check-input" type="checkbox" name="Portineria" value="portineria">
-                        <h6>Portineria</h6>
-                    </label>
-                    <label for="sauna" class="input-group-text check-label">
-                        <input class="check-input" type="checkbox" name="Sauna" value="sauna">
-                        <h6>Sauna</h6>
-                    </label>
-                    <label for="vista-mare" class="input-group-text check-label">
-                        <input class="check-input" type="checkbox" name="Vista Mare" value="vista-mare">
-                        <h6>Vista Mare</h6>
-                    </label>
-                </div>
+                
             </div>
 
 
@@ -136,7 +140,7 @@
                     <h2>Appartamenti in evidenza:</h2>
                 </div>
                 <div class="img-evidence">
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
@@ -145,7 +149,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
@@ -154,7 +158,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
@@ -163,7 +167,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
@@ -172,7 +176,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
@@ -181,7 +185,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
@@ -190,7 +194,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
@@ -199,7 +203,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">

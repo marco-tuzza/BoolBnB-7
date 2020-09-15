@@ -42434,6 +42434,7 @@ $(document).ready(function () {
     var lat = e.suggestion.latlng.lat;
     var lon = e.suggestion.latlng.lng;
     $('.search').click(function () {
+      $('.text-card h2').text('Risultati della ricerca');
       $('.img-evidence').empty();
       var numerostanze = $('#numerostanze').children('option:selected').val();
       console.log(numerostanze);
@@ -42452,7 +42453,7 @@ $(document).ready(function () {
         'lon': lon,
         'stanze': numerostanze,
         'letti': numeroletti,
-        'servizi': [3, 2]
+        'servizi': filtroservizi()
       },
       "success": function success(answer) {
         console.log(lat, lon);
@@ -42530,31 +42531,41 @@ $(document).ready(function () {
     $('.img-evidence').append(html_card);
   }
 
-  $('.check-input').on('click', function () {
-    $('.card').removeClass('non-visible');
+  function filtroservizi() {
     var selezionati = [];
     $('.check-input:checked').each(function () {
-      var nome = $(this).attr('name');
+      var nome = $(this).val();
       selezionati.push(nome);
     });
-    console.log(selezionati); // var valore = $(this).attr('name');
-    // console.log(valore);
+    console.log(selezionati);
+    return selezionati;
+  }
 
-    $('.serv').each(function () {
-      // var presenti = [];
-      var val_p = $(this).text(); // presenti.push(val_p)
-      // console.log(val_p.includes(valore));
-
-      if (!val_p.includes(selezionati)) {
-        console.log(val_p); // console.log(this);
-
-        $(this).closest('.card').addClass('non-visible');
-      } else if (selezionati == '') {
-        console.log(val_p);
-        $('.card').removeClass('non-visible');
-      }
-    });
-  });
+  ; // $('.check-input').on ('click', function(){
+  //     $('.card').removeClass('non-visible');
+  //     var selezionati = [];
+  //     $('.check-input:checked').each(function(){
+  //         var nome = $(this).attr('name');
+  //         selezionati.push(nome);
+  //     });
+  //     console.log(selezionati);
+  //     // var valore = $(this).attr('name');
+  //     // console.log(valore);
+  //     $('.serv').each(function(){
+  //         // var presenti = [];
+  //         var val_p = $(this).text();
+  //         // presenti.push(val_p)
+  //         // console.log(val_p.includes(valore));
+  //         if ( !val_p.includes(selezionati) ) {
+  //             console.log(val_p);
+  //             // console.log(this);
+  //             $(this).closest('.card').addClass('non-visible');
+  //         } else if (selezionati == '') {
+  //             console.log(val_p);
+  //             $('.card').removeClass('non-visible');
+  //         }
+  //     });
+  // });
 });
 
 /***/ }),
@@ -42566,7 +42577,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\Esercizi\boolbnb-7\resources\js\welcome.js */"./resources/js/welcome.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\welcome.js */"./resources/js/welcome.js");
 
 
 /***/ })
