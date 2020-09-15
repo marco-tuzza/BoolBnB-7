@@ -42445,8 +42445,15 @@ $(document).ready(function () {
 
   function parte_ricerca(lat, lon, e, numerostanze, numeroletti) {
     $.ajax({
-      "url": "http://localhost:8000/api/apartment/search/" + Math.round(lat) + '/' + Math.round(lon) + '/' + numerostanze + '/' + numeroletti,
+      "url": "http://localhost:8000/api/apartment/search/filter",
       "method": "GET",
+      "data": {
+        'lat': lat,
+        'lon': lon,
+        'stanze': numerostanze,
+        'letti': numeroletti,
+        'servizi': [3, 2]
+      },
       "success": function success(answer) {
         console.log(lat, lon);
         $('.img-evidence').empty();
@@ -42559,7 +42566,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\welcome.js */"./resources/js/welcome.js");
+module.exports = __webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\Esercizi\boolbnb-7\resources\js\welcome.js */"./resources/js/welcome.js");
 
 
 /***/ })

@@ -68,9 +68,17 @@ $(document).ready(function(){
 
         $.ajax({
     
-            "url" : "http://localhost:8000/api/apartment/search/" + Math.round(lat) + '/' + Math.round(lon) + '/' + numerostanze + '/' + numeroletti,
+            "url" : "http://localhost:8000/api/apartment/search/filter",
     
             "method" : "GET",
+
+            "data" : {
+                'lat' : lat,
+                'lon' : lon,
+                'stanze': numerostanze,
+                'letti': numeroletti,
+                'servizi' : []
+            },
     
             "success" : function(answer) {
                 console.log(lat, lon);

@@ -37311,38 +37311,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // $(document).ready(function(){
-// });
+var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-
-var form = document.querySelector('#payment-form');
-var client_token = "<?php echo($gateway->ClientToken()->generate()); ?>";
-braintree.dropin.create({
-  authorization: client_token,
-  selector: '#bt-dropin',
-  paypal: {
-    flow: 'vault'
-  }
-}, function (createErr, instance) {
-  if (createErr) {
-    console.log('Create Error', createErr);
-    return;
-  }
-
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    instance.requestPaymentMethod(function (err, payload) {
-      if (err) {
-        console.log('Request Payment Method Error', err);
-        return;
-      } // Add the nonce to the form and submit
-
-
-      document.querySelector('#nonce').value = payload.nonce;
-      form.submit();
-    });
-  });
-});
+$(document).ready(function () {});
 
 /***/ }),
 
@@ -37353,7 +37324,7 @@ braintree.dropin.create({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\pagamenti.js */"./resources/js/pagamenti.js");
+module.exports = __webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\Esercizi\boolbnb-7\resources\js\pagamenti.js */"./resources/js/pagamenti.js");
 
 
 /***/ })
