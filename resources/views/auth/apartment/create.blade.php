@@ -72,7 +72,7 @@
                         <div class="card-header">Aggiungi un Appartamento</div>
     
                         <div class="card-body card-apartment">
-                            <form action="{{ route('apartment.store') }}" method="post">
+                            <form action="{{ route('apartment.store') }}" method="post" id="form-salva">
                                 @csrf
                                 <div class="form-group row">
                                     <label for="titolo_appartamento">Titolo Appartamento</label>
@@ -168,7 +168,7 @@
                                     </label>
                                 @endforeach 
                                 </div>
-                                <button type="submit" class="btn btn-primary">Salva</button>
+                                <button type="submit" class="btn btn-primary" id="btn-save">Salva</button>
                             </form>
                         </div>
                     </div>
@@ -210,6 +210,23 @@
                 <section> <i>© 2020 Team7 Boolean, Inc. All rights reserved</i></section>
             </div>
         </footer>
+
+
+        <div class="form-success">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Salvataggio Appartamento...</h5>
+                </div>
+
+                <div class="card-body">
+                    <h5>Sto Salvando l'appartamento, non chiudere la scheda! <br> Verrai reindirizzato alla Homepage</h5>
+                    {{-- <button type="submit" class="btn btn-success" id="continue">
+                        Continua!
+                    </button> --}}
+                </div>
+            </div>
+        </div>
+
     </div>
     <script src="{{ asset('js/appartment.js') }}" defer></script>
 </body>

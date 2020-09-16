@@ -37313,7 +37313,13 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-$(document).ready(function () {});
+$(document).ready(function () {
+  $('.custom-control-input').click(function () {
+    var valore_radio = $(this).val();
+    console.log(valore_radio);
+    $('#amount').val(valore_radio);
+  });
+});
 
 /***/ }),
 

@@ -42440,6 +42440,8 @@ $(document).ready(function () {
       console.log(numerostanze);
       var numeroletti = $('#numeroletti').children('option:selected').val();
       console.log(numeroletti);
+      var distanza = $('#distanza').children('option:selected').val();
+      console.log(numeroletti);
       parte_ricerca(lat, lon, e, numerostanze, numeroletti);
     });
   });
@@ -42502,7 +42504,6 @@ $(document).ready(function () {
       dist = dist * 1.609344;
 
       if (dist < 20) {
-        // $('.risultati').append(apartmentData.id + apartmentData.titolo_appartamento + parseInt(dist) + 'km'+ '<br>');
         disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id);
       } else {
         console.log('troppo lontano');

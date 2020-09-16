@@ -20,14 +20,14 @@
                     <nav class="nav-bar">
                         <div class="logo">
                             <a href="{{ url('/') }}">
-                                <button class="btn-logos dashb" type="button" id="button-addon2">
+                                <button class="btn-logos btn-create dashb" type="button" id="button-addon2">
                                 <img src="images/bnb-logo.svg" alt="">
                             </button></a>
                         </div>
                         <div class="text-elements">
                             @if (Route::has('login'))
                                 <div class="account">
-                                    <button class="btn-account" type="button" id="button-addon2">
+                                    <button class="btn-account btn-create" type="button" id="button-addon2">
                                         <img src="images/account.svg" alt="">
                                     </button>
 
@@ -63,16 +63,18 @@
 
             <div class="block-center-dash">
                 <div class="text-dash">
-                    <div class="card-header text-center">
-                        <h2>Sponsorizza Appartamento "Qua va l'id o il titolo Appartamento":</h2>
+                    <div class="title-dash text-center">
+                        <h2>Sponsorizza  "titolo Appartamento":</h2>
                     </div>
                 </div>
                 <div class="img-apartment">
+
                     @if (session('success_message'))
                         <div class="alert alert-success">
                             {{ session('success_message') }}
                         </div>
                     @endif
+
                     @if(count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
@@ -87,38 +89,51 @@
                             <h4>Scegli il tipo di Sponsorizzazione</h4>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Base:</h5>
-                            <input type="radio">
+                            <div class="custom-control custom-radio custom-radios">
+                                <input type="radio" id="customRadio1" name="customRadio" value="2.99" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadio1" value="2.99" ><h5>Base - 2,99€ </h5><span>24 ore tra gli appartamenti in evidenza</span></label>
+                            </div>
+                            <div class="custom-control custom-radio custom-radios">
+                                <input type="radio" id="customRadio2" name="customRadio" value="4.99" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadio2" value="4.99"><h5>Plus - 4,99€ </h5><span>48 ore tra gli appartamenti in evidenza</span></label>
+                            </div>
+                            <div class="custom-control custom-radio custom-radios">
+                                <input type="radio" id="customRadio3" name="customRadio" value="7.99" class="custom-control-input">
+                                <label class="custom-control-label card-title" for="customRadio3" value="7.99"><h5>Pro - 7,99€ </h5><span>72 ore tra gli appartamenti in evidenza</span> </label>
+                            </div>
+                            {{-- <h5 class="card-title">Base:</h5>
                             <p class="card-text">2,99€</p>
                             <h5 class="card-title">Plus(Consigliato):</h5>
-                            <input type="radio">
                             <p class="card-text">5,99€</p>
                             <h5 class="card-title">Pro:</h5>
-                            <input type="radio">
-                            <p class="card-text">7,99€</p>
+                            <p class="card-text">7,99€</p> --}}
                         </div>
-                        <button class="button" type="submit"><span>Scegli</span></button>
                     </div>
+                    
                     <form method="post" id="payment-form" action="{{ url('/checkout') }}">
                         @csrf
                         <section>
-                            <label for="amount">
+                            <label id="amount-label" for="amount">
                                 <span class="input-label">Totale</span>
                                 <div class="input-wrapper amount-wrapper">
-                                    <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
+                                    <input id="amount" name="amount" type="tel" min="1" placeholder="€" value="">
                                 </div>
                             </label>
+        
                             <div class="bt-drop-in-wrapper">
                                 <div id="bt-dropin"></div>
                             </div>
                         </section>
+        
                         <input id="nonce" name="payment_method_nonce" type="hidden" />
-                        <button class="button" type="submit"><span>Paga!</span></button>
+                        <button class="button btn btn-success" type="submit"><span>Paga!</span></button>
                     </form>
+
                 </div>
             </div>
+                
             <div class="block-footer-dash">
-                <footer class="foot-create">
+                <footer class="foot-create"> 
                     <div class="wrap-footer">
                         <div class="block1">
                             <ul>
@@ -153,7 +168,7 @@
                     </div>
                 </footer>
             </div>
-
+                
         </div>
 
         <script src="https://js.braintreegateway.com/web/dropin/1.23.0/js/dropin.min.js"></script>

@@ -71,33 +71,40 @@
                         </div>
                         <div class="filtri-uno">
                             <div class="filter">
-                                <label for="numero_stanze">Stanze</label>
-                                <select name="numero_stanze" id="numerostanze">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                <select name="numero_stanze" id="numerostanze" class="custom-select">
+                                    <option value="1">Stanze - 1</option>
+                                    <option value="2">Stanze - 2</option>
+                                    <option value="3">Stanze - 3</option>
+                                    <option value="4">Stanze - 4</option>
+                                    <option value="5">Stanze - 5</option>
+                                    <option value="6">Stanze - 6</option>
+                                    <option value="7">Stanze - 7</option>
+                                    <option value="8">Stanze - 8</option>
+                                    <option value="9">Stanze - 9</option>
+                                    <option value="10">Stanze - 10</option>
                                 </select>
                             </div>
                             <div class="filter">
-                                <label for="numero_letti">Letti</label>
-                                <select name="numero_letti" id="numeroletti">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                <select name="numero_letti" id="numeroletti" class="custom-select">
+                                    <option value="1">Letti - 1</option>
+                                    <option value="2">Letti - 2</option>
+                                    <option value="3">Letti - 3</option>
+                                    <option value="4">Letti - 4</option>
+                                    <option value="5">Letti - 5</option>
+                                    <option value="6">Letti - 6</option>
+                                    <option value="7">Letti - 7</option>
+                                    <option value="8">Letti - 8</option>
+                                    <option value="9">Letti - 9</option>
+                                    <option value="10">Letti - 10</option>
+                                </select>
+                            </div>
+
+                            <div class="filter">
+                                <select class="custom-select" id="distanza">
+                                    <option selected value="20">Distanza - 20km</option>
+                                    <option value="40">40km</option>
+                                    <option value="60">60km</option>
+                                    <option value="80">80km</option>
                                 </select>
                             </div>
                         </div>
@@ -147,14 +154,8 @@
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
                             </div>
-                        </a>
-                    </div>
-                    <div class="card sponsorized">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
                             </div>
                         </a>
                     </div>
@@ -165,14 +166,8 @@
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
                             </div>
-                        </a>
-                    </div>
-                    <div class="card sponsorized">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
                             </div>
                         </a>
                     </div>
@@ -183,14 +178,8 @@
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
                             </div>
-                        </a>
-                    </div>
-                    <div class="card sponsorized">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
                             </div>
                         </a>
                     </div>
@@ -201,6 +190,9 @@
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
                             </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
+                            </div>
                         </a>
                     </div>
                     <div class="card sponsorized">
@@ -209,6 +201,45 @@
                             <div class="info">
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
+                            </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card sponsorized">
+                        <a href="{{ url ('/caratteristiche') }}">
+                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
+                            <div class="info">
+                                <h4>Titolo Appartamento</h4>
+                                <p>Posizione Appartamento</p>
+                            </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card sponsorized">
+                        <a href="{{ url ('/caratteristiche') }}">
+                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
+                            <div class="info">
+                                <h4>Titolo Appartamento</h4>
+                                <p>Posizione Appartamento</p>
+                            </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card sponsorized">
+                        <a href="{{ url ('/caratteristiche') }}">
+                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
+                            <div class="info">
+                                <h4>Titolo Appartamento</h4>
+                                <p>Posizione Appartamento</p>
+                            </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
                             </div>
                         </a>
                     </div>

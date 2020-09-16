@@ -59,6 +59,8 @@ $(document).ready(function(){
             console.log(numerostanze);
             var numeroletti = $('#numeroletti').children('option:selected').val();
             console.log(numeroletti);
+            var distanza = $('#distanza').children('option:selected').val();
+            console.log(numeroletti);
             parte_ricerca(lat, lon, e, numerostanze, numeroletti);
         });
         
@@ -210,6 +212,3 @@ $(document).ready(function(){
 
 
 });
-
-
-

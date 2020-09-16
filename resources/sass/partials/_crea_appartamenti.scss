@@ -21,6 +21,20 @@
         }
     }
 
+    &::before {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        content: "";
+        width: 100vw;
+        height: 100vh;
+        background: #00000075;
+        transition: all 500ms ease-in-out;
+        z-index: 9;
+        visibility: hidden;
+    }
+
     .nav-create {
         max-width: 1150px;
         margin: auto;
@@ -46,6 +60,35 @@
         padding-bottom: 6rem;
         margin-bottom: 9rem;
     }
+
+    .form-success {
+        display: none;
+        position: fixed;
+        min-width: 300px;
+        max-width: 500px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            h5 {
+                margin: auto;
+            }
+        }
+        .card-body h5 {
+            font-size: 1rem;
+        }
+    }
+
+    .form-success.mostra-form {
+        display: block;
+    }
+}
+
+.wrapper-apartament.active::before {
+    visibility: visible;
 }
 
 .form-group.row {
