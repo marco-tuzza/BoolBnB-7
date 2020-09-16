@@ -81,47 +81,47 @@
                                 <div class="form-group row">
                                     <label for="numero_stanze">Numero stanze</label>
                                     {{-- da risolvere old sulle select --}}
-                                    <select name="numero_stanze" id="numerostanze" value="{{ old('numero_stanze', $appartamento->numero_stanze) }}">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
+                                    <select name="numero_stanze" id="numerostanze">
+                                        <option value="1" {{ $appartamento->numero_stanze == 1 ? "selected" : "" }}>1</option>
+                                        <option value="2" {{ $appartamento->numero_stanze == 2 ? "selected" : "" }}>2</option>
+                                        <option value="3" {{ $appartamento->numero_stanze == 3 ? "selected" : "" }}>3</option>
+                                        <option value="4" {{ $appartamento->numero_stanze == 4 ? "selected" : "" }}>4</option>
+                                        <option value="5" {{ $appartamento->numero_stanze == 5 ? "selected" : "" }}>5</option>
+                                        <option value="6" {{ $appartamento->numero_stanze == 6 ? "selected" : "" }}>6</option>
+                                        <option value="7" {{ $appartamento->numero_stanze == 7 ? "selected" : "" }}>7</option>
+                                        <option value="8" {{ $appartamento->numero_stanze == 8 ? "selected" : "" }}>8</option>
+                                        <option value="9" {{ $appartamento->numero_stanze == 9 ? "selected" : "" }}>9</option>
+                                        <option value="10" {{ $appartamento->numero_stanze == 10 ? "selected" : "" }}>10</option>
                                     </select>
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_letti">Numero letti</label>
-                                    <select name="numero_letti" id="numeroletti" value="{{ old('numero_letti', $appartamento->numero_letti) }}">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
+                                    <select name="numero_letti" id="numeroletti">
+                                        <option value="1" {{ $appartamento->numero_letti == 1 ? "selected" : "" }}>1</option>
+                                        <option value="2" {{ $appartamento->numero_letti == 2 ? "selected" : "" }}>2</option>
+                                        <option value="3" {{ $appartamento->numero_letti == 3 ? "selected" : "" }}>3</option>
+                                        <option value="4" {{ $appartamento->numero_letti == 4 ? "selected" : "" }}>4</option>
+                                        <option value="5" {{ $appartamento->numero_letti == 5 ? "selected" : "" }}>5</option>
+                                        <option value="6" {{ $appartamento->numero_letti == 6 ? "selected" : "" }}>6</option>
+                                        <option value="7" {{ $appartamento->numero_letti == 7 ? "selected" : "" }}>7</option>
+                                        <option value="8" {{ $appartamento->numero_letti == 8 ? "selected" : "" }}>8</option>
+                                        <option value="9" {{ $appartamento->numero_letti == 9 ? "selected" : "" }}>9</option>
+                                        <option value="10" {{ $appartamento->numero_letti == 10 ? "selected" : "" }}>10</option>
                                     </select>
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_bagni">Numero bagni</label>
-                                    <select name="numero_bagni" id="numerobagni" value="{{ old('numero_bagni', $appartamento->numero_bagni) }}">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
+                                    <select name="numero_bagni" id="numerobagni">
+                                        <option value="1" {{ $appartamento->numero_bagni == 1 ? "selected" : "" }}>1</option>
+                                        <option value="2" {{ $appartamento->numero_bagni == 2 ? "selected" : "" }}>2</option>
+                                        <option value="3" {{ $appartamento->numero_bagni == 3 ? "selected" : "" }}>3</option>
+                                        <option value="4" {{ $appartamento->numero_bagni == 4 ? "selected" : "" }}>4</option>
+                                        <option value="5" {{ $appartamento->numero_bagni == 5 ? "selected" : "" }}>5</option>
+                                        <option value="6" {{ $appartamento->numero_bagni == 6 ? "selected" : "" }}>6</option>
+                                        <option value="7" {{ $appartamento->numero_bagni == 7 ? "selected" : "" }}>7</option>
+                                        <option value="8" {{ $appartamento->numero_bagni == 8 ? "selected" : "" }}>8</option>
+                                        <option value="9" {{ $appartamento->numero_bagni == 9 ? "selected" : "" }}>9</option>
+                                        <option value="10" {{ $appartamento->numero_bagni == 10 ? "selected" : "" }}>10</option>
                                     </select>
                                 </div>
                                 <div class="form-group row">
@@ -151,8 +151,8 @@
                                         @if($errors->any())
                                             {{ in_array($servizio->id, old('servizi', [])) ? 'checked' : '' }}
                                         {{-- @else   
-                                            {{ $appartamento->servizi->contains($servizi) ? 'checked' : '' }}  Da revisionare --}}
-                                        @endif 
+                                            {{ $appartamento->$servizi->contains($servizi) ? 'checked' : '' }} --}}
+                                        @endif
                                         class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
                                         {{$servizio->titolo_servizio}}
                                     </label>
