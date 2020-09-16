@@ -159,12 +159,11 @@
                                 @endforeach 
                                 </div>
                                 <button type="submit" class="btn btn-primary">Salva</button>
-                                <form class="d-inline" action="{{ route('apartment.destroy', ['apartment' => $appartamento->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" class="btn btn-danger" value="Elimina Appartamento">
-                                </form>
-                                {{-- <button type="submit" class="btn btn-danger">Elimina Appartamento</button> --}}
+                            </form>
+                            <form class="d-inline" action="{{ route('apartment.destroy', ['apartment' => $appartamento->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" class="btn btn-danger" value="Elimina Appartamento">
                             </form>
                         </div>
                     </div>
