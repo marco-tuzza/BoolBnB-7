@@ -31,10 +31,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/pagamenti', "BraintreeController@index");
-
-Route::post('/checkout', "BraintreeController@checkout");
-
 Route::get('/caratteristiche_auth', function () {
     return view('caratteristiche_auth');
 });
@@ -47,7 +43,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/message/store', 'MessageController@store')->name('message_store');
-Route::post('/pagamenti/store', 'PaymentController@store')->name('payment_store');
 Route::get('/caratteristiche/{id}', 'ApartmentController@show')->name('caratteristiche');
 Route::get('/dashboard', 'ApartmentController@index')->middleware('auth');
 Route::resource('apartment', 'ApartmentController')->middleware('auth');

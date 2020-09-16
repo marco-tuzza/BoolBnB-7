@@ -82,8 +82,6 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="post" id="sponsorizzazioni" action="{{ route('payment_store') }}">
-                    @csrf
                     <div class="card">
                         <div class="card-header">
                             <h4>Scegli il tipo di Sponsorizzazione</h4>
@@ -98,11 +96,9 @@
                             <h5 class="card-title">Pro:</h5>
                             <input type="radio">
                             <p class="card-text">7,99€</p>
-                            <input type="hidden" name="id_utente" value="{{Auth::user()->id}}">
                         </div>
                         <button class="button" type="submit"><span>Scegli</span></button>
                     </div>
-                    </form>
                     <form method="post" id="payment-form" action="{{ url('/checkout') }}">
                         @csrf
                         <section>
