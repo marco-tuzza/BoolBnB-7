@@ -99,6 +99,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/message/store', 'MessageController@store')->name('message_store');
+Route::post('/pagamenti/store', 'PaymentController@store')->name('payment_store');
 Route::get('/caratteristiche/{id}', 'ApartmentController@show')->name('caratteristiche');
 Route::get('/dashboard', 'ApartmentController@index')->middleware('auth');
 Route::resource('apartment', 'ApartmentController')->middleware('auth');

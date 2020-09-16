@@ -84,20 +84,28 @@
                             </ul>
                         </div>
                     @endif
+                    <form method="post" id="sponsorizzazioni" action="{{ route('payment_store') }}">
+                    @csrf
                     <div class="card">
                         <div class="card-header">
                             <h4>Scegli il tipo di Sponsorizzazione</h4>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Base:</h5>
+                            <input type="radio">
                             <p class="card-text">2,99€</p>
                             <h5 class="card-title">Plus(Consigliato):</h5>
+                            <input type="radio">
                             <p class="card-text">5,99€</p>
                             <h5 class="card-title">Pro:</h5>
+                            <input type="radio">
                             <p class="card-text">7,99€</p>
+                            <input type="hidden" name="id_utente" value="{{Auth::user()->id}}">
                         </div>
+                        <button class="button" type="submit"><span>Scegli</span></button>
                     </div>
-                    
+                    </form>
+
                     <form method="post" id="payment-form" action="{{ url('/checkout') }}">
                         @csrf
                         <section>
@@ -107,21 +115,21 @@
                                     <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
                                 </div>
                             </label>
-        
+
                             <div class="bt-drop-in-wrapper">
                                 <div id="bt-dropin"></div>
                             </div>
                         </section>
-        
+
                         <input id="nonce" name="payment_method_nonce" type="hidden" />
                         <button class="button" type="submit"><span>Paga!</span></button>
                     </form>
 
                 </div>
             </div>
-                
+
             <div class="block-footer-dash">
-                <footer class="foot-create"> 
+                <footer class="foot-create">
                     <div class="wrap-footer">
                         <div class="block1">
                             <ul>
@@ -156,7 +164,7 @@
                     </div>
                 </footer>
             </div>
-                
+
         </div>
 
         <script src="https://js.braintreegateway.com/web/dropin/1.23.0/js/dropin.min.js"></script>
