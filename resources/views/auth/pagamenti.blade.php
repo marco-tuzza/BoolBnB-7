@@ -68,13 +68,11 @@
                     </div>
                 </div>
                 <div class="img-apartment">
-
                     @if (session('success_message'))
                         <div class="alert alert-success">
                             {{ session('success_message') }}
                         </div>
                     @endif
-
                     @if(count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
@@ -105,7 +103,6 @@
                         <button class="button" type="submit"><span>Scegli</span></button>
                     </div>
                     </form>
-
                     <form method="post" id="payment-form" action="{{ url('/checkout') }}">
                         @csrf
                         <section>
@@ -115,19 +112,15 @@
                                     <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
                                 </div>
                             </label>
-
                             <div class="bt-drop-in-wrapper">
                                 <div id="bt-dropin"></div>
                             </div>
                         </section>
-
                         <input id="nonce" name="payment_method_nonce" type="hidden" />
                         <button class="button" type="submit"><span>Paga!</span></button>
                     </form>
-
                 </div>
             </div>
-
             <div class="block-footer-dash">
                 <footer class="foot-create">
                     <div class="wrap-footer">
