@@ -73,7 +73,7 @@
                     <img src="{{$appartamento->immagine_appartamento}}" alt="Card image cap">
                 </div>
 
-                
+
                 <div class="info-title">
                     <h2>Appartamento affittato da "Nome Utente"</h2>
                     <div class="infos">
@@ -96,7 +96,7 @@
                     </p>
                 </div>
 
-                
+
                 <div class="contact-form">
                     {{-- controllo se l'utente è registrato --}}
                     @if (Auth::user())
@@ -122,12 +122,16 @@
                         @endif
                         {{-- se lo è, mostro i messaggi ricevuti su questo appartamento --}}
                         <div class="infos-4">
-                            <h4>Messaggi Ricevuti per questo appartamento</h4>
-                            <section><h5>Email da:</h5></section>
-                            <section>
-                                <h5>Messaggio:</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa accusantium voluptate cupiditate voluptas voluptates explicabo sunt impedit veniam eaque possimus quisquam iure voluptatem eum exercitationem facilis qui nihil, neque officia?</p>
-                            </section>
+                            <h4>I tuoi messaggi:</h4>
+                            @foreach ($messaggi as $messaggio)
+                                <div class="card">
+                                    <div class="info">
+                                        <h4>Mittente: {{$messaggio->email_mittente}}</h4>
+                                        <p>Testo del messaggio: {{$messaggio->testo_messaggio}}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
 
                     {{-- se l'utente non è registrato, mostro il form per contattare il proprietario --}}
@@ -171,7 +175,7 @@
                     </div>
                 </div>
             </div>
-        
+
 
             <footer class="third-block-ch">
                 <div class="wrap-footer">

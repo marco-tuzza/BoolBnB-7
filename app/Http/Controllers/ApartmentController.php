@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Apartment;
+use App\Message;
 use App\Service;
 
 class ApartmentController extends Controller
@@ -19,9 +20,9 @@ class ApartmentController extends Controller
         // Get the currently authenticated user's ID...
 
         $id = Auth::id();
-        
+
         $appartamenti = Apartment::all()->where('id_proprietario', $id);
-        
+
         return view('dashboard', compact('appartamenti'));
     }
 
@@ -31,7 +32,7 @@ class ApartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $servizi = Service::All();
         $data = [
             'servizi' => $servizi
@@ -68,9 +69,12 @@ class ApartmentController extends Controller
     {
         $servizi = Service::all();
         $appartamento = Apartment::find($id);
+        $userId = Auth::id();
+        $messaggi = Message::All()->where('id_ricevente', $userId);
         $data = [
             'servizi' => $servizi,
-            'appartamento' => $appartamento
+            'appartamento' => $appartamento,
+            'messaggi' => $messaggi
         ];
         return view('caratteristiche', $data);
     }
@@ -126,7 +130,7 @@ class ApartmentController extends Controller
                 $appartamento->services()->detach();
             }
         }
-        
+
         return redirect()->route('apartment.index');
     }
 
