@@ -16,59 +16,60 @@
     <body>
         <div class="wrapper-dashboard">
 
-            <div class="block-header-dash">
-                <header>
-                    <nav class="nav-bar">
-                        <div class="logo">
-                            <a href="{{ url('/') }}">
-                                <button class="btn-logos dashb" type="button" id="button-addon2">
-                                <img src="images/bnb-logo.svg" alt="">
-                            </button></a>
-                        </div>
-                        <div class="text-elements">
-                            @if (Route::has('login'))
-                                <div class="account">
-                                    <button class="btn-account dashb" type="button" id="button-addon2">
-                                        <img src="images/account.svg" alt="">
-                                    </button>
-
-                                    <div class="drop-menu">
-                                        <ul>
-                                            @auth
-                                                <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
-                                                <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
-                                                <li> <a href="{{ url('/') }}">Home</a></li>
-                                                <li>
-                                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
-                                                    </a>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                        @csrf
-                                                    </form>
-                                                </li>
-                                                @else
-                                                    <li id="login">Accedi</li>
-                                                    {{-- <li id="login"> <a href="{{ route('login') }}">Accedi</a> </li> --}}
-                                                    <li id="register">Registrati</li>
-                                            @endauth
-                                        </ul>
+            <div class="wrapper-dashboard">
+                <div class="block-header-dash">
+                    <header>
+                        <nav class="nav-bar">
+                            <div class="logo">
+                                <a href="{{ url('/') }}">
+                                    <button class="btn-logos btn-create" type="button" id="button-addon2">
+                                    <img src="../images/bnb-logo.svg" alt="">
+                                </button></a>
+                            </div>
+                            <div class="text-elements">
+                                @if (Route::has('login'))
+                                    <div class="account">
+                                        <button class="btn-account btn-create" type="button" id="button-addon2">
+                                            <img src="../images/account.svg" alt="">
+                                        </button>
+    
+                                        <div class="drop-menu">
+                                            <ul>
+                                                @auth
+                                                    <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
+                                                    <li> <a href="{{ url('/messaggi') }}">I Miei Messaggi</a> </li>
+                                                    <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
+                                                    <li> <a href="{{ url('/') }}">Home</a> </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                        </a>
+                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                            @csrf
+                                                        </form>
+                                                    </li>
+                                                    @else
+                                                        <li id="login">Accedi</li>
+                                                        {{-- <li id="login"> <a href="{{ route('login') }}">Accedi</a> </li> --}}
+                                                        <li id="register">Registrati</li>
+                                                @endauth
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                            @endif
-                        </div>
-                    </nav>
-                </header>
-            </div>
+                                @endif
+                        </nav>
+                    </header>
+                </div>
 
             <div class="block-center-dash">
                 <div class="text-dash">
-                    <div class="card-header text-center">
+                    <div class="title-dash text-center">
                         <h2>Statische "Titolo Appartamento":</h2>
                     </div>
                 </div>
-                <div class="img-apartment">
+                <div class="img-apartment stats">
                         <div class="stat">
                             <div class="text-stat text-center">
                                 <h4>Visualizzazioni totali</h4>
@@ -127,6 +128,7 @@
                 </footer>
             </div>
 
+        <input id="id-apartment" name="id-apartment" value="{{$appartamento->id}}" type="hidden" />
 
         </div>
 

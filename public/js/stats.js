@@ -37314,6 +37314,26 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 $(function () {
+  var leggo_valore = $('#id-apartment').val();
+  console.log(leggo_valore);
+  $.ajax({
+    "url": "http://localhost:8000/api/statistiche/search/" + leggo_valore,
+    "method": "GET",
+    // "data" : {
+    //     'id' : leggo_valore
+    // },
+    "success": function success(answer) {
+      var stat = answer.data;
+      console.log(stat); // for (var i = 0; i < apartment.length; i++) {
+      //         var apartmentData = apartment[i]
+      //         var lat2 = apartment[i].latitudine
+      //         var lon2 = apartment[i].longitudine    
+      //         var lat1 = e.suggestion.latlng.lat
+      //         var lon1 = e.suggestion.latlng.lng
+      //         distance(lat1,lon1,lat2,lon2,apartmentData, distanza);
+      // };
+    }
+  });
   var ctx = document.getElementById('myChart1').getContext('2d');
   var chart = new Chart(ctx, {
     // The type of chart we want to create

@@ -16,10 +16,11 @@ class StatisticheController extends Controller
             'success' => true,
             'data' => [
                 'statistiche' => $statistiche,
-                'messaggi' => $messaggi
+                'messaggi' => $messaggi,
+                'count_statistiche' => $statistiche->count(),
+                'count_messaggi' => $messaggi->count()
             ],
-            'count_statistiche' => $statistiche->count(),
-            'count_messaggi' => $messaggi->count()
+            
         ]);
     }
 }
