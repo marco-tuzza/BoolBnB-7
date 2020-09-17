@@ -20,14 +20,14 @@
                     <nav class="nav-bar">
                         <div class="logo">
                             <a href="{{ url('/') }}">
-                                <button class="btn-logos dashb" type="button" id="button-addon2">
+                                <button class="btn-logos btn-create dashb" type="button" id="button-addon2">
                                 <img src="images/bnb-logo.svg" alt="">
                             </button></a>
                         </div>
                         <div class="text-elements">
                             @if (Route::has('login'))
                                 <div class="account">
-                                    <button class="btn-account" type="button" id="button-addon2">
+                                    <button class="btn-account btn-create" type="button" id="button-addon2">
                                         <img src="images/account.svg" alt="">
                                     </button>
 
@@ -63,7 +63,7 @@
 
             <div class="block-center-dash">
                 <div class="text-dash">
-                    <div class="card-header text-center">
+                    <div class="title-dash text-center">
                         <h2>I tuoi Messaggi:</h2>
                     </div>
                 </div>
@@ -74,6 +74,9 @@
                                 <h4>{{$messaggio->email_mittente}}</h4>
                                 <p>Testo del messaggio: {{$messaggio->testo_messaggio}}
                                 </p>
+                                <a href="mailto:{{$messaggio->email_mittente}}" target="_blank" rel="noreferrer">
+                                    <button type="button" class="btn btn-info">Rispondi</button>
+                                </a>
                             </div>
                         </div>
                     @endforeach

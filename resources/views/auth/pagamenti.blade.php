@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>BoolBnB</title>
+        <title>BoolBnB - Pagamenti</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
@@ -12,7 +12,6 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     </head>
     <body>
         <div class="wrapper-dashboard">
@@ -21,7 +20,7 @@
                     <nav class="nav-bar">
                         <div class="logo">
                             <a href="{{ url('/') }}">
-                                <button class="btn-logos btn-create" type="button" id="button-addon2">
+                                <button class="btn-logos btn-create dashb" type="button" id="button-addon2">
                                 <img src="images/bnb-logo.svg" alt="">
                             </button></a>
                         </div>
@@ -64,24 +63,72 @@
 
             <div class="block-center-dash">
                 <div class="text-dash">
-                    <div class="text-center title-dash">
-                        <h2>I tuoi Appartamenti:</h2>
+                    <div class="title-dash text-center">
+                        <h2>Sponsorizza  "titolo Appartamento":</h2>
                     </div>
                 </div>
                 <div class="img-apartment">
-                    @foreach ($appartamenti as $appartamento)
+
+                    @if (session('success_message'))
+                        <div class="alert alert-success">
+                            {{ session('success_message') }}
+                        </div>
+                    @endif
+
+                    @if(count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="card">
-                        <img src="{{$appartamento->immagine_appartamento}}" alt="Card image cap">
-                        <div class="info">
-                            <h4>{{$appartamento->titolo_appartamento}}</h4>
-                            <p>Numero stanze: {{$appartamento->numero_stanze}}</p>
-                            <p>Metri Quadri: {{$appartamento->metri_quadri}}</p>
-                            <a href="{{ url( '/caratteristiche', ['id' => $appartamento->id] ) }}" class="btn btn-primary">Dettagli</a>
-                            <a href="{{ url('/stats') }}" class="btn btn-primary">Statistiche</a>
-                            <a href="{{ route('apartment.edit', ['apartment' => $appartamento->id] ) }}" class="btn btn-warning">Aggiorna / Modifica</a>
+                        <div class="card-header">
+                            <h4>Scegli il tipo di Sponsorizzazione</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="custom-control custom-radio custom-radios">
+                                <input type="radio" id="customRadio1" name="customRadio" value="2.99" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadio1" value="2.99" ><h5>Base - 2,99€ </h5><span>24 ore tra gli appartamenti in evidenza</span></label>
+                            </div>
+                            <div class="custom-control custom-radio custom-radios">
+                                <input type="radio" id="customRadio2" name="customRadio" value="4.99" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadio2" value="4.99"><h5>Plus - 4,99€ </h5><span>48 ore tra gli appartamenti in evidenza</span></label>
+                            </div>
+                            <div class="custom-control custom-radio custom-radios">
+                                <input type="radio" id="customRadio3" name="customRadio" value="7.99" class="custom-control-input">
+                                <label class="custom-control-label card-title" for="customRadio3" value="7.99"><h5>Pro - 7,99€ </h5><span>72 ore tra gli appartamenti in evidenza</span> </label>
+                            </div>
+                            {{-- <h5 class="card-title">Base:</h5>
+                            <p class="card-text">2,99€</p>
+                            <h5 class="card-title">Plus(Consigliato):</h5>
+                            <p class="card-text">5,99€</p>
+                            <h5 class="card-title">Pro:</h5>
+                            <p class="card-text">7,99€</p> --}}
                         </div>
                     </div>
-                    @endforeach
+                    
+                    <form method="post" id="payment-form" action="{{ url('/checkout') }}">
+                        @csrf
+                        <section>
+                            <label id="amount-label" for="amount">
+                                <span class="input-label">Totale</span>
+                                <div class="input-wrapper amount-wrapper">
+                                    <input id="amount" name="amount" type="tel" min="1" placeholder="€" value="">
+                                </div>
+                            </label>
+        
+                            <div class="bt-drop-in-wrapper">
+                                <div id="bt-dropin"></div>
+                            </div>
+                        </section>
+        
+                        <input id="nonce" name="payment_method_nonce" type="hidden" />
+                        <button class="button btn btn-success" type="submit"><span>Paga!</span></button>
+                    </form>
+
                 </div>
             </div>
                 
@@ -124,20 +171,40 @@
                 
         </div>
 
-        <script id="templatecard_dashboard" type="text/x-handlebars-template">
-            <div class="card">
-                <img src=" {{ asset('images/stanza.jpg') }}" alt="Card image cap">
-                <div class="info">
-                    <h4>@{{primoparametro}}</h4>
-                    <p> @{{secondoparametro}}</p>
-                    <a href="{{ url('/caratteristiche_auth') }}" class="btn btn-primary">@{{terzoparametro}}</a>
-                    <a href="{{ url('/stats') }}" class="btn btn-primary">Statistiche</a>
-                </div>
-            </div>
-        </script>
+        <script src="https://js.braintreegateway.com/web/dropin/1.23.0/js/dropin.min.js"></script>
+        <script>
+            var form = document.querySelector('#payment-form');
+            var client_token = "{{$token}}";
 
+            braintree.dropin.create({
+                authorization: client_token,
+                selector: '#bt-dropin',
+                // paypal: {
+                //     flow: 'vault'
+                // }
+            }, function (createErr, instance) {
+                if (createErr) {
+                    console.log('Create Error', createErr);
+                    return;
+                }
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    instance.requestPaymentMethod(function (err, payload) {
+                    if (err) {
+                        console.log('Request Payment Method Error', err);
+                        return;
+                    }
+
+                    // Add the nonce to the form and submit
+                    document.querySelector('#nonce').value = payload.nonce;
+                    form.submit();
+                    });
+                });
+            });
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 
-        <script src="{{ asset('js/dashboard.js') }}" defer></script>
+        <script src="{{ asset('js/pagamenti.js') }}" defer></script>
     </body>
 </html>

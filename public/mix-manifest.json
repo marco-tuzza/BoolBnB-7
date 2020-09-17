@@ -3,5 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/js/caratteristiche.js": "/js/caratteristiche.js",
     "/js/dashboard.js": "/js/dashboard.js",
+    "/js/pagamenti.js": "/js/pagamenti.js",
+    "/js/stats.js": "/js/stats.js",
     "/js/welcome.js": "/js/welcome.js"
 }

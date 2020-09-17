@@ -24,22 +24,23 @@
         <header>
             <nav class="nav-bar nav-create">
                 <div class="logo">
-                    <button class="btn-logos" type="button" id="button-addon2">
+                    <button class="btn-logos btn-create" type="button" id="button-addon2">
                         <img src="../images/bnb-logo.svg" alt="">
                     </button>
                 </div>
                 <div class="text-elements">
                     @if (Route::has('login'))
                         <div class="account">
-                            <button class="btn-account" type="button" id="button-addon2">
+                            <button class="btn-account btn-create" type="button" id="button-addon2">
                                 <img src="../images/account.svg" alt="">
                             </button>
-    
+
                             <div class="drop-menu">
                                 <ul>
                                     @auth
                                         <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
-                                        <li> <a href="">Aggiungi Appartamento</a> </li>
+                                        <li> <a href="{{ url('/messaggi') }}">I Miei Messaggi</a> </li>
+                                        <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
                                         <li> <a href="{{ route('home') }}">Home</a> </li>
                                         <li>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -63,19 +64,23 @@
                 </div>
             </nav>
         </header>
-    
+
         <div class="container ct-form">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">Aggiungi un Appartamento</div>
-    
+
                         <div class="card-body card-apartment">
-                            <form action="{{ route('apartment.store') }}" method="post">
+                            <form action="{{ route('apartment.store') }}" method="post" id="form-salva">
                                 @csrf
                                 <div class="form-group row">
                                     <label for="titolo_appartamento">Titolo Appartamento</label>
                                     <input type="text" name="titolo_appartamento" class="form-control" id="titolo_appartamento" placeholder="Titolo appartamento" value="{{ old('titolo_appartamento') }}" required>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="descrizione">Descrizione</label>
+                                    <input type="text" name="descrizione" class="form-control" id="Descrizione" placeholder="Aggiungi una descrizione" value="{{ old('descrizione') }}" required>
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_stanze">Numero stanze</label>
@@ -124,27 +129,27 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="metriquadri">Metri quadri</label>
-                                    <input type="number" name="metri_quadri" class="form-control" id="metriquadri" placeholder="Metri quadri" value="">
+                                    <input type="number" name="metri_quadri" class="form-control" id="metriquadri" placeholder="Metri quadri" value="" required>
                                 </div>
                                 <div class="form-group row non-visibile">
                                     <label for="id_proprietario">Id proprietario</label>
-                                <input type="text" name="id_proprietario" class="form-control" id="id_proprietario" placeholder="Id proprietario" value="{{Auth::id()}}">
+                                <input type="text" name="id_proprietario" class="form-control" id="id_proprietario" placeholder="Id proprietario" value="{{Auth::id()}}" required>
                                 </div>
                                 <div class="form-group row">
                                     <label for="form-address">Indirizzo*</label>
-                                    <input type="search" class="form-control" id="form-address" placeholder="Dove vivi?" />
+                                    <input type="search" class="form-control" id="form-address" placeholder="Dove si trova l'appartamento?" required />
                                 </div>
                                 <div class="form-group row">
                                     <label for="form-address2">Indirizzo 2</label>
-                                    <input type="text" class="form-control" id="form-address2" placeholder="Numero e nome della via" />
+                                    <input type="text" class="form-control" id="form-address2" placeholder="Informazioni aggiuntive" />
                                 </div>
                                 <div class="form-group row">
                                     <label for="form-city">Citta*</label>
-                                    <input type="text" class="form-control" id="form-city" placeholder="Città">
+                                    <input type="text" class="form-control" id="form-city" placeholder="Città" required>
                                 </div>
                                 <div class="form-group row">
                                     <label for="form-zip">Codice Postale*</label>
-                                    <input type="text" class="form-control" id="form-zip" placeholder="Codice Postale">
+                                    <input type="text" class="form-control" id="form-zip" placeholder="Codice Postale" required>
                                 </div>
                                 <div class="form-group row non-visibile">
                                     <label for="latitudine">latitudine</label>
@@ -156,18 +161,18 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="immagine_appartamento">Immagine appartamento</label>
-                                    <input type="text" name="immagine_appartamento" class="form-control" id="immagine_appartamento" placeholder="immagine_appartamento" value="https://picsum.photos/200/300">
+                                    <input type="text" name="immagine_appartamento" class="form-control" id="immagine_appartamento" placeholder="immagine_appartamento" value="https://picsum.photos/200/300" required>
                                 </div>
                                 <div class="form-group row">
                                 @foreach ($servizi as $servizio)
                                     <label for="immagine_appartamento">
                                         <input {{ in_array($servizio->id, old('servizi', [])) ? 'checked' : '' }} class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
                                         <h6 class="text-servizio">{{$servizio->titolo_servizio}}</h6>
-                                        
+
                                     </label>
-                                @endforeach 
+                                @endforeach
                                 </div>
-                                <button type="submit" class="btn btn-primary">Salva</button>
+                                <button type="submit" class="btn btn-primary" id="btn-save">Salva</button>
                             </form>
                         </div>
                     </div>
@@ -209,6 +214,23 @@
                 <section> <i>© 2020 Team7 Boolean, Inc. All rights reserved</i></section>
             </div>
         </footer>
+
+
+        <div class="form-success">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Salvataggio Appartamento...</h5>
+                </div>
+
+                <div class="card-body">
+                    <h5>Sto Salvando l'appartamento, non chiudere la scheda! <br> Verrai reindirizzato alla Homepage</h5>
+                    {{-- <button type="submit" class="btn btn-success" id="continue">
+                        Continua!
+                    </button> --}}
+                </div>
+            </div>
+        </div>
+
     </div>
     <script src="{{ asset('js/appartment.js') }}" defer></script>
 </body>

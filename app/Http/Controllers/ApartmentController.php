@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Apartment;
+use App\Message;
 use App\Service;
-
 class ApartmentController extends Controller
 {
     /**
@@ -15,30 +14,24 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-
         // Get the currently authenticated user's ID...
-
         $id = Auth::id();
-        
         $appartamenti = Apartment::all()->where('id_proprietario', $id);
-        
         return view('dashboard', compact('appartamenti'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $servizi = Service::All();
         $data = [
             'servizi' => $servizi
         ];
         return view('auth.apartment.create', $data);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -50,14 +43,18 @@ class ApartmentController extends Controller
         //Bisogna aggiungere le validazioni
         $dati = $request->all();
         $nuovo_appartamento = new Apartment();
+        $servizi = Service::All();
         $nuovo_appartamento->fill($dati);
         $nuovo_appartamento->save();
-        $nuovo_appartamento->services()->sync($dati['servizi']);
+        if (!empty($dati['servizi'])) {
+            $nuovo_appartamento->services()->sync($dati['servizi']);
+        } else {
+            $nuovo_appartamento->services()->detach();
+        }
         $id = Auth::id();
         $appartamenti = Apartment::all()->where('user_id', $id);
         return view('welcome', compact('appartamenti'));
     }
-
     /**
      * Display the specified resource.
      *
@@ -68,13 +65,15 @@ class ApartmentController extends Controller
     {
         $servizi = Service::all();
         $appartamento = Apartment::find($id);
+        $userId = Auth::id();
+        $messaggi = Message::All()->where('id_ricevente', $userId);
         $data = [
             'servizi' => $servizi,
-            'appartamento' => $appartamento
+            'appartamento' => $appartamento,
+            'messaggi' => $messaggi
         ];
         return view('caratteristiche', $data);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -94,7 +93,6 @@ class ApartmentController extends Controller
         }
         return abort('404');
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -126,10 +124,8 @@ class ApartmentController extends Controller
                 $appartamento->services()->detach();
             }
         }
-        
         return redirect()->route('apartment.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -139,8 +135,10 @@ class ApartmentController extends Controller
     public function destroy($id)
     {
         $appartamento = Apartment::find($id);
+        $messaggi = Message::where('id_appartamento', $id);
         if($appartamento) {
             $appartamento->services()->detach();
+            $messaggi->delete();
             $appartamento->delete();
             return redirect()->route('apartment.index');
         } else {

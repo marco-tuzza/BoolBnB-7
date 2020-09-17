@@ -1,57 +1,85 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
-
 const $ = require('jquery');
-const Handlebars = require("handlebars");
-const template = Handlebars.compile("Name: {{name}}");
-console.log(template({ name: "Nils" }));
 
-$(document).ready(function(){
+$(function() {
 
-    $('#login').click(function(){
-        $('.form-accedi').addClass('mostra-form');
-        $('.wrapper-page').addClass('active');
+    // qua imposto il messaggio di conferma di salvataggio dell'appartamento
+    var allowSubmit = false;
+    
+    $("#form-salva").on("submit", function(event) {
+        $('.wrapper-apartament').addClass('active');
+        $('.form-success').addClass('mostra-form');
+
+        if (!allowSubmit) {
+            event.preventDefault();
+
+            // $('#continue').click(function(){
+            //     $('.form-success').removeClass('mostra-form');
+            //     $('.wrapper-apartament').removeClass('active');
+            //     allowSubmit = true;
+            //     $("#form-salva").submit();        
+            // });
+        }
+
+        setTimeout(function() {
+            $('.form-success').removeClass('mostra-form');
+            $('.wrapper-apartament').removeClass('active');
+            allowSubmit = true;
+            $("#form-salva").submit();
+        }, 3000);
+
     });
 
-    $('#register').click(function(){
-        $('.form-registrati').addClass('mostra-form');
-        $('.wrapper-page').addClass('active');
-    });
+    $("#form-elimina").on("submit", function(event) {
+        console.log('entro');
+        $('.wrapper-apartament').addClass('active');
+        $('.form-delete').addClass('mostra-form');
 
-    $('.close').click(function(){
-        $('.form-accedi').removeClass('mostra-form');
-        $('.form-registrati').removeClass('mostra-form');
-        $('.wrapper-page').removeClass('active');
+        if (!allowSubmit) {
+            event.preventDefault();
+
+            $('#continue').click(function(){
+                $('.form-delete').removeClass('mostra-form');
+                $('.wrapper-apartament').removeClass('active');
+                allowSubmit = true;
+                $("#form-elimina").submit();        
+            });
+
+            $('.close').click(function(){
+                $('.form-delete').removeClass('mostra-form');
+                $('.wrapper-apartament').removeClass('active');
+            });
+            $('.annulla').click(function(){
+                $('.form-delete').removeClass('mostra-form');
+                $('.wrapper-apartament').removeClass('active');
+            });
+        }
+        
+
     });
 
     (function() {
         var placesAutocomplete = places({
-          appId: 'plT92Q60ZYBJ',
-          apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
-          container: document.querySelector('#form-address'),
-          templates: {
-            value: function(suggestion) {
-              return suggestion.name;
+            appId: 'plT92Q60ZYBJ',
+            apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
+            container: document.querySelector('#form-address'),
+            templates: {
+                value: function(suggestion) {
+                return suggestion.name;
+                }
             }
-          }
         }).configure({
-          type: 'address'
+            type: 'address'
         });
         placesAutocomplete.on('change', function resultSelected(e) {
-          document.querySelector('#form-address2').value = e.suggestion.administrative || '';
-          document.querySelector('#form-city').value = e.suggestion.city || '';
-          document.querySelector('#form-zip').value = e.suggestion.postcode || '';
-          $('#latitudine').val(e.suggestion.latlng.lat);
-          $('#longitudine').val(e.suggestion.latlng.lng);
+            document.querySelector('#form-address2').value = e.suggestion.administrative || '';
+            document.querySelector('#form-city').value = e.suggestion.city || '';
+            document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+            $('#latitudine').val(e.suggestion.latlng.lat);
+            $('#longitudine').val(e.suggestion.latlng.lng);
         });
     })();
+
+
 });
-
-
-

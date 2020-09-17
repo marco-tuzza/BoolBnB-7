@@ -14,8 +14,9 @@ class UpdateAppartamentiTable extends Migration
     public function up()
     {
         Schema::table('appartamenti', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->nullable()->after('id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('id_proprietario')->after('id');
+            $table->foreign('id_proprietario')->references('id')->on('users');
+            $table->text('descrizione')->after('titolo_appartamento');
         });
     }
 

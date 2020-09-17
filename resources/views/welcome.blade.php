@@ -69,65 +69,76 @@
                         <div class="butt">
                             <button class="btn btn-primary search" type="button" id="button-addon2">Cerca</button>
                         </div>
-                        <div class="filter-1">
-                            <label for="numero_stanze">Numero stanze</label>
-                            <select name="numero_stanze" id="numerostanze">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
+                        <div class="filtri-uno">
+                            <div class="filter">
+                                <select name="numero_stanze" id="numerostanze" class="custom-select">
+                                    <option value="1">Stanze - 1</option>
+                                    <option value="2">Stanze - 2</option>
+                                    <option value="3">Stanze - 3</option>
+                                    <option value="4">Stanze - 4</option>
+                                    <option value="5">Stanze - 5</option>
+                                    <option value="6">Stanze - 6</option>
+                                    <option value="7">Stanze - 7</option>
+                                    <option value="8">Stanze - 8</option>
+                                    <option value="9">Stanze - 9</option>
+                                    <option value="10">Stanze - 10</option>
+                                </select>
+                            </div>
+                            <div class="filter">
+                                <select name="numero_letti" id="numeroletti" class="custom-select">
+                                    <option value="1">Letti - 1</option>
+                                    <option value="2">Letti - 2</option>
+                                    <option value="3">Letti - 3</option>
+                                    <option value="4">Letti - 4</option>
+                                    <option value="5">Letti - 5</option>
+                                    <option value="6">Letti - 6</option>
+                                    <option value="7">Letti - 7</option>
+                                    <option value="8">Letti - 8</option>
+                                    <option value="9">Letti - 9</option>
+                                    <option value="10">Letti - 10</option>
+                                </select>
+                            </div>
+
+                            <div class="filter">
+                                <select class="custom-select" id="distanza">
+                                    <option selected value="0.2">Distanza - 20km</option>
+                                    <option value="0.4">40km</option>
+                                    <option value="0.6">60km</option>
+                                    <option value="0.8">80km</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="filter-2">
-                            <label for="numero_letti">Numero letti</label>
-                            <select name="numero_letti" id="numeroletti">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
+
+                        <div class="checkbox">
+                            <label for="wifi" class="input-group-text check-label">
+                                <input class="check-input" type="checkbox" name="WiFi" value="1">
+                                <h6>WiFi</h6>
+                            </label>
+                            <label for="posto-macchina" class="input-group-text check-label">
+                                <input class="check-input" type="checkbox" name="Posto Macchina" value="2">
+                                <h6>Posto Macchina</h6>
+                            </label>
+                            <label for="piscina" class="input-group-text check-label">
+                                <input class="check-input" type="checkbox" name="Piscina" value="3">
+                                <h6>Piscina</h6>
+                            </label>
+                            <label for="portineria" class="input-group-text check-label">
+                                <input class="check-input" type="checkbox" name="Portineria" value="4">
+                                <h6>Portineria</h6>
+                            </label>
+                            <label for="sauna" class="input-group-text check-label">
+                                <input class="check-input" type="checkbox" name="Sauna" value="5">
+                                <h6>Sauna</h6>
+                            </label>
+                            <label for="vista-mare" class="input-group-text check-label">
+                                <input class="check-input" type="checkbox" name="Vista Mare" value="6">
+                                <h6>Vista Mare</h6>
+                            </label>
                         </div>
                     </div>
                 </div>
 
-                <div class="checkbox">
-                    <label for="wifi" class="input-group-text check-label">
-                        <input class="check-input" type="checkbox" name="WiFi" value="wifi">
-                        <h6>WiFi</h6>
-                    </label>
-                    <label for="posto-macchina" class="input-group-text check-label">
-                        <input class="check-input" type="checkbox" name="Posto Macchina" value="posto-macchina">
-                        <h6>Posto Macchina</h6>
-                    </label>
-                    <label for="piscina" class="input-group-text check-label">
-                        <input class="check-input" type="checkbox" name="Piscina" value="piscina">
-                        <h6>Piscina</h6>
-                    </label>
-                    <label for="portineria" class="input-group-text check-label">
-                        <input class="check-input" type="checkbox" name="Portineria" value="portineria">
-                        <h6>Portineria</h6>
-                    </label>
-                    <label for="sauna" class="input-group-text check-label">
-                        <input class="check-input" type="checkbox" name="Sauna" value="sauna">
-                        <h6>Sauna</h6>
-                    </label>
-                    <label for="vista-mare" class="input-group-text check-label">
-                        <input class="check-input" type="checkbox" name="Vista Mare" value="vista-mare">
-                        <h6>Vista Mare</h6>
-                    </label>
-                </div>
+                
             </div>
 
 
@@ -136,75 +147,99 @@
                     <h2>Appartamenti in evidenza:</h2>
                 </div>
                 <div class="img-evidence">
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
                             </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
+                            </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
                             </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
+                            </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
                             </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
+                            </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
                             </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
+                            </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
                             </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
+                            </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
                             </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
+                            </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
                             </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
+                            </div>
                         </a>
                     </div>
-                    <div class="card">
+                    <div class="card sponsorized">
                         <a href="{{ url ('/caratteristiche') }}">
                             <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
                             <div class="info">
                                 <h4>Titolo Appartamento</h4>
                                 <p>Posizione Appartamento</p>
+                            </div>
+                            <div class="star">
+                                <h4> <i>Appartamento in evidenza</i> </h4>
                             </div>
                         </a>
                     </div>

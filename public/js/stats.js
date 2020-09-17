@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -37257,89 +37257,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/appartment.js":
-/*!************************************!*\
-  !*** ./resources/js/appartment.js ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-
-$(function () {
-  // qua imposto il messaggio di conferma di salvataggio dell'appartamento
-  var allowSubmit = false;
-  $("#form-salva").on("submit", function (event) {
-    $('.wrapper-apartament').addClass('active');
-    $('.form-success').addClass('mostra-form');
-
-    if (!allowSubmit) {
-      event.preventDefault(); // $('#continue').click(function(){
-      //     $('.form-success').removeClass('mostra-form');
-      //     $('.wrapper-apartament').removeClass('active');
-      //     allowSubmit = true;
-      //     $("#form-salva").submit();        
-      // });
-    }
-
-    setTimeout(function () {
-      $('.form-success').removeClass('mostra-form');
-      $('.wrapper-apartament').removeClass('active');
-      allowSubmit = true;
-      $("#form-salva").submit();
-    }, 3000);
-  });
-  $("#form-elimina").on("submit", function (event) {
-    console.log('entro');
-    $('.wrapper-apartament').addClass('active');
-    $('.form-delete').addClass('mostra-form');
-
-    if (!allowSubmit) {
-      event.preventDefault();
-      $('#continue').click(function () {
-        $('.form-delete').removeClass('mostra-form');
-        $('.wrapper-apartament').removeClass('active');
-        allowSubmit = true;
-        $("#form-elimina").submit();
-      });
-      $('.close').click(function () {
-        $('.form-delete').removeClass('mostra-form');
-        $('.wrapper-apartament').removeClass('active');
-      });
-      $('.annulla').click(function () {
-        $('.form-delete').removeClass('mostra-form');
-        $('.wrapper-apartament').removeClass('active');
-      });
-    }
-  });
-
-  (function () {
-    var placesAutocomplete = places({
-      appId: 'plT92Q60ZYBJ',
-      apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
-      container: document.querySelector('#form-address'),
-      templates: {
-        value: function value(suggestion) {
-          return suggestion.name;
-        }
-      }
-    }).configure({
-      type: 'address'
-    });
-    placesAutocomplete.on('change', function resultSelected(e) {
-      document.querySelector('#form-address2').value = e.suggestion.administrative || '';
-      document.querySelector('#form-city').value = e.suggestion.city || '';
-      document.querySelector('#form-zip').value = e.suggestion.postcode || '';
-      $('#latitudine').val(e.suggestion.latlng.lat);
-      $('#longitudine').val(e.suggestion.latlng.lng);
-    });
-  })();
-});
-
-/***/ }),
-
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -37385,26 +37302,64 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!********************************************************************!*\
-  !*** multi ./resources/js/appartment.js ./resources/sass/app.scss ***!
-  \********************************************************************/
+/***/ "./resources/js/stats.js":
+/*!*******************************!*\
+  !*** ./resources/js/stats.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\appartment.js */"./resources/js/appartment.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+$(function () {
+  var ctx = document.getElementById('myChart1').getContext('2d');
+  var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+    // The data for our dataset
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [0, 10, 5, 2, 20, 30, 45]
+      }]
+    },
+    // Configuration options go here
+    options: {}
+  });
+  var ctx = document.getElementById('myChart2').getContext('2d');
+  var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+    // The data for our dataset
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [0, 10, 5, 2, 20, 30, 45]
+      }]
+    },
+    // Configuration options go here
+    options: {}
+  });
+});
+
+/***/ }),
+
+/***/ 5:
+/*!*************************************!*\
+  !*** multi ./resources/js/stats.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\stats.js */"./resources/js/stats.js");
 
 
 /***/ })
