@@ -61,13 +61,13 @@ $(document).ready(function(){
             console.log(numeroletti);
             var distanza = $('#distanza').children('option:selected').val();
             console.log(numeroletti);
-            parte_ricerca(lat, lon, e, numerostanze, numeroletti);
+            parte_ricerca(lat, lon, e, numerostanze, numeroletti, distanza);
         });
         
     });
 
 
-    function parte_ricerca (lat, lon, e, numerostanze, numeroletti) {
+    function parte_ricerca (lat, lon, e, numerostanze, numeroletti, distanza) {
 
         $.ajax({
     
@@ -80,7 +80,8 @@ $(document).ready(function(){
                 'lon' : lon,
                 'stanze': numerostanze,
                 'letti': numeroletti,
-                'servizi' : filtroservizi()
+                'servizi' : filtroservizi(),
+                'distanza': distanza
             },
     
             "success" : function(answer) {
@@ -100,7 +101,7 @@ $(document).ready(function(){
                         var lon2 = apartment[i].longitudine    
                         var lat1 = e.suggestion.latlng.lat
                         var lon1 = e.suggestion.latlng.lng
-                        distance(lat1,lon1,lat2,lon2, apartmentData);
+                        distance(lat1,lon1,lat2,lon2,apartmentData, distanza);
                 };
     
                 if ($('.img-evidence').is(':empty')){
@@ -110,7 +111,9 @@ $(document).ready(function(){
         });
     }
     
-    function distance(lat1, lon1, lat2, lon2, apartmentData) {
+    function distance(lat1, lon1, lat2, lon2, apartmentData, distanza) {
+
+        var distanza_reale = distanza * 100;
         if ((lat1 == lat2) && (lon1 == lon2)) {
             disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id)
             // return 0;
@@ -128,7 +131,7 @@ $(document).ready(function(){
             dist = dist * 180/Math.PI;
             dist = dist * 60 * 1.1515;
             dist = dist * 1.609344
-            if (dist < 20) {
+            if (dist < distanza_reale) {
                 disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id)   
             } else {
                 console.log('troppo lontano');

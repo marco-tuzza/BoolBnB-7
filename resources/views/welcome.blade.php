@@ -101,10 +101,10 @@
 
                             <div class="filter">
                                 <select class="custom-select" id="distanza">
-                                    <option selected value="20">Distanza - 20km</option>
-                                    <option value="40">40km</option>
-                                    <option value="60">60km</option>
-                                    <option value="80">80km</option>
+                                    <option selected value="0.2">Distanza - 20km</option>
+                                    <option value="0.4">40km</option>
+                                    <option value="0.6">60km</option>
+                                    <option value="0.8">80km</option>
                                 </select>
                             </div>
                         </div>
