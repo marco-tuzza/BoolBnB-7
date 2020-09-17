@@ -11510,7 +11510,7 @@ button::focus {
 }
 
 .wrapper-apartament {
-  height: 100%;
+  min-height: 100vh;
 }
 
 .wrapper-apartament::after {
@@ -11577,6 +11577,7 @@ button::focus {
   margin-top: 6rem;
   padding-bottom: 6rem;
   margin-bottom: 9rem;
+  min-height: 875px;
 }
 
 .wrapper-apartament .form-success,
