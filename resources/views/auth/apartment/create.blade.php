@@ -64,7 +64,6 @@
                 </div>
             </nav>
         </header>
-
         <div class="container ct-form">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -168,7 +167,6 @@
                                     <label for="immagine_appartamento">
                                         <input {{ in_array($servizio->id, old('servizi', [])) ? 'checked' : '' }} class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
                                         <h6 class="text-servizio">{{$servizio->titolo_servizio}}</h6>
-
                                     </label>
                                 @endforeach
                                 </div>
@@ -179,7 +177,6 @@
                 </div>
             </div>
         </div>
-
         <footer class="foot-create">
             <div class="wrap-footer">
                 <div class="block1">
