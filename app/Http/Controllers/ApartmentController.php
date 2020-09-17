@@ -135,12 +135,10 @@ class ApartmentController extends Controller
     public function destroy($id)
     {
         $appartamento = Apartment::find($id);
-        $messaggi = Message::all()->where('id_appartamento', $appartamento->id);
+        $messaggi = Message::where('id_appartamento', $id);
         if($appartamento) {
             $appartamento->services()->detach();
-            if ($messaggi) {
-                $appartamento->messages()->detach();;
-            };
+            $messaggi->delete();
             $appartamento->delete();
             return redirect()->route('apartment.index');
         } else {

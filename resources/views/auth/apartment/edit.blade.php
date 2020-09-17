@@ -154,8 +154,8 @@
                                         <input
                                         @if($errors->any())
                                             {{ in_array($servizio->id, old('servizi', [])) ? 'checked' : '' }}
-                                        {{-- @else
-                                            {{ $appartamento->$servizi->contains($servizi) ? 'checked' : '' }} --}}
+                                        @else
+                                            {{ $appartamento->services->contains($servizio) ? 'checked' : '' }}
                                         @endif
                                         class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
                                         {{$servizio->titolo_servizio}}
