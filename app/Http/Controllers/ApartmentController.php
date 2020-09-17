@@ -45,12 +45,12 @@ class ApartmentController extends Controller
         $nuovo_appartamento = new Apartment();
         $servizi = Service::All();
         $nuovo_appartamento->fill($dati);
+        $nuovo_appartamento->save();
         if (!empty($dati['servizi'])) {
             $nuovo_appartamento->services()->sync($dati['servizi']);
         } else {
             $nuovo_appartamento->services()->detach();
         }
-        $nuovo_appartamento->save();
         $id = Auth::id();
         $appartamenti = Apartment::all()->where('user_id', $id);
         return view('welcome', compact('appartamenti'));
