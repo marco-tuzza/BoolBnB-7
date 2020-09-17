@@ -16,6 +16,7 @@ class UpdateAppartamentiTable extends Migration
         Schema::table('appartamenti', function (Blueprint $table) {
             $table->unsignedBigInteger('id_proprietario')->after('id');
             $table->foreign('id_proprietario')->references('id')->on('users');
+            $table->text('descrizione')->after('titolo_appartamento');
         });
     }
 

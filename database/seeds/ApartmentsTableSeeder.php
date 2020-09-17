@@ -15,8 +15,9 @@ class ApartmentsTableSeeder extends Seeder
     {
         for ($i=0; $i < 1000; $i++) {
             $nuovo_appartamento = new Apartment();
-            $nuovo_appartamento->titolo_appartamento=$faker->sentence($nbWords = 3);
             $nuovo_appartamento->id_proprietario=$faker->numberBetween($min = 1, $max = 100);
+            $nuovo_appartamento->titolo_appartamento=$faker->sentence($nbWords = 3);
+            $nuovo_appartamento->descrizione=$faker->sentence($nbWords = 50);
             $nuovo_appartamento->numero_stanze=$faker->randomDigitNot(0);
             $nuovo_appartamento->numero_letti=$faker->randomDigitNot(0);
             $nuovo_appartamento->numero_bagni=$faker->randomDigitNot(0);
