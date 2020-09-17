@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -73,7 +74,7 @@
                                 <h4>Visualizzazioni totali</h4>
                             </div>
                             <div class="grafico">
-                                <img src="images/grafico.png" alt="">
+                                <canvas id="myChart1"></canvas>
                             </div>
                         </div>
 
@@ -81,11 +82,8 @@
                             <div class="text-stat text-center">
                                 <h4>Statistiche Messaggi</h4>
                             </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Grafico sui messaggi</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi laborum hic aut deserunt perferendis. Harum, ullam officiis! Deserunt rerum, saepe perspiciatis earum distinctio deleniti maxime, obcaecati dolorem provident a magni?</p>
-                                </div>
+                            <div class="grafico">
+                                <canvas id="myChart2"></canvas>
                             </div>
                         </div>
                     
@@ -135,6 +133,6 @@
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 
-        <script src="{{ asset('js/welcome.js') }}" defer></script>
+        <script src="{{ asset('js/stats.js') }}" defer></script>
     </body>
 </html>
