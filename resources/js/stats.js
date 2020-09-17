@@ -31,8 +31,8 @@ $(function() {
         },
     });
 
-    var ctx = document.getElementById('myChart1').getContext('2d');
-    var chart = new Chart(ctx, {
+    var ctx1 = document.getElementById('myChart1').getContext('2d');
+    var chart1 = new Chart(ctx1, {
         // The type of chart we want to create
         type: 'line',
 
@@ -51,8 +51,8 @@ $(function() {
         options: {}
     });
 
-    var ctx = document.getElementById('myChart2').getContext('2d');
-    var chart = new Chart(ctx, {
+    var ctx2 = document.getElementById('myChart2').getContext('2d');
+    var chart2 = new Chart(ctx2, {
         // The type of chart we want to create
         type: 'line',
 
@@ -71,5 +71,32 @@ $(function() {
         options: {}
     });
 
+    var ctx1a = document.getElementById('myChart1a').getContext('2d');
+    var myBarChart1 = new Chart(ctx1a, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                barPercentage: 0.5,
+                barThickness: 6,
+                maxBarThickness: 8,
+                minBarLength: 2,
+                data: [10, 20, 30, 40, 50, 60, 70]
+            }]
+        },
+    });
+
+    var ctx2a = document.getElementById('myChart2a').getContext('2d');
+    var myBarChart2 = new Chart(ctx2a, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                barPercentage: 0.5,
+                barThickness: 6,
+                maxBarThickness: 8,
+                minBarLength: 2,
+                data: [10, 20, 30, 40, 50, 60, 70]
+            }]
+        },
+    });
 
 });

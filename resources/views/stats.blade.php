@@ -66,28 +66,40 @@
             <div class="block-center-dash">
                 <div class="text-dash">
                     <div class="title-dash text-center">
-                        <h2>Statische "Titolo Appartamento":</h2>
+                        <h2>Statische "{{$appartamento->titolo_appartamento}}":</h2>
                     </div>
                 </div>
                 <div class="img-apartment stats">
-                        <div class="stat">
-                            <div class="text-stat text-center">
-                                <h4>Visualizzazioni totali</h4>
-                            </div>
-                            <div class="grafico">
-                                <canvas id="myChart1"></canvas>
-                            </div>
+                    <div class="stat">
+                        <div class="text-stat text-center">
+                            <h4>Visualizzazioni totali</h4>
                         </div>
+                        <div class="grafico">
+                            <canvas id="myChart1"></canvas>
+                        </div>
+                    </div>
 
-                        <div class="stat">
-                            <div class="text-stat text-center">
-                                <h4>Statistiche Messaggi</h4>
-                            </div>
-                            <div class="grafico">
-                                <canvas id="myChart2"></canvas>
-                            </div>
+                    <div class="stat">
+                        <div class="text-stat text-center">
+                            <h4>Statistiche Messaggi</h4>
                         </div>
-                    
+                        <div class="grafico">
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="img-apartment stats">
+                    <div class="stat">
+                        <div class="grafico">
+                            <canvas id="myChart1a"></canvas>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="grafico">
+                            <canvas id="myChart2a"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
 
