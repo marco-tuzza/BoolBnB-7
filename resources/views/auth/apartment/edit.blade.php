@@ -79,6 +79,10 @@
                                     <input type="text" name="titolo_appartamento" class="form-control" id="titolo_appartamento" placeholder="Titolo appartamento" value="{{ old('titolo_appartamento', $appartamento->titolo_appartamento) }}">
                                 </div>
                                 <div class="form-group row">
+                                    <label for="descrizione">Descrizione</label>
+                                    <input type="text" name="descrizione" class="form-control" id="descrizione" placeholder="Aggiungi una descrizione" value="{{ old('descrizione', $appartamento->descrizione) }}" required>
+                                </div>
+                                <div class="form-group row">
                                     <label for="numero_stanze">Numero stanze</label>
                                     {{-- da risolvere old sulle select --}}
                                     <select name="numero_stanze" id="numerostanze">
@@ -150,13 +154,13 @@
                                         <input
                                         @if($errors->any())
                                             {{ in_array($servizio->id, old('servizi', [])) ? 'checked' : '' }}
-                                        {{-- @else   
+                                        {{-- @else
                                             {{ $appartamento->$servizi->contains($servizi) ? 'checked' : '' }} --}}
                                         @endif
                                         class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
                                         {{$servizio->titolo_servizio}}
                                     </label>
-                                @endforeach 
+                                @endforeach
                                 </div>
                                 <button type="submit" class="btn btn-primary">Salva</button>
                             </form>

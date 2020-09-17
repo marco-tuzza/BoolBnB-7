@@ -34,7 +34,7 @@
                             <button class="btn-account btn-create" type="button" id="button-addon2">
                                 <img src="../images/account.svg" alt="">
                             </button>
-    
+
                             <div class="drop-menu">
                                 <ul>
                                     @auth
@@ -64,19 +64,23 @@
                 </div>
             </nav>
         </header>
-    
+
         <div class="container ct-form">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">Aggiungi un Appartamento</div>
-    
+
                         <div class="card-body card-apartment">
                             <form action="{{ route('apartment.store') }}" method="post" id="form-salva">
                                 @csrf
                                 <div class="form-group row">
                                     <label for="titolo_appartamento">Titolo Appartamento</label>
                                     <input type="text" name="titolo_appartamento" class="form-control" id="titolo_appartamento" placeholder="Titolo appartamento" value="{{ old('titolo_appartamento') }}" required>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="descrizione">Descrizione</label>
+                                    <input type="text" name="descrizione" class="form-control" id="Descrizione" placeholder="Aggiungi una descrizione" value="{{ old('descrizione') }}" required>
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_stanze">Numero stanze</label>
@@ -164,9 +168,9 @@
                                     <label for="immagine_appartamento">
                                         <input {{ in_array($servizio->id, old('servizi', [])) ? 'checked' : '' }} class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
                                         <h6 class="text-servizio">{{$servizio->titolo_servizio}}</h6>
-                                        
+
                                     </label>
-                                @endforeach 
+                                @endforeach
                                 </div>
                                 <button type="submit" class="btn btn-primary" id="btn-save">Salva</button>
                             </form>
