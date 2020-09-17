@@ -61,7 +61,7 @@
         margin-bottom: 9rem;
     }
 
-    .form-success {
+    .form-success, .form-delete {
         display: none;
         position: fixed;
         min-width: 300px;
@@ -76,13 +76,17 @@
             h5 {
                 margin: auto;
             }
+            img {
+                width: 13px;
+                cursor: pointer;
+            }
         }
         .card-body h5 {
             font-size: 1rem;
         }
     }
 
-    .form-success.mostra-form {
+    .form-success.mostra-form, .form-delete.mostra-form {
         display: block;
     }
 }

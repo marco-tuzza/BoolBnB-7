@@ -4,31 +4,6 @@ const $ = require('jquery');
 
 $(function() {
 
-    (function() {
-        var placesAutocomplete = places({
-            appId: 'plT92Q60ZYBJ',
-            apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
-            container: document.querySelector('#form-address'),
-            templates: {
-                value: function(suggestion) {
-                return suggestion.name;
-                }
-            }
-        }).configure({
-            type: 'address'
-        });
-        placesAutocomplete.on('change', function resultSelected(e) {
-            document.querySelector('#form-address2').value = e.suggestion.administrative || '';
-            document.querySelector('#form-city').value = e.suggestion.city || '';
-            document.querySelector('#form-zip').value = e.suggestion.postcode || '';
-            $('#latitudine').val(e.suggestion.latlng.lat);
-            $('#longitudine').val(e.suggestion.latlng.lng);
-        });
-    })();
-
-
-
-
     // qua imposto il messaggio di conferma di salvataggio dell'appartamento
     var allowSubmit = false;
     
@@ -57,6 +32,7 @@ $(function() {
     });
 
     $("#form-elimina").on("submit", function(event) {
+        console.log('entro');
         $('.wrapper-apartament').addClass('active');
         $('.form-delete').addClass('mostra-form');
 
@@ -64,14 +40,46 @@ $(function() {
             event.preventDefault();
 
             $('#continue').click(function(){
-                $('.form-success').removeClass('mostra-form');
+                $('.form-delete').removeClass('mostra-form');
                 $('.wrapper-apartament').removeClass('active');
                 allowSubmit = true;
-                $("#form-delete").submit();        
+                $("#form-elimina").submit();        
+            });
+
+            $('.close').click(function(){
+                $('.form-delete').removeClass('mostra-form');
+                $('.wrapper-apartament').removeClass('active');
+            });
+            $('.annulla').click(function(){
+                $('.form-delete').removeClass('mostra-form');
+                $('.wrapper-apartament').removeClass('active');
             });
         }
+        
 
     });
+
+    (function() {
+        var placesAutocomplete = places({
+            appId: 'plT92Q60ZYBJ',
+            apiKey: 'b2d1f81e1e0aa1ead87da414255dda36',
+            container: document.querySelector('#form-address'),
+            templates: {
+                value: function(suggestion) {
+                return suggestion.name;
+                }
+            }
+        }).configure({
+            type: 'address'
+        });
+        placesAutocomplete.on('change', function resultSelected(e) {
+            document.querySelector('#form-address2').value = e.suggestion.administrative || '';
+            document.querySelector('#form-city').value = e.suggestion.city || '';
+            document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+            $('#latitudine').val(e.suggestion.latlng.lat);
+            $('#longitudine').val(e.suggestion.latlng.lng);
+        });
+    })();
 
 
 });

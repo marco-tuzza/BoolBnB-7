@@ -11579,7 +11579,8 @@ button::focus {
   margin-bottom: 9rem;
 }
 
-.wrapper-apartament .form-success {
+.wrapper-apartament .form-success,
+.wrapper-apartament .form-delete {
   display: none;
   position: fixed;
   min-width: 300px;
@@ -11590,20 +11591,30 @@ button::focus {
   z-index: 10;
 }
 
-.wrapper-apartament .form-success .card-header {
+.wrapper-apartament .form-success .card-header,
+.wrapper-apartament .form-delete .card-header {
   display: flex;
   justify-content: space-between;
 }
 
-.wrapper-apartament .form-success .card-header h5 {
+.wrapper-apartament .form-success .card-header h5,
+.wrapper-apartament .form-delete .card-header h5 {
   margin: auto;
 }
 
-.wrapper-apartament .form-success .card-body h5 {
+.wrapper-apartament .form-success .card-header img,
+.wrapper-apartament .form-delete .card-header img {
+  width: 13px;
+  cursor: pointer;
+}
+
+.wrapper-apartament .form-success .card-body h5,
+.wrapper-apartament .form-delete .card-body h5 {
   font-size: 1rem;
 }
 
-.wrapper-apartament .form-success.mostra-form {
+.wrapper-apartament .form-success.mostra-form,
+.wrapper-apartament .form-delete.mostra-form {
   display: block;
 }
 

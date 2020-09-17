@@ -224,13 +224,15 @@
             <div class="card">
                 <div class="card-header">
                     <h5>Elimina Appartamento</h5>
+                    <img src="../../images/close.svg" alt="close" class="close">
                 </div>
 
                 <div class="card-body">
-                    <h5>Sei sicuro di voler eliminare l'appartamento? <br> Verrai reindirizzato alla Homepage</h5>
+                    <h5>Sei sicuro di voler eliminare l'appartamento? <br> Verrai reindirizzato al Tuo Profilo</h5>
                     <button type="submit" class="btn btn-danger" id="continue">
                         Elimina!
                     </button>
+                    <button type="button" class="btn btn-secondary annulla">Annulla</button>
                 </div>
             </div>
         </div>
