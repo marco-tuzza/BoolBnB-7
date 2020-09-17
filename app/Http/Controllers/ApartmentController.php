@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Apartment;
 use App\Message;
 use App\Service;
+use App\Statistic;
 class ApartmentController extends Controller
 {
     /**
@@ -72,6 +73,16 @@ class ApartmentController extends Controller
             'appartamento' => $appartamento,
             'messaggi' => $messaggi
         ];
+        $data_statistica = [
+            "id_appartamento" => $id,
+            "id_proprietario" => $appartamento->id_proprietario
+        ];
+        $userId = Auth::id();
+        if ($userId != $appartamento->id_proprietario) {
+            $statistica = new Statistic();
+            $statistica->fill($data_statistica);
+            $statistica->save();
+        }
         return view('caratteristiche', $data);
     }
     /**

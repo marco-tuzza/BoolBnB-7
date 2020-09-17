@@ -77,7 +77,7 @@
                             <p>Numero stanze: {{$appartamento->numero_stanze}}</p>
                             <p>Metri Quadri: {{$appartamento->metri_quadri}}</p>
                             <a href="{{ url( '/caratteristiche', ['id' => $appartamento->id] ) }}" class="btn btn-primary">Dettagli</a>
-                            <a href="{{ url('/stats') }}" class="btn btn-primary">Statistiche</a>
+                            <a href="{{ url('/stats', ['id' => $appartamento->id]) }}" class="btn btn-primary">Statistiche</a>
                             <a href="{{ route('apartment.edit', ['apartment' => $appartamento->id] ) }}" class="btn btn-warning">Aggiorna / Modifica</a>
                         </div>
                     </div>
