@@ -90,12 +90,24 @@
                     </p>
                 </div>
 
+                <div class="casella-servizi">
+                    <div class="servizi">
+                        <h2>Servizi</h2>
+                        <ul>
+                            @foreach ($appartamento->services as $servizio)
+                                <li>{{$servizio->titolo_servizio}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
 
-                <div class="contact-form">
+
+                
                     {{-- controllo se l'utente è registrato --}}
                     @if (Auth::user())
                         {{-- controllo se l'utente registrato è proprietario dell'appartamento, se non lo è --}}
                         @if ($appartamento->id_proprietario != Auth::user()->id)
+                        <div class="contact-form">
                             <div class="infos-4">
                                 <h2>Contatta l'host</h2>
                                 <div class="">
@@ -113,23 +125,17 @@
                                     </form>
                                 </div>
                             </div>
+                        </div>
                         @endif
                         {{-- se lo è, mostro i messaggi ricevuti su questo appartamento --}}
-                        <div class="infos-4">
-                            <h4>I tuoi messaggi:</h4>
-                            @foreach ($messaggi as $messaggio)
-                                <div class="card">
-                                    <div class="info">
-                                        <h4>Mittente: {{$messaggio->email_mittente}}</h4>
-                                        <p>Testo del messaggio: {{$messaggio->testo_messaggio}}
-                                        </p>
-                                    </div>
-                                </div>
-                            @endforeach
+
+                        <div class="contact-form invisible">
+
                         </div>
 
                     {{-- se l'utente non è registrato, mostro il form per contattare il proprietario --}}
                     @else
+                    <div class="contact-form">
                         <div class="infos-4">
                             <h2>Contatta l'host</h2>
                             <div class="">
@@ -147,8 +153,9 @@
                                 </form>
                             </div>
                         </div>
+                    </div>
                     @endif
-                </div>
+                
 
                 <div class="infos-maps">
                     <div class="map">
@@ -158,18 +165,8 @@
                     </div>
                 </div>
 
-                <div class="casella-servizi">
-                    <div class="servizi">
-                        <h2>Servizi</h2>
-                        <ul>
-                            @foreach ($servizi as $servizio)
-                                <li>{{$servizio->titolo_servizio}}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
+                
             </div>
-
 
             <footer class="third-block-ch">
                 <div class="wrap-footer">
