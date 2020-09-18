@@ -9,6 +9,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://momentjs.com/downloads/moment.js" charset="utf-8"></script>
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -32,7 +33,7 @@
                                         <button class="btn-account btn-create" type="button" id="button-addon2">
                                             <img src="../images/account.svg" alt="">
                                         </button>
-    
+
                                         <div class="drop-menu">
                                             <ul>
                                                 @auth
