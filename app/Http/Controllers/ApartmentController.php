@@ -77,6 +77,7 @@ class ApartmentController extends Controller
         $data_statistica = [
             "id_appartamento" => $id,
             "id_proprietario" => $appartamento->id_proprietario,
+            "count" => 1,
             "data_visualizzazione" => Carbon::now()->format('d-m-Y')
         ];
         $userId = Auth::id();
