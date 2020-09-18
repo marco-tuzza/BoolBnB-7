@@ -42428,22 +42428,22 @@ $(document).ready(function () {
     // Ricevo risultati per l'Italia
     type: ['city', 'address'] // Cerco per città e indirizzo
 
-  }); // al change dell'input, svuoto e faccio partire la ricerca 
+  });
+  var lat;
+  var lon;
+  var luogo; // al change dell'input, e al click su search, svuoto e faccio partire la ricerca 
 
   placesAutocomplete.on('change', function prova(e) {
-    var lat = e.suggestion.latlng.lat;
-    var lon = e.suggestion.latlng.lng;
-    $('.search').click(function () {
-      $('.text-card h2').text('Risultati della ricerca:');
-      $('.img-evidence').empty();
-      var numerostanze = $('#numerostanze').children('option:selected').val();
-      console.log(numerostanze);
-      var numeroletti = $('#numeroletti').children('option:selected').val();
-      console.log(numeroletti);
-      var distanza = $('#distanza').children('option:selected').val();
-      console.log(numeroletti);
-      parte_ricerca(lat, lon, e, numerostanze, numeroletti, distanza);
-    });
+    luogo = e;
+    lat = luogo.suggestion.latlng.lat;
+    lon = luogo.suggestion.latlng.lng;
+  });
+  $('.search').on('click', function () {
+    $('.text-card h2').text('Risultati della ricerca:');
+    var numerostanze = $('#numerostanze').children('option:selected').val();
+    var numeroletti = $('#numeroletti').children('option:selected').val();
+    var distanza = $('#distanza').children('option:selected').val();
+    parte_ricerca(lat, lon, luogo, numerostanze, numeroletti, distanza);
   });
 
   function parte_ricerca(lat, lon, e, numerostanze, numeroletti, distanza) {
@@ -42459,10 +42459,9 @@ $(document).ready(function () {
         'distanza': distanza
       },
       "success": function success(answer) {
-        console.log(lat, lon);
         $('.img-evidence').empty();
-        var apartment = answer.data; // $('.risultati').append(apartment);
-
+        console.log(lat, lon);
+        var apartment = answer.data;
         console.log(apartment);
 
         for (var i = 0; i < apartment.length; i++) {
@@ -42477,7 +42476,8 @@ $(document).ready(function () {
         ;
 
         if ($('.img-evidence').is(':empty')) {
-          $('.img-evidence').append('nessun risultato trovato');
+          $('.img-evidence').append('<h4 class="no-results non-visible">Nessun appartamento trovato..prova ad aumentare la distanza o a cambiare città! :)</h4>');
+          $('.no-results').removeClass('non-visible');
         }
 
         ;
@@ -42540,36 +42540,12 @@ $(document).ready(function () {
     $('.check-input:checked').each(function () {
       var nome = $(this).val();
       selezionati.push(nome);
-    });
-    console.log(selezionati);
+    }); // console.log(selezionati);
+
     return selezionati;
   }
 
-  ; // $('.check-input').on ('click', function(){
-  //     $('.card').removeClass('non-visible');
-  //     var selezionati = [];
-  //     $('.check-input:checked').each(function(){
-  //         var nome = $(this).attr('name');
-  //         selezionati.push(nome);
-  //     });
-  //     console.log(selezionati);
-  //     // var valore = $(this).attr('name');
-  //     // console.log(valore);
-  //     $('.serv').each(function(){
-  //         // var presenti = [];
-  //         var val_p = $(this).text();
-  //         // presenti.push(val_p)
-  //         // console.log(val_p.includes(valore));
-  //         if ( !val_p.includes(selezionati) ) {
-  //             console.log(val_p);
-  //             // console.log(this);
-  //             $(this).closest('.card').addClass('non-visible');
-  //         } else if (selezionati == '') {
-  //             console.log(val_p);
-  //             $('.card').removeClass('non-visible');
-  //         }
-  //     });
-  // });
+  ;
 });
 
 /***/ }),
@@ -42581,7 +42557,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean esercizi/boolbnb-7/resources/js/welcome.js */"./resources/js/welcome.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\welcome.js */"./resources/js/welcome.js");
 
 
 /***/ })

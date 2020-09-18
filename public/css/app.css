@@ -10938,7 +10938,7 @@ button::focus {
 
 .wrapper-page::after {
   display: block;
-  background: url(/images/background.svg?c39118723a5b2a420d187e4caf422523);
+  background: url(/images/background.svg?ad347a1dcb60401d62a1538a5c3fc72a);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -11423,6 +11423,10 @@ button::focus {
   text-shadow: 0px 1px black;
 }
 
+.img-evidence .no-results {
+  margin-top: 10rem;
+}
+
 .img-evidence .card.sponsorized {
   background: linear-gradient(135deg, #faf8f5 60%, #f5deb8 100%);
 }
@@ -11510,7 +11514,7 @@ button::focus {
 
 .wrapper-apartament::after {
   display: block;
-  background: url(/images/background.svg?c39118723a5b2a420d187e4caf422523);
+  background: url(/images/background.svg?ad347a1dcb60401d62a1538a5c3fc72a);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -11566,6 +11570,10 @@ button::focus {
 
 .wrapper-apartament .card .card-apartment .non-visibile {
   display: none;
+}
+
+.wrapper-apartament .card .card-apartment .dis {
+  pointer-events: none;
 }
 
 .wrapper-apartament .ct-form {
@@ -11651,7 +11659,7 @@ input[type=checkbox] {
 
 .wrapper-page-caratteristiche::after {
   display: block;
-  background: url(/images/background.svg?c39118723a5b2a420d187e4caf422523);
+  background: url(/images/background.svg?ad347a1dcb60401d62a1538a5c3fc72a);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -11853,7 +11861,7 @@ input[type=checkbox] {
 
 .wrapper-dashboard::after {
   display: block;
-  background: url(/images/background.svg?c39118723a5b2a420d187e4caf422523);
+  background: url(/images/background.svg?ad347a1dcb60401d62a1538a5c3fc72a);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

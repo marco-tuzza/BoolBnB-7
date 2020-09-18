@@ -52,6 +52,9 @@
             .non-visibile {
                 display: none;
             }
+            .dis {
+                pointer-events: none;
+            }
         }
     }
     

@@ -243,7 +243,7 @@
                             </div>
                         </a>
                     </div>
-
+                    <h4 class="no-results non-visible">Nessun appartamento trovato..prova ad aumentare la distanza o a cambiare città! :)</h4>
                 </div>
             </main>
 

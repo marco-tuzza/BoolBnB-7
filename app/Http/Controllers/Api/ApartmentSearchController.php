@@ -52,6 +52,7 @@ class ApartmentSearchController extends Controller
         return response()->json([
             'success' => true,
             'data' => $array,
+            'cache' => false,
             'count' => $appartamenti->count()
         ]);
     }

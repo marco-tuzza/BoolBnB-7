@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="descrizione">Descrizione</label>
-                                    <input type="text" name="descrizione" class="form-control" id="Descrizione" placeholder="Aggiungi una descrizione" value="{{ old('descrizione') }}" required>
+                                    <textarea class="form-control" name="descrizione" placeholder="Aggiungi una descrizione" id="Descrizione" rows="3" value="{{ old('descrizione') }}" required></textarea>
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_stanze">Numero stanze</label>
@@ -138,12 +138,12 @@
                                     <label for="form-address">Indirizzo*</label>
                                     <input type="search" class="form-control" id="form-address" placeholder="Dove si trova l'appartamento?" required />
                                 </div>
-                                <div class="form-group row">
-                                    <label for="form-address2">Indirizzo 2</label>
-                                    <input type="text" class="form-control" id="form-address2" placeholder="Informazioni aggiuntive" />
+                                <div class="form-group row dis">
+                                    <label for="form-address2">Provincia</label>
+                                    <input type="text" class="form-control" id="form-address2" placeholder="Provincia" />
                                 </div>
-                                <div class="form-group row">
-                                    <label for="form-city">Citta*</label>
+                                <div class="form-group row dis">
+                                    <label for="form-city">Citta / Comune *</label>
                                     <input type="text" class="form-control" id="form-city" placeholder="Città" required>
                                 </div>
                                 <div class="form-group row">

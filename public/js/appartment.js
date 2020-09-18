@@ -37329,7 +37329,7 @@ $(function () {
       type: 'address'
     });
     placesAutocomplete.on('change', function resultSelected(e) {
-      document.querySelector('#form-address2').value = e.suggestion.administrative || '';
+      document.querySelector('#form-address2').value = e.suggestion.county || '';
       document.querySelector('#form-city').value = e.suggestion.city || '';
       document.querySelector('#form-zip').value = e.suggestion.postcode || '';
       $('#latitudine').val(e.suggestion.latlng.lat);
@@ -37403,8 +37403,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/boolean esercizi/boolbnb-7/resources/js/appartment.js */"./resources/js/appartment.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean esercizi/boolbnb-7/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\appartment.js */"./resources/js/appartment.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
