@@ -6,6 +6,7 @@ use App\Apartment;
 use App\Message;
 use App\Service;
 use App\Statistic;
+use Carbon\Carbon;
 class ApartmentController extends Controller
 {
     /**
@@ -75,7 +76,8 @@ class ApartmentController extends Controller
         ];
         $data_statistica = [
             "id_appartamento" => $id,
-            "id_proprietario" => $appartamento->id_proprietario
+            "id_proprietario" => $appartamento->id_proprietario,
+            "data_visualizzazione" => Carbon::now()->format('d-m-Y')
         ];
         $userId = Auth::id();
         if ($userId != $appartamento->id_proprietario) {
