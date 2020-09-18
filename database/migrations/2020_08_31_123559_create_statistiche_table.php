@@ -17,7 +17,7 @@ class CreateStatisticheTable extends Migration
             $table->id();
             $table->tinyInteger('id_proprietario');
             $table->text('data_visualizzazione');
-            $table->text('count')->default(1);
+            $table->integer('count')->default('1');
             $table->timestamps();
         });
     }
