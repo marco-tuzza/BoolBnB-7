@@ -13,15 +13,17 @@ class CreateAppartamentiHasSponsorizzazioniTable extends Migration
      */
     public function up()
     {
-        Schema::create('appartamenti_sponsorizzazioni', function (Blueprint $table) {
+        Schema::create('appart_sponsor', function (Blueprint $table) {
 
             $table->unsignedBigInteger('apartment_id');
             $table->foreign('apartment_id')->references('id')->on('appartamenti');
 
-            $table->unsignedBigInteger('promotion_id');
-            $table->foreign('promotion_id')->references('id')->on('sponsorizzazioni');
+            $table->unsignedBigInteger('sponsorship_id');
+            $table->foreign('sponsorship_id')->references('id')->on('sponsorizzazioni');
 
-            $table->primary(['apartment_id', 'promotion_id']);
+            $table->date('scadenza');
+
+            $table->primary(['apartment_id', 'sponsorship_id']);
             $table->timestamps();
 
         });

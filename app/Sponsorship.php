@@ -6,14 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sponsorship extends Model
 {
-    protected $table = 'sponsorizzazioni';
-    protected $fillable = ['id_pagamento', 'tipologia_sponsorizzazione'];
+    protected $table = 'appart_sponsor';
+    protected $fillable = ['apartment_id', 'sponsorship_id', 'scadenza'];
 
-    public function apartments() {
-        return $this->belongsToMany('App\Apartment');
-    }
-
-    public function payments() {
-        return $this->belongsTo('App\Payment');
-    }
 }

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Service;
+use Carbon\Carbon;
+use DB;
 
 class ApartmentSearchController extends Controller
 {
@@ -13,16 +15,26 @@ class ApartmentSearchController extends Controller
         $appartamenti = Apartment::all();
         $array = [];
         $arrayServizi = [];
+        $arraySponsor = [];
         foreach ($appartamenti as $appartamento) {
             $servizio = $appartamento->services;
-            array_push($arrayServizi, $servizio);
+            $sponsorizzazioni = $appartamento->sponsorships;
+            if ($servizio) {
+                array_push($arrayServizi, $servizio);
+            }
+            if ($sponsorizzazioni) {
+                foreach ($sponsorizzazioni as $sponsorizzazione) {
+                    array_push($arraySponsor, $sponsorizzazione->pivot);
+                }
+            }
             array_push($array, $appartamento);
         };
         return response()->json([
             'success' => true,
             'data' => [
                 'appartamento' => $array,
-                'servizi' => $arrayServizi
+                'servizi' => $arrayServizi,
+                'sponsorizzazioni' => $arraySponsor
             ],
             'count' => $appartamenti->count()
         ]);
@@ -54,6 +66,30 @@ class ApartmentSearchController extends Controller
             'data' => $array,
             'cache' => false,
             'count' => $appartamenti->count()
+        ]);
+    }
+
+    public function sponsorizzati() {
+
+        
+        $sponsorizzazioni = DB::select("SELECT * FROM `appart_sponsor` WHERE `scadenza` > CURDATE()");
+        $sponsor = [];
+        $array = [];
+        foreach ($sponsorizzazioni as $sponsorizzazione) {
+            $id = $sponsorizzazione->apartment_id;
+            array_push($sponsor, $id);
+        }
+        $appartamenti = Apartment::all();
+        foreach ($appartamenti as $appartamento) {
+           if (in_array($appartamento->id, $sponsor)) {
+            array_push($array, $appartamento);
+           }
+        };
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'sponsorizzati' => $array
+            ],
         ]);
     }
 }

@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/apartment/search', 'Api\ApartmentSearchController@index');
 Route::get('/apartment/search/filter', 'Api\ApartmentSearchController@search');
 Route::get('/statistiche/search/{id}', 'Api\StatisticheController@index');
+Route::get('/sponsor', 'Api\ApartmentSearchController@sponsorizzati');
