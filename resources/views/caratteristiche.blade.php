@@ -75,13 +75,7 @@
 
 
                 <div class="info-title">
-                    <h2>Appartamento affittato da: <strong> Nome </strong> </h2>
-                    {{-- <div class="infos">
-                        <span>Metri Quadri: {{$appartamento->metri_quadri}}</span>
-                        <span>Stanze: {{$appartamento->numero_stanze}}</span>
-                        <span>Letti: {{$appartamento->numero_letti}}</span>
-                        <span>Bagni: {{$appartamento->numero_bagni}}</span>
-                    </div> --}}
+                    <h2>Appartamento affittato da: <strong>{{ $utente->nome }} {{$utente->cognome}}</strong> </h2>
                 </div>
 
                 <div class="text-descrizione">
@@ -125,7 +119,7 @@
                                     <input class="text" type="text" name="testo_messaggio">
                                     <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
                                     <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
-                                    <input type="date" name="data_invio">
+                                    <input type="hidden" value="{{ $data_attuale }}" name="data_invio">
                                     <button type="submit">Invia</button>
                                     <input type="reset">
                                     </form>
@@ -153,7 +147,7 @@
                                 <input class="text" type="text" name="testo_messaggio">
                                 <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
                                 <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
-                                <input type="hidden" value="{{ Carbon::now()->format('y-m-d')}}" name="data_invio">
+                                <input type="hidden" value="{{ $data_attuale }}" name="data_invio">
                                 <button type="submit">Invia</button>
                                 <input type="reset">
                                 </form>

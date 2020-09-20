@@ -7,6 +7,7 @@ use App\Message;
 use App\Service;
 use App\Statistic;
 use Carbon\Carbon;
+use App\User;
 class ApartmentController extends Controller
 {
     /**
@@ -67,12 +68,16 @@ class ApartmentController extends Controller
     {
         $servizi = Service::all();
         $appartamento = Apartment::find($id);
+        $user_id = $appartamento->id_proprietario;
+        $user = User::find($user_id);
         $userId = Auth::id();
         $messaggi = Message::All()->where('id_ricevente', $userId);
         $data = [
             'servizi' => $servizi,
             'appartamento' => $appartamento,
-            'messaggi' => $messaggi
+            'messaggi' => $messaggi,
+            'utente' => $user,
+            'data_attuale' => Carbon::now()->format('y-m-d')
         ];
         $data_statistica = [
             "id_appartamento" => $id,

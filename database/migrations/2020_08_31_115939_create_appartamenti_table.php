@@ -22,6 +22,7 @@ class CreateAppartamentiTable extends Migration
             $table->mediumInteger('metri_quadri');
             $table->text('latitudine');
             $table->text('longitudine');
+            $table->tinyInteger('visibile')->default('1');
             $table->text('immagine_appartamento');
             $table->timestamps();
         });

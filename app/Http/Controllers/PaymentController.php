@@ -27,7 +27,7 @@ class PaymentController extends Controller
         if ($appartamento->id_proprietario == Auth::id()) {
             return view('auth.pagamenti', ['token' => $token, 'appartamento' => $appartamento]);
         } else {
-            return view('welcome');
+            return back();
         }
         
     }

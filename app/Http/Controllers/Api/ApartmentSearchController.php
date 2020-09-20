@@ -32,7 +32,7 @@ class ApartmentSearchController extends Controller
     public function search(Request $data) {
         $array = [];
         $servizi = $data->servizi;
-        $appartamenti = Apartment::all()->where('latitudine', '>', $data->lat - $data->distanza)->where('latitudine', '<', $data->lat + $data->distanza)->where('longitudine', '>', $data->lon - $data->distanza)->where('longitudine', '<', $data->lon + $data->distanza)->where('numero_stanze', '>=', $data->stanze)->where('numero_letti', '>=', $data->letti);
+        $appartamenti = Apartment::all()->where('latitudine', '>', $data->lat - $data->distanza)->where('latitudine', '<', $data->lat + $data->distanza)->where('longitudine', '>', $data->lon - $data->distanza)->where('longitudine', '<', $data->lon + $data->distanza)->where('numero_stanze', '>=', $data->stanze)->where('numero_letti', '>=', $data->letti)->where('visibile', 1);
         foreach ($appartamenti as $appartamento) {
             $servizi_appartamento = $appartamento->services;
             $sponsor_appartamento = $appartamento->sponsorships;
