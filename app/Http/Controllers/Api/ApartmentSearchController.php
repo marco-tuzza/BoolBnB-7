@@ -51,15 +51,18 @@ class ApartmentSearchController extends Controller
                 array_push($array, $appartamento);
             }
         };
+
         $sponsor = [];
         $normali = [];
+
         foreach ($array as $value) {
-            if ($value->sponsorship) {
+            if (count($value->sponsorships) != 0) {
                 array_push($sponsor, $value);
             } else {
                 array_push($normali, $value);
             }
         }
+
         return response()->json([
             'success' => true,
             'data' => $normali,
@@ -72,7 +75,7 @@ class ApartmentSearchController extends Controller
     public function sponsorizzati() {
 
         
-        $sponsorizzazioni = DB::select("SELECT * FROM `appartamenti_sponsorizzazioni` WHERE `scadenza` > CURDATE()");
+        $sponsorizzazioni = DB::select("SELECT * FROM `appart_sponsor` WHERE `scadenza` > CURDATE()");
         $sponsor = [];
         $array = [];
         foreach ($sponsorizzazioni as $sponsorizzazione) {
@@ -87,9 +90,7 @@ class ApartmentSearchController extends Controller
         };
         return response()->json([
             'success' => true,
-            'data' => [
-                'sponsorizzati' => $array
-            ],
+            'sponsorizzati' => $array
         ]);
     }
 }

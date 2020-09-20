@@ -42469,6 +42469,21 @@ var tl2 = gsap.timeline({
   }
 });
 $(document).ready(function () {
+  $.ajax({
+    "url": "http://localhost:8000/api/sponsor",
+    "method": "GET",
+    "success": function success(answer) {
+      var sponsor = answer.sponsorizzati;
+      console.log(sponsor);
+
+      for (var i = 0; i < sponsor.length; i++) {
+        var apartmentsponsor = sponsor[i];
+        disegno_card_2(apartmentsponsor.titolo_appartamento, apartmentsponsor.immagine_appartamento, apartmentsponsor.services, apartmentsponsor.id);
+      }
+
+      ;
+    }
+  });
   $('#login').click(function () {
     $('.wrapper-page').addClass('active');
     tl.fromTo(card_login, 1, {
@@ -42565,7 +42580,9 @@ $(document).ready(function () {
         $('.img-evidence').empty();
         console.log(lat, lon);
         var apartment = answer.data;
+        var sponsor = answer.sponsorizzati;
         console.log(apartment);
+        console.log(sponsor);
         tl.fromTo(card, 1.5, {
           opacity: 0,
           y: 100
@@ -42586,6 +42603,17 @@ $(document).ready(function () {
 
         ;
 
+        for (var i = 0; i < sponsor.length; i++) {
+          var apartmentsponsor = sponsor[i];
+          var lat2 = apartment[i].latitudine;
+          var lon2 = apartment[i].longitudine;
+          var lat1 = e.suggestion.latlng.lat;
+          var lon1 = e.suggestion.latlng.lng;
+          disegno_card_2(apartmentsponsor.titolo_appartamento, apartmentsponsor.immagine_appartamento, apartmentsponsor.services, apartmentsponsor.id);
+        }
+
+        ;
+
         if ($('.img-evidence').is(':empty')) {
           $('.img-evidence').append('<h4 class="no-results non-visible">Nessun appartamento trovato..prova ad aumentare la distanza o a cambiare città! :)</h4>');
           $('.no-results').removeClass('non-visible');
@@ -42600,10 +42628,6 @@ $(document).ready(function () {
     var distanza_reale = distanza * 100;
 
     if (lat1 == lat2 && lon1 == lon2) {
-      if (apartmentData.sponsorships == []) {
-        disegno_card_2(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id, apartmentData.sponsorships);
-      }
-
       disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id); // return 0;
     } else {
       var radlat1 = Math.PI * lat1 / 180;
@@ -42622,10 +42646,6 @@ $(document).ready(function () {
       dist = dist * 1.609344;
 
       if (dist < distanza_reale) {
-        if (apartmentData.sponsorships == []) {
-          disegno_card_2(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id, apartmentData.sponsorships);
-        }
-
         disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id);
       } else {
         console.log('troppo lontano');
@@ -42642,16 +42662,16 @@ $(document).ready(function () {
     } // preparo i dati per il template
 
 
-    var card_app = {
+    var card_app_sponsor = {
       'titolo': dati,
       'imm': immagine,
       'servizi': '<p class="serv" >' + servizi + '</p>',
       'id': id
     }; // riempo il template di handlebars
 
-    var html_card = template2(card_app); // appendo la card con i dati del risultato corrente
+    var html_card_2 = template2(card_app_sponsor); // appendo la card con i dati del risultato corrente
 
-    $('.img-evidence').append(html_card);
+    $('.img-evidence').prepend(html_card_2);
   }
 
   function disegno_card(dati, immagine, servizi, id) {
