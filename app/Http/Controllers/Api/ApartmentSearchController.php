@@ -51,18 +51,26 @@ class ApartmentSearchController extends Controller
                 array_push($array, $appartamento);
             }
         };
-
+        $sponsorizzazioni = DB::select("SELECT * FROM `appart_sponsor` WHERE `scadenza` > CURDATE()");
+        $sponsorizzazioni_id = [];
+        foreach ($sponsorizzazioni as $sponsorizzazione) {
+            $id = $sponsorizzazione->apartment_id;
+            array_push($sponsorizzazioni_id, $id);
+        }
         $sponsor = [];
         $normali = [];
-
         foreach ($array as $value) {
-            if (count($value->sponsorships) != 0) {
-                array_push($sponsor, $value);
+            if (in_array($value->id, $sponsorizzazioni_id)) {
+                $servizi = $appartamento->services;
+                if ($value->visibile == 1) {
+                 array_push($sponsor, $value);
+                }               
             } else {
-                array_push($normali, $value);
+                if ($value->visibile == 1) {
+                    array_push($normali, $value);
+                } 
             }
         }
-
         return response()->json([
             'success' => true,
             'data' => $normali,
@@ -86,7 +94,9 @@ class ApartmentSearchController extends Controller
         foreach ($appartamenti as $appartamento) {
            if (in_array($appartamento->id, $sponsor)) {
                $servizi = $appartamento->services;
+               if ($appartamento->visibile == 1) {
                 array_push($array, $appartamento);
+               }               
            }
         };
         return response()->json([
