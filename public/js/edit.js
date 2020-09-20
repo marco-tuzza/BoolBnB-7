@@ -37326,8 +37326,10 @@ $(function () {
   $("#non-visibile").on("click", function () {
     if ($(this).is(':checked')) {
       $('#non-visibile').val('0');
+      console.log(this);
     } else {
-      $(this).val('1');
+      $(this).val(1);
+      console.log(this);
     }
   });
   $("#form-salva").on("submit", function (event) {

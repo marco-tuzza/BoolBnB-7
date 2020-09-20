@@ -7,19 +7,21 @@ $(function() {
     // qua imposto il messaggio di conferma di salvataggio dell'appartamento
     var allowSubmit = false;
 
-    if ( $('#non-visibile').is(':checked') ) {
-        $('#non-visibile').val('0');
-    } else {
-        $('#non-visibile').val(1);
-    }
+    // if ( $('#non-visibile').is(':checked') ) {
+    //     $('#non-visibile').val('0');
+    // } else {
+    //     $('#non-visibile').val(1);
+    // }
 
-    $("#non-visibile").on("click", function() {
-        if ( $(this).is(':checked') ) {
-            $('#non-visibile').val('0');
-        } else {
-            $(this).val('1');
-        }
-    });
+    // $("#non-visibile").on("click", function() {
+    //     if ( $(this).is(':checked') ) {
+    //         $('#non-visibile').val('0');
+    //         console.log(this);
+    //     } else {
+    //         $(this).val(1);
+    //         console.log(this);
+    //     }
+    // });
     
     $("#form-salva").on("submit", function(event) {
         $('.wrapper-apartament').addClass('active');

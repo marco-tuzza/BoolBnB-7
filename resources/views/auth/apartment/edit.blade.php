@@ -150,9 +150,16 @@
                                     <input type="text" name="immagine_appartamento" class="form-control" id="immagine_appartamento" placeholder="immagine_appartamento" value="{{ old('immagine_appartamento', $appartamento->immagine_appartamento) }}">
                                 </div>
                                 <div class="form-group visib row">
+                                    <label for="visibile">Visibilità Appartamento</label>
+                                    <select name="visibile" id="numerostanze">
+                                        <option value="1" {{ $appartamento->visibile == 1 ? 'selected' : '' }}>Visibile</option>
+                                        <option value="0" {{ $appartamento->visibile == 0 ? "selected" : "" }}>Non Visibile</option>
+                                    </select>
+                                </div>
+                                {{-- <div class="form-group visib row">
                                     <label for="non-visibile">Rendi l'appartamento non visibile</label>
                                     <input {{ $appartamento->visibile == 0 ? 'checked' : '' }} type="checkbox" name="visibile" class="form-control" id="non-visibile">
-                                </div>
+                                </div> --}}
                                 <div class="form-group row">
                                 @foreach ($servizi as $servizio)
                                     <label for="check">

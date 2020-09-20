@@ -130,7 +130,7 @@ class ApartmentController extends Controller
             'metri_quadri' => 'required|numeric',
             'latitudine' => 'required|numeric',
             'longitudine' => 'required|numeric',
-            'visibile' => 'required|numeric|max:1',
+            'visibile' => 'required|numeric',
             'immagine_appartamento' => 'required|url'
         ]);
         $dati = $request->all();
