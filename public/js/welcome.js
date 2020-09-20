@@ -42399,19 +42399,119 @@ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"
 
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
 
+var block1 = document.querySelector('.first-block');
+var back = document.querySelector('.wrapper-page'); // const logo = document.querySelector('.logo');
+// const menu = document.querySelector('.text-elements');
+
+var text = document.querySelector('.tit');
+var text2 = document.querySelector('.tit2');
+var input = document.querySelector('.input-an');
+var text3 = document.querySelector('.text-card');
+var card = document.querySelector('.img-evidence');
+var card_login = document.querySelector('.form-accedi');
+var card_register = document.querySelector('.form-registrati');
+var tl = gsap.timeline({
+  defaults: {
+    ease: "power1.out"
+  }
+});
+tl.fromTo(block1, 1, {
+  y: "-100%",
+  opacity: 0
+}, {
+  y: "0%",
+  opacity: 1,
+  ease: Power2.easeInOut
+}).fromTo(back, 1, {
+  opacity: 0
+}, {
+  opacity: 1,
+  ease: Power2.easeInOut
+}, "-=1").fromTo(text, 1, {
+  opacity: 0,
+  y: 50
+}, {
+  opacity: 1,
+  y: 0,
+  ease: Power2.easeInOut
+}).fromTo(text2, 1, {
+  opacity: 0,
+  y: 50
+}, {
+  opacity: 1,
+  y: 0,
+  ease: Power2.easeInOut
+}, "-=0.5").fromTo(input, 1.5, {
+  opacity: 0,
+  y: 100
+}, {
+  opacity: 1,
+  y: 0,
+  ease: Back.easeOut.config(1)
+}).fromTo(text3, 1, {
+  opacity: 0,
+  y: 30
+}, {
+  opacity: 1,
+  y: 0,
+  ease: Power2.easeInOut
+}, "-=1").fromTo(card, 1.5, {
+  opacity: 0,
+  y: 100
+}, {
+  opacity: 1,
+  y: 0,
+  ease: Back.easeOut.config(2)
+}, "-=1");
+var tl2 = gsap.timeline({
+  defaults: {
+    ease: Back.easeIn.config(1.7)
+  }
+});
 $(document).ready(function () {
   $('#login').click(function () {
-    $('.form-accedi').addClass('mostra-form');
     $('.wrapper-page').addClass('active');
+    tl.fromTo(card_login, 1, {
+      y: "200%",
+      opacity: 0
+    }, {
+      y: "-50%",
+      opacity: 1,
+      ease: Power2.easeInOut
+    });
+    $('.form-accedi').addClass('mostra-form');
   });
   $('#register').click(function () {
-    $('.form-registrati').addClass('mostra-form');
     $('.wrapper-page').addClass('active');
+    tl.fromTo(card_register, 1, {
+      y: "200%",
+      opacity: 0
+    }, {
+      y: "-50%",
+      opacity: 1,
+      ease: Power2.easeInOut
+    });
+    $('.form-registrati').addClass('mostra-form');
   });
-  $('.close').click(function () {
-    $('.form-accedi').removeClass('mostra-form');
-    $('.form-registrati').removeClass('mostra-form');
+  $('.tl1').click(function () {
     $('.wrapper-page').removeClass('active');
+    tl2.fromTo(card_login, 1, {
+      y: "-50%",
+      opacity: 1
+    }, {
+      y: "200%",
+      opacity: 0
+    });
+  });
+  $('.tl2').click(function () {
+    $('.wrapper-page').removeClass('active');
+    tl2.fromTo(card_register, 1, {
+      y: "-50%",
+      opacity: 1
+    }, {
+      y: "200%",
+      opacity: 0
+    });
   }); // preparo le variabili per handlebars
 
   var template_html = $('#card-template').html();
@@ -42463,6 +42563,14 @@ $(document).ready(function () {
         console.log(lat, lon);
         var apartment = answer.data;
         console.log(apartment);
+        tl.fromTo(card, 1.5, {
+          opacity: 0,
+          y: 100
+        }, {
+          opacity: 1,
+          y: 0,
+          ease: Back.easeOut.config(2)
+        }, "-=1");
 
         for (var i = 0; i < apartment.length; i++) {
           var apartmentData = apartment[i];

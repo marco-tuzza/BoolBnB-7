@@ -83,18 +83,27 @@ label {
         color: #fff;
         margin-top: 7rem;
         position: relative;
+        overflow: hidden;
+        .hide1 {
+            height: 70%;
+        }
+        .hide2 {
+            height: 30%;
+        }
         h1 {
-            font-family: "Montserrat", sans-serif;
-            text-transform: uppercase;
-            font-size: 2rem;
+            opacity: 0;
+            font-family: "Lobster", cursive;
+            letter-spacing: 3px;
+            font-size: 3rem;
             text-shadow: 1px 2px black;
             margin-bottom: 0.5rem;
+            transform: translateY(200%);
             @media screen and (max-width:330px) {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
                 text-shadow: 1px 1px black;
             }
             @media screen and (min-width:331px) and (max-width:1100px) {
-                font-size: 2rem;
+                font-size: 2.4rem;
                 text-shadow: 1px 1px black;
             }
 
@@ -102,7 +111,7 @@ label {
                 content: "";
                 width: 35%;
                 position: absolute;
-                top: 30%;
+                top: 63%;
                 left: 50%;
                 transform: translate(-50%, 0%);
                 height: 1rem;
@@ -113,11 +122,11 @@ label {
                 z-index: -1;
                 @media screen and (min-width:200px) and (max-width:730px){
                     width: 90%;
-                    top: 46%;
+                    top: 49%;
                 }
                 @media screen and (min-width:731px) and (max-width:900px){
                     width: 70%;
-                    top: 32%;
+                    top: 36%;
                 }
                 @media screen and (min-width:901px)and (max-width:1150px){
                     width: 55%;
@@ -133,6 +142,8 @@ label {
             font-size: 1.3rem;
             text-shadow: 1px 1px black;
             padding: 0 1rem;
+            font-weight: 500;
+            font-style: italic;
             @media screen and (max-width:330px) {
                 font-size: 0.9rem;
             }

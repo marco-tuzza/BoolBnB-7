@@ -7,7 +7,7 @@
         <title>BoolBnB</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@600;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -60,10 +60,14 @@
                     </nav>
                 </header>
                 <div class="jumbo text-center">
-                    <h1>Fai volare l'immaginazione</h1>
-                    <p>Pianifica un viaggio diverso per scoprire i tesori nascosti vicino a te.</p>
+                    <div class="hide1">
+                        <h1 class="tit">Fai volare l'immaginazione</h1>
+                    </div>
+                    <div class="hide2">
+                        <p class="tit2">Pianifica un viaggio diverso per scoprire i tesori nascosti vicino a te.</p>
+                    </div>
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group input-an mb-3">
                     <input type="text" class="form-control" id="address-input" placeholder="Cerca il posto dove ti piacerebbe andare..." aria-label="Cerca il posto dove ti piacerebbe andare..." aria-describedby="button-addon2">
                     <div class="search-filter">
                         <div class="butt">
@@ -286,7 +290,7 @@
                 <div class="card">
                     <div class="card-header">
                         {{ __('Login') }}
-                        <img src="images/close.svg" alt="close" class="close">
+                        <img src="images/close.svg" alt="close" class="close tl1">
                     </div>
 
                     <div class="card-body">
@@ -355,7 +359,7 @@
                 <div class="card">
                     <div class="card-header">
                         {{ __('Register') }}
-                        <img src="images/close.svg" alt="close" class="close">
+                        <img src="images/close.svg" alt="close" class="close tl2">
                     </div>
 
                     <div class="card-body">
@@ -468,7 +472,9 @@
         </script>
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
 
         <script src="{{ asset('js/welcome.js') }}" defer></script>
     </body>
 </html>
+

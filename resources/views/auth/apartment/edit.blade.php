@@ -23,9 +23,10 @@
         <header>
             <nav class="nav-bar nav-create">
                 <div class="logo">
-                    <button class="btn-logos btn-create" type="button" id="button-addon2">
-                        <img src="/images/bnb-logo.svg" alt="">
-                    </button>
+                    <a href="{{ url('/') }}">
+                        <button class="btn-logos btn-create" type="button" id="button-addon2">
+                        <img src="../../images/bnb-logo.svg" alt="">
+                    </button></a>
                 </div>
                 <div class="text-elements">
                     @if (Route::has('login'))
@@ -40,7 +41,7 @@
                                     <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
                                     <li> <a href="{{ url('/messaggi') }}">I Miei Messaggi</a> </li>
                                     <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
-                                    <li> <a href="{{ route('home') }}">Home</a> </li>
+                                    <li> <a href="{{ url('/') }}">Home</a> </li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

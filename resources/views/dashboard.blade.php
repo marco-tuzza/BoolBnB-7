@@ -79,6 +79,7 @@
                             <a href="{{ url( '/caratteristiche', ['id' => $appartamento->id] ) }}" class="btn btn-primary">Dettagli</a>
                             <a href="{{ url('/stats', ['id' => $appartamento->id]) }}" class="btn btn-primary">Statistiche</a>
                             <a href="{{ route('apartment.edit', ['apartment' => $appartamento->id] ) }}" class="btn btn-warning">Aggiorna / Modifica</a>
+                            <a href="{{ url('/pagamenti', ['apartment' => $appartamento->id] ) }}" class="btn btn-warning">Sponsorizza</a>
                         </div>
                     </div>
                     @endforeach

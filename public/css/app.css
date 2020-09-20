@@ -11003,26 +11003,37 @@ button::focus {
   color: #fff;
   margin-top: 7rem;
   position: relative;
+  overflow: hidden;
+}
+
+.first-block .jumbo .hide1 {
+  height: 70%;
+}
+
+.first-block .jumbo .hide2 {
+  height: 30%;
 }
 
 .first-block .jumbo h1 {
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  font-size: 2rem;
+  opacity: 0;
+  font-family: "Lobster", cursive;
+  letter-spacing: 3px;
+  font-size: 3rem;
   text-shadow: 1px 2px black;
   margin-bottom: 0.5rem;
+  transform: translateY(200%);
 }
 
 @media screen and (max-width: 330px) {
   .first-block .jumbo h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     text-shadow: 1px 1px black;
   }
 }
 
 @media screen and (min-width: 331px) and (max-width: 1100px) {
   .first-block .jumbo h1 {
-    font-size: 2rem;
+    font-size: 2.4rem;
     text-shadow: 1px 1px black;
   }
 }
@@ -11031,7 +11042,7 @@ button::focus {
   content: "";
   width: 35%;
   position: absolute;
-  top: 30%;
+  top: 63%;
   left: 50%;
   transform: translate(-50%, 0%);
   height: 1rem;
@@ -11045,14 +11056,14 @@ button::focus {
 @media screen and (min-width: 200px) and (max-width: 730px) {
   .first-block .jumbo h1::after {
     width: 90%;
-    top: 46%;
+    top: 49%;
   }
 }
 
 @media screen and (min-width: 731px) and (max-width: 900px) {
   .first-block .jumbo h1::after {
     width: 70%;
-    top: 32%;
+    top: 36%;
   }
 }
 
@@ -11074,6 +11085,8 @@ button::focus {
   font-size: 1.3rem;
   text-shadow: 1px 1px black;
   padding: 0 1rem;
+  font-weight: 500;
+  font-style: italic;
 }
 
 @media screen and (max-width: 330px) {
@@ -11720,10 +11733,10 @@ input[type=checkbox] {
 
 .second-block-ch {
   display: grid;
-  grid-template-columns: 2fr 0.5fr;
+  grid-template-columns: 1fr;
   grid-column-gap: 1rem;
   grid-template-rows: 0.5fr 2fr 0.5fr 2fr 0.8fr 2fr;
-  grid-template-areas: "box1 box1" "box2 box2" "box3 box3" "box4 box8" "box5 box5" "box7 box7";
+  grid-template-areas: "box1 box1" "box2 box2" "box3 box3" "box4 box4" "box5 box5" "box7 box7";
 }
 
 .second-block-ch .intestazione {
@@ -11740,7 +11753,7 @@ input[type=checkbox] {
 
 .second-block-ch .intestazione h2::after {
   content: "";
-  width: 100%;
+  width: 90%;
   position: absolute;
   top: 50%;
   left: 57%;
@@ -11770,6 +11783,10 @@ input[type=checkbox] {
   text-align: center;
 }
 
+.second-block-ch .info-title h2 {
+  font-style: italic;
+}
+
 .second-block-ch .text-descrizione {
   grid-area: box4;
   height: 100%;
@@ -11779,7 +11796,19 @@ input[type=checkbox] {
   padding: 2rem;
   border-radius: 14px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  background: linear-gradient(315deg, #ebebeb 0%, white 77%);
+  background: #f5f5f5c7;
+}
+
+.second-block-ch .text-descrizione .caratt ul {
+  list-style: inside;
+  padding: 0;
+  font-style: italic;
+}
+
+.second-block-ch .text-descrizione .serv ul {
+  list-style: inside;
+  padding: 0;
+  font-style: italic;
 }
 
 .second-block-ch .contact-form.invisible {
@@ -11804,6 +11833,8 @@ input[type=checkbox] {
 
 .second-block-ch .infos-maps .map {
   height: 100%;
+  max-width: 1100px;
+  margin: auto;
 }
 
 .second-block-ch .infos-maps .map #mapid {
@@ -11812,39 +11843,10 @@ input[type=checkbox] {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.second-block-ch .casella-servizi {
-  grid-area: box8;
-  border-radius: 14px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  background: linear-gradient(315deg, #ebebeb 0%, white 77%);
-  margin: auto;
-  width: 90%;
-  max-width: 1100px;
-  height: 100%;
-}
-
-.second-block-ch .casella-servizi .servizi ul {
-  list-style: none;
-  padding: 0;
-}
-
-.second-block-ch .casella-servizi .servizi ul li {
-  padding: 0.5rem 0;
-}
-
 @media screen and (max-width: 1000px) {
   .second-block-ch {
     grid-template-rows: 0.5fr 1fr 0.5fr 2fr 0.8fr 1fr 1fr;
-    grid-template-areas: "box1 box1" "box2 box2" "box3 box3" "box4 box4" "box8 box8" "box5 box5" "box7 box7";
-  }
-
-  .second-block-ch .casella-servizi {
-    margin-top: 2rem;
+    grid-template-areas: "box1 box1" "box2 box2" "box3 box3" "box4 box4" "box5 box5" "box7 box7";
   }
 
   .second-block-ch .infos-maps {

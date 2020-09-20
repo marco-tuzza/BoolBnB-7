@@ -75,32 +75,38 @@
 
 
                 <div class="info-title">
-                    <h2>Appartamento affittato da "Nome Utente"</h2>
-                    <div class="infos">
+                    <h2>Appartamento affittato da: <strong>{{ Auth::user()->nome }} </strong> </h2>
+                    {{-- <div class="infos">
                         <span>Metri Quadri: {{$appartamento->metri_quadri}}</span>
                         <span>Stanze: {{$appartamento->numero_stanze}}</span>
                         <span>Letti: {{$appartamento->numero_letti}}</span>
                         <span>Bagni: {{$appartamento->numero_bagni}}</span>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="text-descrizione">
-                    <p>
-                        {{$appartamento->descrizione}}
-                    </p>
-                </div>
-
-                <div class="casella-servizi">
-                    <div class="servizi">
-                        <h2>Servizi</h2>
+                    <div class="caratt">
+                        <h5>Caratteristiche dell'appartamento:</h5>
+                        <ul>
+                            <li>Metri Quadri: <strong>{{$appartamento->metri_quadri}}</strong> </li>
+                            <li>Stanze: <strong>{{$appartamento->numero_stanze}}</strong> </li>
+                            <li>Letti: <strong>{{$appartamento->numero_letti}}</strong> </li>
+                            <li>Bagni: <strong>{{$appartamento->numero_bagni}}</strong> </li>
+                        </ul>
+                    </div>
+                    <div class="descr">
+                        <h5>Descrizione dell'appartamento:</h5>
+                        <p>{{$appartamento->descrizione}}</p>
+                    </div>
+                    <div class="serv">
+                        <h5>Servizi aggiutnivi:</h5>
                         <ul>
                             @foreach ($appartamento->services as $servizio)
-                                <li>{{$servizio->titolo_servizio}}</li>
+                                <li><strong>{{$servizio->titolo_servizio}}</strong></li>
                             @endforeach
                         </ul>
                     </div>
                 </div>
-
 
                 
                     {{-- controllo se l'utente è registrato --}}
