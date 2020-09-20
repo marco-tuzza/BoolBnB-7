@@ -75,7 +75,7 @@
 
 
                 <div class="info-title">
-                    <h2>Appartamento affittato da: <strong>{{ Auth::user()->nome }} </strong> </h2>
+                    <h2>Appartamento affittato da: <strong> Nome </strong> </h2>
                     {{-- <div class="infos">
                         <span>Metri Quadri: {{$appartamento->metri_quadri}}</span>
                         <span>Stanze: {{$appartamento->numero_stanze}}</span>
@@ -153,7 +153,7 @@
                                 <input class="text" type="text" name="testo_messaggio">
                                 <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
                                 <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
-                                <input type="date" name="data_invio">
+                                <input type="hidden" value="{{ Carbon::now()->format('y-m-d')}}" name="data_invio">
                                 <button type="submit">Invia</button>
                                 <input type="reset">
                                 </form>

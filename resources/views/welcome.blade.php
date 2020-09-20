@@ -335,7 +335,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="data" class="col-md-4 col-form-label text-md-right">{{ __('data') }}</label>
+                                <label for="data" class="col-md-4 col-form-label text-md-right">{{ __('Data di Nascita') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="data" type="date" class="form-control @error('data') is-invalid @enderror" name="data_di_nascita" required autocomplete="new-data">

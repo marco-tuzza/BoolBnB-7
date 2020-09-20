@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -37302,10 +37302,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/stats.js":
-/*!*******************************!*\
-  !*** ./resources/js/stats.js ***!
-  \*******************************/
+/***/ "./resources/js/register.js":
+/*!**********************************!*\
+  !*** ./resources/js/register.js ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37313,204 +37313,28 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-$(function () {
-  var leggo_valore = $('#id-apartment').val();
-  console.log(leggo_valore);
-  $.ajax({
-    "url": "http://localhost:8000/api/statistiche/search/" + leggo_valore,
-    "method": "GET",
-    "success": function success(answer) {
-      statistichemensili(answer);
-      statistichemessaggi(answer);
-    },
-    'error': function error() {
-      console.log('errore');
-    }
+$(document).ready(function () {
+  $('#login').click(function () {
+    $('.wrapper-apartament').addClass('active'); // tl.fromTo(card_login, 1, {y:"200%", opacity:0}, {y: "-50%", opacity:1, ease: Power2.easeInOut });
+
+    $('.form-accedi').addClass('mostra-form');
   });
-
-  function statistichemensili(answer) {
-    var stat = answer.data;
-    var statistiche = stat.statistiche;
-    var month_data = Object.values(statistiche);
-    console.log(stat);
-    var dates;
-    var visualizzazioni_mensili = {
-      'January': 20,
-      'February': 11,
-      'March': 9,
-      'April': 17,
-      'May': 23,
-      'June': 35,
-      'July': 16,
-      'August': 46,
-      'September': 0,
-      'October': 0,
-      'November': 0,
-      'December': 0
-    };
-
-    for (var i = 0; i < month_data.length; i++) {
-      var dates = month_data[i];
-      console.log(dates.data_visualizzazione);
-      var mese = moment(dates.data_visualizzazione, "DD-MM-YYYY");
-      console.log(mese);
-      var count = 1;
-      var mese_giusto = mese.format('MMMM');
-
-      if (!visualizzazioni_mensili.hasOwnProperty(mese.format('MMMM'))) {
-        visualizzazioni_mensili[mese.format('MMMM')] = parseInt(count);
-      } else {
-        visualizzazioni_mensili[mese.format('MMMM')] += parseInt(count);
-      }
-    }
-
-    console.log(visualizzazioni_mensili);
-    var chiavi = Object.keys(visualizzazioni_mensili);
-    var valori = Object.values(visualizzazioni_mensili);
-    var ctx = $('#myChart1')[0].getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: chiavi,
-        datasets: [{
-          label: 'Visualizzazioni Mensili',
-          data: valori,
-          backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-          borderColor: ['rgba(255, 159, 64, 1)'],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-    var ctx = $('#myChart1a')[0].getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: chiavi,
-        datasets: [{
-          label: 'Visualizzazioni Mensili',
-          data: valori,
-          backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-          borderColor: ['rgba(255, 159, 64, 1)'],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-  }
-
-  function statistichemessaggi(answer) {
-    var stat = answer.data;
-    console.log('statistiche');
-    var messaggi_mensili = {
-      'January': 23,
-      'February': 19,
-      'March': 9,
-      'April': 13,
-      'May': 17,
-      'June': 9,
-      'July': 11,
-      'August': 6,
-      'September': 0,
-      'October': 0,
-      'November': 0,
-      'December': 0
-    };
-
-    for (var i = 0; i < stat.messaggi.length; i++) {
-      var messaggi = stat.messaggi[i];
-      console.log(messaggi);
-      var data_messaggio = messaggi.data_invio;
-      var mese = moment(data_messaggio, "YYYY-MM-DD");
-      console.log(mese);
-      var count = 1;
-      var mese_giusto = mese.format('MMMM');
-
-      if (!messaggi_mensili.hasOwnProperty(mese.format('MMMM'))) {
-        messaggi_mensili[mese.format('MMMM')] = parseInt(count);
-      } else {
-        messaggi_mensili[mese.format('MMMM')] += parseInt(count);
-      }
-    }
-
-    console.log(messaggi_mensili);
-    var chiavi = Object.keys(messaggi_mensili);
-    var valori = Object.values(messaggi_mensili);
-    var ctx = $('#myChart2')[0].getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: chiavi,
-        datasets: [{
-          label: 'Messaggi Mensili',
-          data: valori,
-          backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-          borderColor: ['rgba(255, 159, 64, 1)'],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-    var ctx = $('#myChart2a')[0].getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: chiavi,
-        datasets: [{
-          label: 'Messaggi Mensili',
-          data: valori,
-          backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-          borderColor: ['rgba(255, 159, 64, 1)'],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-  }
+  $('.close').click(function () {
+    $('.form-accedi').removeClass('mostra-form');
+    $('.wrapper-apartament').removeClass('active');
+  });
 });
 
 /***/ }),
 
-/***/ 5:
-/*!*************************************!*\
-  !*** multi ./resources/js/stats.js ***!
-  \*************************************/
+/***/ 6:
+/*!****************************************!*\
+  !*** multi ./resources/js/register.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\stats.js */"./resources/js/stats.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\register.js */"./resources/js/register.js");
 
 
 /***/ })
