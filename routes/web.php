@@ -35,9 +35,7 @@ Route::get('/caratteristiche_auth', function () {
     return view('caratteristiche_auth');
 });
 
-Route::get('/stats', function () {
-    return view('stats');
-});
+
 
 Auth::routes();
 
@@ -47,3 +45,6 @@ Route::get('/caratteristiche/{id}', 'ApartmentController@show')->name('caratteri
 Route::get('/dashboard', 'ApartmentController@index')->middleware('auth');
 Route::resource('apartment', 'ApartmentController')->middleware('auth');
 Route::get('/messaggi', 'MessageController@index')->name('messaggi')->middleware('auth');
+Route::get('/stats/{id}', 'StatsController@index')->middleware('auth');
+Route::get('/pagamenti/{id}', 'PaymentController@index')->middleware('auth');
+Route::post('/checkout', 'PaymentController@checkout');

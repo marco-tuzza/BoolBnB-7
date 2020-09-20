@@ -15,10 +15,9 @@ class CreateStatisticheTable extends Migration
     {
         Schema::create('statistiche', function (Blueprint $table) {
             $table->id();
-            // $table->mediumInteger('id_appartamento');
-            $table->date('data_visualizzazione');
-            $table->mediumInteger('id_utente_visualizzazione')->nullable();
-            $table->text('indirizzo_ip');
+            $table->tinyInteger('id_proprietario');
+            $table->text('data_visualizzazione');
+            $table->integer('count')->default('1');
             $table->timestamps();
         });
     }

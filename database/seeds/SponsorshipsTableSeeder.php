@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Sponsorship;
+use App\SponsorType;
 
 class SponsorshipsTableSeeder extends Seeder
 {
@@ -15,10 +15,10 @@ class SponsorshipsTableSeeder extends Seeder
         $sponsorizzazioni = [
             ['id' => 1, 'tipologia_sponsorizzazione' => '1 giorno'],
             ['id' => 2, 'tipologia_sponsorizzazione' => '3 giorni'],
-            ['id' => 3, 'tipologia_sponsorizzazione' => '1 settimana'],
+            ['id' => 3, 'tipologia_sponsorizzazione' => '6 giorni'],
         ];
         foreach ($sponsorizzazioni as $sponsorizzazione) {
-            Sponsorship::create($sponsorizzazione);
+            SponsorType::create($sponsorizzazione);
         }
     }
 }

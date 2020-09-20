@@ -21,14 +21,14 @@
                         <div class="logo">
                             <a href="{{ url('/') }}">
                                 <button class="btn-logos btn-create dashb" type="button" id="button-addon2">
-                                <img src="images/bnb-logo.svg" alt="">
+                                <img src="../images/bnb-logo.svg" alt="">
                             </button></a>
                         </div>
                         <div class="text-elements">
                             @if (Route::has('login'))
                                 <div class="account">
                                     <button class="btn-account btn-create" type="button" id="button-addon2">
-                                        <img src="images/account.svg" alt="">
+                                        <img src="../images/account.svg" alt="">
                                     </button>
 
                                     <div class="drop-menu">
@@ -64,7 +64,7 @@
             <div class="block-center-dash">
                 <div class="text-dash">
                     <div class="title-dash text-center">
-                        <h2>Sponsorizza  "titolo Appartamento":</h2>
+                        <h2>Sponsorizza {{$appartamento->titolo_appartamento}}</h2>
                     </div>
                 </div>
                 <div class="img-apartment">
@@ -94,19 +94,13 @@
                                 <label class="custom-control-label" for="customRadio1" value="2.99" ><h5>Base - 2,99€ </h5><span>24 ore tra gli appartamenti in evidenza</span></label>
                             </div>
                             <div class="custom-control custom-radio custom-radios">
-                                <input type="radio" id="customRadio2" name="customRadio" value="4.99" class="custom-control-input">
-                                <label class="custom-control-label" for="customRadio2" value="4.99"><h5>Plus - 4,99€ </h5><span>48 ore tra gli appartamenti in evidenza</span></label>
+                                <input type="radio" id="customRadio2" name="customRadio" value="5.99" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadio2" value="5.99"><h5>Plus - 5,99€ </h5><span>72 ore tra gli appartamenti in evidenza</span></label>
                             </div>
                             <div class="custom-control custom-radio custom-radios">
-                                <input type="radio" id="customRadio3" name="customRadio" value="7.99" class="custom-control-input">
-                                <label class="custom-control-label card-title" for="customRadio3" value="7.99"><h5>Pro - 7,99€ </h5><span>72 ore tra gli appartamenti in evidenza</span> </label>
+                                <input type="radio" id="customRadio3" name="customRadio" value="9.99" class="custom-control-input">
+                                <label class="custom-control-label card-title" for="customRadio3" value="9.99"><h5>Pro - 9,99€ </h5><span>144 ore tra gli appartamenti in evidenza</span> </label>
                             </div>
-                            {{-- <h5 class="card-title">Base:</h5>
-                            <p class="card-text">2,99€</p>
-                            <h5 class="card-title">Plus(Consigliato):</h5>
-                            <p class="card-text">5,99€</p>
-                            <h5 class="card-title">Pro:</h5>
-                            <p class="card-text">7,99€</p> --}}
                         </div>
                     </div>
                     
@@ -114,9 +108,8 @@
                         @csrf
                         <section>
                             <label id="amount-label" for="amount">
-                                <span class="input-label">Totale</span>
                                 <div class="input-wrapper amount-wrapper">
-                                    <input id="amount" name="amount" type="tel" min="1" placeholder="€" value="">
+                                    <input id="amount" name="amount" type="hidden" min="1" placeholder="€" value="">
                                 </div>
                             </label>
         
@@ -127,6 +120,8 @@
         
                         <input id="nonce" name="payment_method_nonce" type="hidden" />
                         <button class="button btn btn-success" type="submit"><span>Paga!</span></button>
+
+                        <input type="hidden" name="appartamento_id" value="{{ $appartamento->id }}">
                     </form>
 
                 </div>

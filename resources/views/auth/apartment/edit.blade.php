@@ -23,9 +23,10 @@
         <header>
             <nav class="nav-bar nav-create">
                 <div class="logo">
-                    <button class="btn-logos btn-create" type="button" id="button-addon2">
-                        <img src="/images/bnb-logo.svg" alt="">
-                    </button>
+                    <a href="{{ url('/') }}">
+                        <button class="btn-logos btn-create" type="button" id="button-addon2">
+                        <img src="../../images/bnb-logo.svg" alt="">
+                    </button></a>
                 </div>
                 <div class="text-elements">
                     @if (Route::has('login'))
@@ -40,7 +41,7 @@
                                     <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
                                     <li> <a href="{{ url('/messaggi') }}">I Miei Messaggi</a> </li>
                                     <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
-                                    <li> <a href="{{ route('home') }}">Home</a> </li>
+                                    <li> <a href="{{ url('/') }}">Home</a> </li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
@@ -80,7 +81,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="descrizione">Descrizione</label>
-                                    <input type="text" name="descrizione" class="form-control" id="descrizione" placeholder="Aggiungi una descrizione" value="{{ old('descrizione', $appartamento->descrizione) }}" required>
+                                    <textarea class="form-control" name="descrizione" placeholder="Aggiungi una descrizione" id="descrizione" rows="15" required>{{ old('descrizione', $appartamento->descrizione) }}</textarea>
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_stanze">Numero stanze</label>
@@ -148,16 +149,27 @@
                                     <label for="immagine_appartamento">Immagine appartamento</label>
                                     <input type="text" name="immagine_appartamento" class="form-control" id="immagine_appartamento" placeholder="immagine_appartamento" value="{{ old('immagine_appartamento', $appartamento->immagine_appartamento) }}">
                                 </div>
+                                <div class="form-group visib row">
+                                    <label for="visibile">Visibilità Appartamento</label>
+                                    <select name="visibile" id="numerostanze">
+                                        <option value="1" {{ $appartamento->visibile == 1 ? 'selected' : '' }}>Visibile</option>
+                                        <option value="0" {{ $appartamento->visibile == 0 ? "selected" : "" }}>Non Visibile</option>
+                                    </select>
+                                </div>
+                                {{-- <div class="form-group visib row">
+                                    <label for="non-visibile">Rendi l'appartamento non visibile</label>
+                                    <input {{ $appartamento->visibile == 0 ? 'checked' : '' }} type="checkbox" name="visibile" class="form-control" id="non-visibile">
+                                </div> --}}
                                 <div class="form-group row">
                                 @foreach ($servizi as $servizio)
-                                    <label for="immagine_appartamento">
+                                    <label for="check">
                                         <input
                                         @if($errors->any())
                                             {{ in_array($servizio->id, old('servizi', [])) ? 'checked' : '' }}
                                         @else
                                             {{ $appartamento->services->contains($servizio) ? 'checked' : '' }}
                                         @endif
-                                        class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
+                                        class="form-control" id= 'check' type="checkbox" name=servizi[] value="{{$servizio->id}}">
                                         {{$servizio->titolo_servizio}}
                                     </label>
                                 @endforeach
@@ -242,6 +254,6 @@
         </div>
     </div>
 
-    <script src="{{ asset('js/appartment.js') }}" defer></script>
+    <script src="{{ asset('js/edit.js') }}" defer></script>
 </body>
 </html>

@@ -14,7 +14,7 @@ class UpdateStatisticheTable extends Migration
     public function up()
     {
         Schema::table('statistiche', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_appartamento')->nullable()->after('id');
+            $table->unsignedBigInteger('id_appartamento')->after('id');
             $table->foreign('id_appartamento')->references('id')->on('appartamenti');
         });
     }

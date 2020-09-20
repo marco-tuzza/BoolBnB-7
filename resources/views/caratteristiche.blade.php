@@ -38,6 +38,7 @@
                                         <ul>
                                             @auth
                                                 <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
+                                                <li> <a href="{{ url('/messaggi') }}">I Miei Messaggi</a> </li>
                                                 <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
                                                 <li> <a href="{{ url('/') }}">Home</a></li>
                                                 <li>
@@ -75,32 +76,32 @@
 
 
                 <div class="info-title">
-                    <h2>Appartamento affittato da "Nome Utente"</h2>
-                    <div class="infos">
-                        <span>Metri Quadri: {{$appartamento->metri_quadri}}</span>
-                        <span>Stanze: {{$appartamento->numero_stanze}}</span>
-                        <span>Letti: {{$appartamento->numero_letti}}</span>
-                        <span>Bagni: {{$appartamento->numero_bagni}}</span>
-                    </div>
+                    <h2>Appartamento affittato da: <strong>{{ $utente->nome }}</strong> </h2>
                 </div>
 
                 <div class="text-descrizione">
-                    <p>
-                        {{$appartamento->descrizione}}
-                    </p>
-                </div>
-
-                <div class="casella-servizi">
-                    <div class="servizi">
-                        <h2>Servizi</h2>
+                    <div class="caratt">
+                        <h5>Caratteristiche dell'appartamento:</h5>
+                        <ul>
+                            <li>Metri Quadri: <strong>{{$appartamento->metri_quadri}}</strong> </li>
+                            <li>Stanze: <strong>{{$appartamento->numero_stanze}}</strong> </li>
+                            <li>Letti: <strong>{{$appartamento->numero_letti}}</strong> </li>
+                            <li>Bagni: <strong>{{$appartamento->numero_bagni}}</strong> </li>
+                        </ul>
+                    </div>
+                    <div class="descr">
+                        <h5>Descrizione dell'appartamento:</h5>
+                        <p>{{$appartamento->descrizione}}</p>
+                    </div>
+                    <div class="serv">
+                        <h5>Servizi aggiutnivi:</h5>
                         <ul>
                             @foreach ($appartamento->services as $servizio)
-                                <li>{{$servizio->titolo_servizio}}</li>
+                                <li><strong>{{$servizio->titolo_servizio}}</strong></li>
                             @endforeach
                         </ul>
                     </div>
                 </div>
-
 
                 
                     {{-- controllo se l'utente è registrato --}}
@@ -111,18 +112,19 @@
                             <div class="infos-4">
                                 <h2>Contatta l'host</h2>
                                 <div class="">
-                                    <form action="{{ route('message_store') }}" method="post">
+                                <form class="" action="{{ route('message_store') }}" method="post">
                                     @csrf
                                     E-mail:<br>
-                                    <input type="text" name="email_mittente" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
+                                    <input type="text" name="email_mittente" class="form-control" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
                                     Testo:<br>
-                                    <input class="text" type="text" name="testo_messaggio">
+                                    <textarea name="testo_messaggio" class="text form-control" rows="3"></textarea>
+                                    {{-- <input class="text" class="form-control" type="text" name="testo_messaggio"> --}}
                                     <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
                                     <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
-                                    <input type="date" name="data_invio">
-                                    <button type="submit">Invia</button>
-                                    <input type="reset">
-                                    </form>
+                                    <input type="hidden" value="{{ $data_attuale }}" name="data_invio">
+                                    <button type="submit" class="btn btn-primary mt-2 mb-2">Invia</button>
+                                    <input class="btn btn-warning mt-2 mb-2" type="reset">
+                                </form>
                                 </div>
                             </div>
                         </div>
@@ -139,17 +141,18 @@
                         <div class="infos-4">
                             <h2>Contatta l'host</h2>
                             <div class="">
-                                <form action="{{ route('message_store') }}" method="post">
-                                @csrf
-                                E-mail:<br>
-                                <input type="text" name="email_mittente" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
-                                Testo:<br>
-                                <input class="text" type="text" name="testo_messaggio">
-                                <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
-                                <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
-                                <input type="date" name="data_invio">
-                                <button type="submit">Invia</button>
-                                <input type="reset">
+                                <form class="form-group" action="{{ route('message_store') }}" method="post">
+                                    @csrf
+                                    E-mail:<br>
+                                    <input type="text" name="email_mittente" class="form-control" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
+                                    Testo:<br>
+                                    <textarea name="testo_messaggio" class="text form-control" rows="3"></textarea>
+                                    {{-- <input class="text" class="form-control" type="text" name="testo_messaggio"> --}}
+                                    <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
+                                    <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
+                                    <input type="hidden" value="{{ $data_attuale }}" name="data_invio">
+                                    <button type="submit" class="btn btn-primary mt-2 mb-2">Invia</button>
+                                    <input class="btn btn-warning mt-2 mb-2" type="reset">
                                 </form>
                             </div>
                         </div>
@@ -203,6 +206,177 @@
                 </div>
             </footer>
 
+        </div>
+
+        <div class="form-accedi">
+            <div class="card">
+                <div class="card-header">
+                    {{ __('Login') }}
+                    <img src="../images/close.svg" alt="close" class="close tl1">
+                </div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
+
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-registrati">
+            <div class="card">
+                <div class="card-header">
+                    {{ __('Register') }}
+                    <img src="../images/close.svg" alt="close" class="close tl2">
+                </div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autocomplete="nome" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="cognome" class="col-md-4 col-form-label text-md-right">{{ __('Cognome') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="cognome" type="text" class="form-control @error('cognome') is-invalid @enderror" name="cognome" value="{{ old('cognome') }}" required autocomplete="cognome" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="data" class="col-md-4 col-form-label text-md-right">{{ __('Data di Nascita') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="data" type="date" class="form-control @error('data') is-invalid @enderror" name="data_di_nascita" required autocomplete="new-data">
+
+                                @error('date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <a href="#"></a>
         </div>
 
         <!-- Scripts -->

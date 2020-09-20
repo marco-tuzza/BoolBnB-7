@@ -24,9 +24,10 @@
         <header>
             <nav class="nav-bar nav-create">
                 <div class="logo">
-                    <button class="btn-logos btn-create" type="button" id="button-addon2">
+                    <a href="{{ url('/') }}">
+                        <button class="btn-logos btn-create" type="button" id="button-addon2">
                         <img src="../images/bnb-logo.svg" alt="">
-                    </button>
+                    </button></a>
                 </div>
                 <div class="text-elements">
                     @if (Route::has('login'))
@@ -41,7 +42,7 @@
                                         <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
                                         <li> <a href="{{ url('/messaggi') }}">I Miei Messaggi</a> </li>
                                         <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
-                                        <li> <a href="{{ route('home') }}">Home</a> </li>
+                                        <li> <a href="{{ url('/') }}">Home</a> </li>
                                         <li>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -64,7 +65,6 @@
                 </div>
             </nav>
         </header>
-
         <div class="container ct-form">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="descrizione">Descrizione</label>
-                                    <input type="text" name="descrizione" class="form-control" id="Descrizione" placeholder="Aggiungi una descrizione" value="{{ old('descrizione') }}" required>
+                                    <textarea class="form-control" name="descrizione" placeholder="Aggiungi una descrizione" id="descrizione" rows="3" value="{{ old('descrizione') }}" required></textarea>
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_stanze">Numero stanze</label>
@@ -139,12 +139,12 @@
                                     <label for="form-address">Indirizzo*</label>
                                     <input type="search" class="form-control" id="form-address" placeholder="Dove si trova l'appartamento?" required />
                                 </div>
-                                <div class="form-group row">
-                                    <label for="form-address2">Indirizzo 2</label>
-                                    <input type="text" class="form-control" id="form-address2" placeholder="Informazioni aggiuntive" />
+                                <div class="form-group row dis">
+                                    <label for="form-address2">Provincia</label>
+                                    <input type="text" class="form-control" id="form-address2" placeholder="Provincia" />
                                 </div>
-                                <div class="form-group row">
-                                    <label for="form-city">Citta*</label>
+                                <div class="form-group row dis">
+                                    <label for="form-city">Citta / Comune *</label>
                                     <input type="text" class="form-control" id="form-city" placeholder="Città" required>
                                 </div>
                                 <div class="form-group row">
@@ -168,7 +168,6 @@
                                     <label for="immagine_appartamento">
                                         <input {{ in_array($servizio->id, old('servizi', [])) ? 'checked' : '' }} class="form-control" type="checkbox" name=servizi[] value="{{$servizio->id}}">
                                         <h6 class="text-servizio">{{$servizio->titolo_servizio}}</h6>
-
                                     </label>
                                 @endforeach
                                 </div>
@@ -179,7 +178,6 @@
                 </div>
             </div>
         </div>
-
         <footer class="foot-create">
             <div class="wrap-footer">
                 <div class="block1">

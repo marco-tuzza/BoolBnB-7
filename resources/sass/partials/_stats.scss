@@ -1,14 +1,54 @@
 .stat {
+    .wrapper-dashboard .block-center-dash .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 1.2rem;
+        padding: 50px 0;
+    }
     .text-stat {
-        background-color: rgba(0, 0, 0, 0.03);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
         width: 50%;
         margin: auto;
         margin-bottom: 1rem;
         padding: 0.7rem;
         border-radius: 29px;
         h4 {
-            margin-bottom: 0;
+            position: relative;
+            text-transform: uppercase;
+            margin: auto;
+            font-style: italic;
+            font-weight: 600;
+            @media screen and (min-width:250px) and (max-width:784px){
+                font-size: 1.3rem;
+            }
+            &::after {
+                content: "";
+                width: 77%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-54%, 9%);
+                height: 0.9rem;
+                background: linear-gradient(to right, #f5f5f5, #ed0f0f);
+                transition: 0.2s;
+                z-index: -1;
+                opacity: 0.7;
+                @media screen and (min-width:200px) and (max-width:430px){
+                    width: 85%;
+                    top: 70%;
+                }
+                @media screen and (min-width:431px) and (max-width:530px){
+                    width: 70%;
+                    top: 70%;
+                }
+                @media screen and (min-width:531px) and (max-width:730px){
+                    width: 73%;
+                    top: 70%;
+                }
+                @media screen and (min-width:731px) and (max-width:1336px){
+                    width: 85%;
+                    top: 59%;
+                }
+            }
         }
     }
     .grafico img {

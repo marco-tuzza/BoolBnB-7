@@ -7,7 +7,7 @@
         <title>BoolBnB</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@600;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -20,14 +20,14 @@
                     <nav class="nav-bar">
                         <div class="logo">
                             <button class="btn-logos" type="button" id="button-addon2">
-                                <img src="images/bnb-logo.svg" alt="">
+                                <img src="../images/bnb-logo.svg" alt="">
                             </button>
                         </div>
                         <div class="text-elements">
                             @if (Route::has('login'))
                                 <div class="account">
                                     <button class="btn-account" type="button" id="button-addon2">
-                                        <img src="images/account.svg" alt="">
+                                        <img src="../images/account.svg" alt="">
                                     </button>
 
                                     <div class="drop-menu">
@@ -60,10 +60,14 @@
                     </nav>
                 </header>
                 <div class="jumbo text-center">
-                    <h1>Fai volare l'immaginazione</h1>
-                    <p>Pianifica un viaggio diverso per scoprire i tesori nascosti vicino a te.</p>
+                    <div class="hide1">
+                        <h1 class="tit">Fai volare l'immaginazione</h1>
+                    </div>
+                    <div class="hide2">
+                        <p class="tit2">Pianifica un viaggio diverso per scoprire i tesori nascosti vicino a te.</p>
+                    </div>
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group input-an mb-3">
                     <input type="text" class="form-control" id="address-input" placeholder="Cerca il posto dove ti piacerebbe andare..." aria-label="Cerca il posto dove ti piacerebbe andare..." aria-describedby="button-addon2">
                     <div class="search-filter">
                         <div class="butt">
@@ -147,103 +151,7 @@
                     <h2>Appartamenti in evidenza:</h2>
                 </div>
                 <div class="img-evidence">
-                    <div class="card sponsorized">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                            <div class="star">
-                                <h4> <i>Appartamento in evidenza</i> </h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card sponsorized">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                            <div class="star">
-                                <h4> <i>Appartamento in evidenza</i> </h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card sponsorized">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                            <div class="star">
-                                <h4> <i>Appartamento in evidenza</i> </h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card sponsorized">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                            <div class="star">
-                                <h4> <i>Appartamento in evidenza</i> </h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card sponsorized">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                            <div class="star">
-                                <h4> <i>Appartamento in evidenza</i> </h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card sponsorized">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                            <div class="star">
-                                <h4> <i>Appartamento in evidenza</i> </h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card sponsorized">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                            <div class="star">
-                                <h4> <i>Appartamento in evidenza</i> </h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card sponsorized">
-                        <a href="{{ url ('/caratteristiche') }}">
-                            <img src="https://picsum.photos/id/1059/400/600" alt="some imgae">
-                            <div class="info">
-                                <h4>Titolo Appartamento</h4>
-                                <p>Posizione Appartamento</p>
-                            </div>
-                            <div class="star">
-                                <h4> <i>Appartamento in evidenza</i> </h4>
-                            </div>
-                        </a>
-                    </div>
-
+                    <h4 class="no-results non-visible">Nessun appartamento trovato..prova ad aumentare la distanza o a cambiare città! :)</h4>
                 </div>
             </main>
 
@@ -286,7 +194,7 @@
                 <div class="card">
                     <div class="card-header">
                         {{ __('Login') }}
-                        <img src="images/close.svg" alt="close" class="close">
+                        <img src="images/close.svg" alt="close" class="close tl1">
                     </div>
 
                     <div class="card-body">
@@ -354,8 +262,8 @@
             <div class="form-registrati">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('Register') }}
-                        <img src="images/close.svg" alt="close" class="close">
+                        {{ __('Registrati') }}
+                        <img src="images/close.svg" alt="close" class="close tl2">
                     </div>
 
                     <div class="card-body">
@@ -427,7 +335,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="data" class="col-md-4 col-form-label text-md-right">{{ __('data') }}</label>
+                                <label for="data" class="col-md-4 col-form-label text-md-right">{{ __('Data di Nascita') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="data" type="date" class="form-control @error('data') is-invalid @enderror" name="data_di_nascita" required autocomplete="new-data">
@@ -466,9 +374,26 @@
                 </a>
             </div>
         </script>
+
+        <script id="card-template-2" type="text/x-handlebars-template">
+            <div class="card sponsorized">
+                <a href="/caratteristiche/@{{ id }}" target="_blank">
+                    <img src="@{{{ imm }}}" class="poster" alt="@{{ titolo }}">
+                    <div class="info">
+                        <h4>@{{ titolo }}</h4>
+                        @{{{ servizi }}}
+                    </div>
+                    <div class="star">
+                        <h4> <i>Appartamento in evidenza</i> </h4>
+                    </div>
+                </a>
+            </div>
+        </script>
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
 
         <script src="{{ asset('js/welcome.js') }}" defer></script>
     </body>
 </html>
+

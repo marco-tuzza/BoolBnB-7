@@ -52,6 +52,9 @@
             .non-visibile {
                 display: none;
             }
+            .dis {
+                pointer-events: none;
+            }
         }
     }
     
@@ -94,6 +97,13 @@
 
 .wrapper-apartament.active::before {
     visibility: visible;
+}
+
+.visib {
+    margin-bottom: 2rem;
+    #non-visibile {
+        width: 20%;
+    }
 }
 
 .form-group.row {

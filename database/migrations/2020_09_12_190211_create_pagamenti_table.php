@@ -16,7 +16,7 @@ class CreatePagamentiTable extends Migration
         Schema::create('pagamenti', function (Blueprint $table) {
             $table->id();
             $table->date('data_pagamento');
-            $table->boolean('esito');
+            $table->text('esito');
             $table->timestamps();
         });
     }

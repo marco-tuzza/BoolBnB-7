@@ -76,9 +76,10 @@
                             <h4>{{$appartamento->titolo_appartamento}}</h4>
                             <p>Numero stanze: {{$appartamento->numero_stanze}}</p>
                             <p>Metri Quadri: {{$appartamento->metri_quadri}}</p>
-                            <a href="{{ url( '/caratteristiche', ['id' => $appartamento->id] ) }}" class="btn btn-primary">Dettagli</a>
-                            <a href="{{ url('/stats') }}" class="btn btn-primary">Statistiche</a>
-                            <a href="{{ route('apartment.edit', ['apartment' => $appartamento->id] ) }}" class="btn btn-warning">Aggiorna / Modifica</a>
+                            <a href="{{ url( '/caratteristiche', ['id' => $appartamento->id] ) }}" class="btn btn-primary mt-2">Dettagli</a>
+                            <a href="{{ url('/stats', ['id' => $appartamento->id]) }}" class="btn btn-secondary mt-2">Statistiche</a>
+                            <a href="{{ route('apartment.edit', ['apartment' => $appartamento->id] ) }}" class="btn btn-warning mt-2">Aggiorna / Modifica</a>
+                            <a href="{{ url('/pagamenti', ['apartment' => $appartamento->id] ) }}" class="btn btn-success mt-2">Sponsorizza</a>
                         </div>
                     </div>
                     @endforeach

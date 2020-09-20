@@ -9,6 +9,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://momentjs.com/downloads/moment.js" charset="utf-8"></script>
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -16,77 +17,90 @@
     <body>
         <div class="wrapper-dashboard">
 
-            <div class="block-header-dash">
-                <header>
-                    <nav class="nav-bar">
-                        <div class="logo">
-                            <a href="{{ url('/') }}">
-                                <button class="btn-logos dashb" type="button" id="button-addon2">
-                                <img src="images/bnb-logo.svg" alt="">
-                            </button></a>
-                        </div>
-                        <div class="text-elements">
-                            @if (Route::has('login'))
-                                <div class="account">
-                                    <button class="btn-account dashb" type="button" id="button-addon2">
-                                        <img src="images/account.svg" alt="">
-                                    </button>
+            <div class="wrapper-dashboard">
+                <div class="block-header-dash">
+                    <header>
+                        <nav class="nav-bar">
+                            <div class="logo">
+                                <a href="{{ url('/') }}">
+                                    <button class="btn-logos btn-create" type="button" id="button-addon2">
+                                    <img src="../images/bnb-logo.svg" alt="">
+                                </button></a>
+                            </div>
+                            <div class="text-elements">
+                                @if (Route::has('login'))
+                                    <div class="account">
+                                        <button class="btn-account btn-create" type="button" id="button-addon2">
+                                            <img src="../images/account.svg" alt="">
+                                        </button>
 
-                                    <div class="drop-menu">
-                                        <ul>
-                                            @auth
-                                                <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
-                                                <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
-                                                <li> <a href="{{ url('/') }}">Home</a></li>
-                                                <li>
-                                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
-                                                    </a>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                        @csrf
-                                                    </form>
-                                                </li>
-                                                @else
-                                                    <li id="login">Accedi</li>
-                                                    {{-- <li id="login"> <a href="{{ route('login') }}">Accedi</a> </li> --}}
-                                                    <li id="register">Registrati</li>
-                                            @endauth
-                                        </ul>
+                                        <div class="drop-menu">
+                                            <ul>
+                                                @auth
+                                                    <li> <a href="{{ url('/dashboard') }}">Il Mio Profilo</a> </li>
+                                                    <li> <a href="{{ url('/messaggi') }}">I Miei Messaggi</a> </li>
+                                                    <li> <a href="{{ route('apartment.create') }}">Aggiungi Appartamento</a> </li>
+                                                    <li> <a href="{{ url('/') }}">Home</a> </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                        </a>
+                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                            @csrf
+                                                        </form>
+                                                    </li>
+                                                    @else
+                                                        <li id="login">Accedi</li>
+                                                        {{-- <li id="login"> <a href="{{ route('login') }}">Accedi</a> </li> --}}
+                                                        <li id="register">Registrati</li>
+                                                @endauth
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                            @endif
-                        </div>
-                    </nav>
-                </header>
-            </div>
+                                @endif
+                        </nav>
+                    </header>
+                </div>
 
             <div class="block-center-dash">
                 <div class="text-dash">
-                    <div class="card-header text-center">
-                        <h2>Statische "Titolo Appartamento":</h2>
+                    <div class="title-dash text-center">
+                        <h2>Statische "{{$appartamento->titolo_appartamento}}":</h2>
                     </div>
                 </div>
-                <div class="img-apartment">
-                        <div class="stat">
-                            <div class="text-stat text-center">
-                                <h4>Visualizzazioni totali</h4>
-                            </div>
-                            <div class="grafico">
-                                <canvas id="myChart1"></canvas>
-                            </div>
+                <div class="img-apartment stats">
+                    <div class="stat">
+                        <div class="text-stat text-center">
+                            <h4>Visualizzazioni totali</h4>
                         </div>
+                        <div class="grafico">
+                            <canvas id="myChart1"></canvas>
+                        </div>
+                    </div>
 
-                        <div class="stat">
-                            <div class="text-stat text-center">
-                                <h4>Statistiche Messaggi</h4>
-                            </div>
-                            <div class="grafico">
-                                <canvas id="myChart2"></canvas>
-                            </div>
+                    <div class="stat">
+                        <div class="text-stat text-center">
+                            <h4>Statistiche Messaggi</h4>
                         </div>
-                    
+                        <div class="grafico">
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="img-apartment stats">
+                    <div class="stat">
+                        <div class="grafico">
+                            <canvas id="myChart1a"></canvas>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="grafico">
+                            <canvas id="myChart2a"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -127,6 +141,7 @@
                 </footer>
             </div>
 
+        <input id="id-apartment" name="id-apartment" value="{{$appartamento->id}}" type="hidden" />
 
         </div>
 

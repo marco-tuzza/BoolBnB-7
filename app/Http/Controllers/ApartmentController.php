@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Apartment;
 use App\Message;
 use App\Service;
+use App\Statistic;
+use Carbon\Carbon;
+use App\User;
 class ApartmentController extends Controller
 {
     /**
@@ -65,13 +68,29 @@ class ApartmentController extends Controller
     {
         $servizi = Service::all();
         $appartamento = Apartment::find($id);
+        $user_id = $appartamento->id_proprietario;
+        $user = User::find($user_id);
         $userId = Auth::id();
         $messaggi = Message::All()->where('id_ricevente', $userId);
         $data = [
             'servizi' => $servizi,
             'appartamento' => $appartamento,
-            'messaggi' => $messaggi
+            'messaggi' => $messaggi,
+            'utente' => $user,
+            'data_attuale' => Carbon::now()->format('y-m-d')
         ];
+        $data_statistica = [
+            "id_appartamento" => $id,
+            "id_proprietario" => $appartamento->id_proprietario,
+            "count" => 1,
+            "data_visualizzazione" => Carbon::now()->format('d-m-Y')
+        ];
+        $userId = Auth::id();
+        if ($userId != $appartamento->id_proprietario) {
+            $statistica = new Statistic();
+            $statistica->fill($data_statistica);
+            $statistica->save();
+        }
         return view('caratteristiche', $data);
     }
     /**
@@ -111,6 +130,7 @@ class ApartmentController extends Controller
             'metri_quadri' => 'required|numeric',
             'latitudine' => 'required|numeric',
             'longitudine' => 'required|numeric',
+            'visibile' => 'required|numeric',
             'immagine_appartamento' => 'required|url'
         ]);
         $dati = $request->all();
@@ -136,8 +156,11 @@ class ApartmentController extends Controller
     {
         $appartamento = Apartment::find($id);
         $messaggi = Message::where('id_appartamento', $id);
+        $statistiche = Statistic::where('id_appartamento', $id);
         if($appartamento) {
             $appartamento->services()->detach();
+            $appartamento->sponsorships()->detach();
+            $statistiche->delete();
             $messaggi->delete();
             $appartamento->delete();
             return redirect()->route('apartment.index');

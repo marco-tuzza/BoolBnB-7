@@ -9,29 +9,109 @@ require('./bootstrap');
 const $ = require('jquery');
 const Handlebars = require("handlebars");
 
+const block1 = document.querySelector('.first-block');
+const back = document.querySelector('.wrapper-page');
+// const logo = document.querySelector('.logo');
+// const menu = document.querySelector('.text-elements');
+const text = document.querySelector('.tit');
+const text2 = document.querySelector('.tit2');
+const input = document.querySelector('.input-an');
+const text3 = document.querySelector('.text-card');
+const card = document.querySelector('.img-evidence');
+const card_login = document.querySelector('.form-accedi');
+const card_register = document.querySelector('.form-registrati');
 
+const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
+
+
+tl.fromTo(block1,1, {y:"-100%", opacity:0}, {y: "0%", opacity:1, ease: Power2.easeInOut })
+    .fromTo(back,1, {opacity:0}, {opacity: 1, ease: Power2.easeInOut }, "-=1")
+    .fromTo(text, 1, {opacity:0, y:50}, {opacity: 1, y:0, ease: Power2.easeInOut })
+    .fromTo(text2, 1, {opacity:0, y:50}, {opacity: 1, y:0, ease: Power2.easeInOut }, "-=0.5")
+    .fromTo(input, 1.5, {opacity:0, y:100}, {opacity: 1, y:0,  ease: Back.easeOut.config(1)})
+    .fromTo(text3,1, {opacity:0, y:30}, {opacity: 1, y:0, ease: Power2.easeInOut }, "-=1")
+    .fromTo(card, 1.5, {opacity:0, y:100}, {opacity: 1, y:0,   ease: Back.easeOut.config( 2)},"-=1");
+
+
+const tl2 = gsap.timeline({ defaults: { ease: Back. easeIn.config( 1.7) } });
 
 $(document).ready(function(){
 
+    $.ajax({
+
+        "url" : "http://localhost:8000/api/sponsor",
+
+        "method" : "GET",
+
+        "success" : function(answer) {
+
+            var sponsor = answer.sponsorizzati;
+            console.log(sponsor);
+
+            for (var i = 0; i < sponsor.length; i++) {
+                var apartmentsponsor = sponsor[i];
+                disegno_card_2(apartmentsponsor.titolo_appartamento, apartmentsponsor.immagine_appartamento, apartmentsponsor.services, apartmentsponsor.id);
+            };
+
+        },
+    });
+
     $('#login').click(function(){
-        $('.form-accedi').addClass('mostra-form');
         $('.wrapper-page').addClass('active');
+        tl.fromTo(card_login, 1, {y:"200%", opacity:0}, {y: "-50%", opacity:1, ease: Power2.easeInOut });
+        $('.form-accedi').addClass('mostra-form');
     });
 
     $('#register').click(function(){
-        $('.form-registrati').addClass('mostra-form');
         $('.wrapper-page').addClass('active');
+        tl.fromTo(card_register, 1, {y:"200%", opacity:0}, {y: "-50%", opacity:1, ease: Power2.easeInOut });
+        $('.form-registrati').addClass('mostra-form');
     });
 
-    $('.close').click(function(){
-        $('.form-accedi').removeClass('mostra-form');
-        $('.form-registrati').removeClass('mostra-form');
+    $('.tl1').click(function(){
         $('.wrapper-page').removeClass('active');
+        tl2.fromTo(card_login,1, {y:"-50%", opacity:1}, {y: "200%", opacity:0});
+    });
+
+    $('.tl2').click(function(){
+        $('.wrapper-page').removeClass('active');
+        tl2.fromTo(card_register, 1, {y:"-50%", opacity:1}, {y: "200%", opacity:0});
+    });
+
+    $('.form-registrati .card .card-body button').click(function(){
+        var nome = $('#nome').val();
+        var cognome = $('#cognome').val();
+        var email = $('#email').val();
+        var email_valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        console.log(email);
+        var password = $('#password').val();
+        var password_confirm = $('#password-confirm').val();
+        var data = $('#data').val();
+        if (nome == '' || nome == "undefined" || nome.length < 3 || nome.trim() == "") {
+            alert("Devi inserire un nome");
+            return false;
+        }
+        if (cognome == '' || cognome == "undefined" || cognome.length < 3 || cognome.trim() == "") {
+            alert("Devi inserire un cognome");
+            return false;
+        }
+        // if (!email_valid.test(email) || email == '' || email == "undefined" ) {
+        //     alert("Devi inserire un indirizzo mail nel formato corretto");
+        // }
+        // if (password == '' || password == undefined) {
+        //     alert("Devi inserire un'altra password");
+        //     $('#password').focus();
+        //     return false;
+        // }
     });
 
     // preparo le variabili per handlebars
     var template_html = $('#card-template').html();
     var template = Handlebars.compile(template_html);
+
+    // preparo le variabili per handlebars
+    var template_html_2 = $('#card-template-2').html();
+    var template2 = Handlebars.compile(template_html_2);
 
     // Configurazione Alogolia
     var placesAutocomplete = places({
@@ -43,36 +123,36 @@ $(document).ready(function(){
             countries: ['it'], // Ricevo risultati per l'Italia
             type: ['city', 'address'], // Cerco per città e indirizzo
         });
-    
-    // al change dell'input, svuoto e faccio partire la ricerca 
 
-
+    var lat;
+    var lon;
+    var luogo;
+    // al change dell'input, e al click su search, svuoto e faccio partire la ricerca
     placesAutocomplete.on('change', function prova (e)  {
-    
-        var lat = e.suggestion.latlng.lat
-        var lon = e.suggestion.latlng.lng
 
-        $('.search').click(function(){
-            $('.text-card h2').text('Risultati della ricerca:');
-            $('.img-evidence').empty();
-            var numerostanze = $('#numerostanze').children('option:selected').val();
-            console.log(numerostanze);
-            var numeroletti = $('#numeroletti').children('option:selected').val();
-            console.log(numeroletti);
-            var distanza = $('#distanza').children('option:selected').val();
-            console.log(numeroletti);
-            parte_ricerca(lat, lon, e, numerostanze, numeroletti, distanza);
-        });
-        
+        luogo = e;
+        lat = luogo.suggestion.latlng.lat;
+        lon = luogo.suggestion.latlng.lng;
+
     });
 
+    $('.search').on('click', function(){
+        $('.text-card h2').text('Risultati della ricerca:');
+        var numerostanze = $('#numerostanze').children('option:selected').val();
+
+        var numeroletti = $('#numeroletti').children('option:selected').val();
+
+        var distanza = $('#distanza').children('option:selected').val();
+
+        parte_ricerca(lat, lon, luogo, numerostanze, numeroletti, distanza);
+    });
 
     function parte_ricerca (lat, lon, e, numerostanze, numeroletti, distanza) {
 
         $.ajax({
-    
+
             "url" : "http://localhost:8000/api/apartment/search/filter",
-    
+
             "method" : "GET",
 
             "data" : {
@@ -83,39 +163,50 @@ $(document).ready(function(){
                 'servizi' : filtroservizi(),
                 'distanza': distanza
             },
-    
+
             "success" : function(answer) {
-                console.log(lat, lon);
 
                 $('.img-evidence').empty();
-    
+
+                console.log(lat, lon);
+
                 var apartment = answer.data;
-    
-                // $('.risultati').append(apartment);
-    
+                var sponsor = answer.sponsorizzati;
+
                 console.log(apartment);
-            
+                console.log(sponsor);
+
+                tl.fromTo(card, 1.5, {opacity:0, y:100}, {opacity: 1, y:0,   ease: Back.easeOut.config( 2)},"-=1");
+
                 for (var i = 0; i < apartment.length; i++) {
                         var apartmentData = apartment[i]
                         var lat2 = apartment[i].latitudine
-                        var lon2 = apartment[i].longitudine    
+                        var lon2 = apartment[i].longitudine
                         var lat1 = e.suggestion.latlng.lat
                         var lon1 = e.suggestion.latlng.lng
                         distance(lat1,lon1,lat2,lon2,apartmentData, distanza);
                 };
-    
+
+                for (var i = 0; i < sponsor.length; i++) {
+                    var apartmentsponsor = sponsor[i]
+                    disegno_card_2(apartmentsponsor.titolo_appartamento, apartmentsponsor.immagine_appartamento, apartmentsponsor.services, apartmentsponsor.id)
+                };
+
+
                 if ($('.img-evidence').is(':empty')){
-                    $('.img-evidence').append('nessun risultato trovato')
+                    $('.img-evidence').append('<h4 class="no-results non-visible">Nessun appartamento trovato..prova ad aumentare la distanza o a cambiare città! :)</h4>');
+                    $('.no-results').removeClass('non-visible');
                 };
             },
         });
     }
-    
+
     function distance(lat1, lon1, lat2, lon2, apartmentData, distanza) {
 
         var distanza_reale = distanza * 100;
         if ((lat1 == lat2) && (lon1 == lon2)) {
-            disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id)
+            disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id);
+
             // return 0;
         }
         else {
@@ -132,11 +223,33 @@ $(document).ready(function(){
             dist = dist * 60 * 1.1515;
             dist = dist * 1.609344
             if (dist < distanza_reale) {
-                disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id)   
+                disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id);
             } else {
                 console.log('troppo lontano');
             }
         }
+    }
+
+    function disegno_card_2(dati, immagine, servizi, id) {
+
+        array_servizi = servizi;
+        var servizi = [];
+
+        for (let i = 0; i < array_servizi.length; i++) {
+            servizi.push(array_servizi[i].titolo_servizio);
+        }
+
+        // preparo i dati per il template
+        var card_app_sponsor = {
+            'titolo': dati,
+            'imm': immagine,
+            'servizi' : '<p class="serv" >'+ servizi +'</p>',
+            'id': id
+        };
+        // riempo il template di handlebars
+        var html_card_2 = template2(card_app_sponsor);
+        // appendo la card con i dati del risultato corrente
+        $('.img-evidence').prepend(html_card_2);
     }
 
     function disegno_card(dati, immagine, servizi, id) {
@@ -146,7 +259,7 @@ $(document).ready(function(){
 
         for (let i = 0; i < array_servizi.length; i++) {
             servizi.push(array_servizi[i].titolo_servizio);
-            
+
         }
 
         // preparo i dati per il template
@@ -170,48 +283,9 @@ $(document).ready(function(){
             selezionati.push(nome);
         });
 
-        console.log(selezionati);
+        // console.log(selezionati);
 
         return selezionati;
     };
-
-
-
-    // $('.check-input').on ('click', function(){
-
-    //     $('.card').removeClass('non-visible');
-
-    //     var selezionati = [];
-        
-
-    //     $('.check-input:checked').each(function(){
-    //         var nome = $(this).attr('name');
-    //         selezionati.push(nome);
-    //     });
-        
-    //     console.log(selezionati);
-        
-    //     // var valore = $(this).attr('name');
-    //     // console.log(valore);
-
-    //     $('.serv').each(function(){
-    //         // var presenti = [];
-    //         var val_p = $(this).text();
-    //         // presenti.push(val_p)
-
-    //         // console.log(val_p.includes(valore));
-    //         if ( !val_p.includes(selezionati) ) {
-    //             console.log(val_p);
-    //             // console.log(this);
-    //             $(this).closest('.card').addClass('non-visible');
-    //         } else if (selezionati == '') {
-    //             console.log(val_p);
-    //             $('.card').removeClass('non-visible');
-    //         }
-            
-    //     });
-    // });
-
-
 
 });
