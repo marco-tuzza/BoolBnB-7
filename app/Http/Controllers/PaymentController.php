@@ -110,7 +110,7 @@ class PaymentController extends Controller
 
             
 
-            return back()->with('success_message', 'Transaction successful. The ID is:'. $transaction->id);
+            return back()->with('success_message', 'La tua transazione è andata a buon fine!');
             
         } else {
             $errorString = "";
