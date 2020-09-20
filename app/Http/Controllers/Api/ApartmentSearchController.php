@@ -51,9 +51,19 @@ class ApartmentSearchController extends Controller
                 array_push($array, $appartamento);
             }
         };
+        $sponsor = [];
+        $normali = [];
+        foreach ($array as $value) {
+            if ($value->sponsorship) {
+                array_push($sponsor, $value);
+            } else {
+                array_push($normali, $value);
+            }
+        }
         return response()->json([
             'success' => true,
-            'data' => $array,
+            'data' => $normali,
+            'sponsorizzati' => $sponsor,
             'cache' => false,
             'count' => $appartamenti->count()
         ]);
