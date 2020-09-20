@@ -18,7 +18,7 @@ class CreateAppartamentiHasSponsorizzazioniTable extends Migration
             $table->unsignedBigInteger('apartment_id');
             $table->foreign('apartment_id')->references('id')->on('appartamenti');
 
-            $table->unsignedBigInteger('sponsorship_id');
+            $table->unsignedBigInteger('sponsor_type_id');
             $table->foreign('sponsor_type_id')->references('id')->on('sponsorizzazioni');
 
             $table->date('scadenza');
@@ -36,6 +36,6 @@ class CreateAppartamentiHasSponsorizzazioniTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appartamenti_sponsorizzazioni');
+        Schema::dropIfExists('appart_sponsor');
     }
 }

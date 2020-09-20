@@ -42515,7 +42515,10 @@ $(document).ready(function () {
   }); // preparo le variabili per handlebars
 
   var template_html = $('#card-template').html();
-  var template = Handlebars.compile(template_html); // Configurazione Alogolia
+  var template = Handlebars.compile(template_html); // preparo le variabili per handlebars
+
+  var template_html_2 = $('#card-template-2').html();
+  var template2 = Handlebars.compile(template_html_2); // Configurazione Alogolia
 
   var placesAutocomplete = places({
     appId: 'plT92Q60ZYBJ',
@@ -42597,6 +42600,10 @@ $(document).ready(function () {
     var distanza_reale = distanza * 100;
 
     if (lat1 == lat2 && lon1 == lon2) {
+      if (apartmentData.sponsorships == []) {
+        disegno_card_2(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id, apartmentData.sponsorships);
+      }
+
       disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id); // return 0;
     } else {
       var radlat1 = Math.PI * lat1 / 180;
@@ -42615,11 +42622,36 @@ $(document).ready(function () {
       dist = dist * 1.609344;
 
       if (dist < distanza_reale) {
+        if (apartmentData.sponsorships == []) {
+          disegno_card_2(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id, apartmentData.sponsorships);
+        }
+
         disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id);
       } else {
         console.log('troppo lontano');
       }
     }
+  }
+
+  function disegno_card_2(dati, immagine, servizi, id) {
+    array_servizi = servizi;
+    var servizi = [];
+
+    for (var i = 0; i < array_servizi.length; i++) {
+      servizi.push(array_servizi[i].titolo_servizio);
+    } // preparo i dati per il template
+
+
+    var card_app = {
+      'titolo': dati,
+      'imm': immagine,
+      'servizi': '<p class="serv" >' + servizi + '</p>',
+      'id': id
+    }; // riempo il template di handlebars
+
+    var html_card = template2(card_app); // appendo la card con i dati del risultato corrente
+
+    $('.img-evidence').append(html_card);
   }
 
   function disegno_card(dati, immagine, servizi, id) {

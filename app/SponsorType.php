@@ -10,7 +10,7 @@ class SponsorType extends Model
     protected $fillable = ['id', 'tipologia_sponsorizzazione',];
 
     public function apartments() {
-        return $this->belongsToMany('App\Apartment' , 'appartamenti_sponsorizzazioni');
+        return $this->belongsToMany('App\Apartment' , 'appart_sponsor');
     }
 
 }

@@ -66,7 +66,7 @@ class PaymentController extends Controller
                 "esito" => 'Pagamento Riuscito'
             ];
             
-            $pagamenit = Payment::all();
+            $pagamenti = Payment::all();
             $pagamento = new Payment();
             $pagamento->fill($dati_pagamento);
             $pagamento->save();
@@ -82,7 +82,7 @@ class PaymentController extends Controller
             if ($amount < 3) {
                 $dati_sponsorizzazione = [
                     "apartment_id" => $appartamento_id,
-                    "sponsorship_id" => '1',
+                    "sponsor_type_id" => '1',
                     "scadenza" => Carbon::now()->add(1, 'day')->format('y-m-d')
                 ];
 
@@ -91,7 +91,7 @@ class PaymentController extends Controller
             } elseif ($amount < 6) {
                 $dati_sponsorizzazione = [
                     "apartment_id" => $appartamento_id,
-                    "sponsorship_id" => '2',
+                    "sponsor_type_id" => '2',
                     "scadenza" => Carbon::now()->add(3, 'day')->format('y-m-d')
                 ];
 
@@ -100,7 +100,7 @@ class PaymentController extends Controller
             } else {
                 $dati_sponsorizzazione = [
                     "apartment_id" => $appartamento_id,
-                    "sponsorship_id" => '3',
+                    "sponsor_type_id" => '3',
                     "scadenza" => Carbon::now()->add(6, 'day')->format('y-m-d')
                 ];
 
