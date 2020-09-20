@@ -42527,6 +42527,38 @@ $(document).ready(function () {
       y: "200%",
       opacity: 0
     });
+  });
+  $('.form-registrati .card .card-body button').click(function () {
+    var nome = $('#nome').val();
+    var cognome = $('#cognome').val();
+    var email = $('#email').val();
+    var email_valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    console.log(email);
+    var password = $('#password').val();
+    var password_confirm = $('#password-confirm').val();
+    var data = $('#data').val();
+
+    if (nome == '' || nome == "undefined" || nome.length < 3) {
+      alert("Devi inserire un nome");
+      return false;
+    }
+
+    if (cognome == '' || cognome == "undefined" || cognome.length < 3) {
+      alert("Devi inserire un cognome");
+      return false;
+    } // if (!email_valid.test(email) || email == '' || email == "undefined" ) {
+    //     alert("Devi inserire un indirizzo mail nel formato corretto");
+    // }
+    // if (password == '' || password == undefined) {
+    //     alert("Devi inserire un'altra password");
+    //     $('#password').focus();
+    //     return false;
+    // }
+
+
+    if (cognome == '') {
+      alert("Devi inserire un cognome");
+    }
   }); // preparo le variabili per handlebars
 
   var template_html = $('#card-template').html();
@@ -42549,7 +42581,7 @@ $(document).ready(function () {
   });
   var lat;
   var lon;
-  var luogo; // al change dell'input, e al click su search, svuoto e faccio partire la ricerca 
+  var luogo; // al change dell'input, e al click su search, svuoto e faccio partire la ricerca
 
   placesAutocomplete.on('change', function prova(e) {
     luogo = e;
@@ -42713,7 +42745,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\welcome.js */"./resources/js/welcome.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean esercizi/boolbnb-7/resources/js/welcome.js */"./resources/js/welcome.js");
 
 
 /***/ })

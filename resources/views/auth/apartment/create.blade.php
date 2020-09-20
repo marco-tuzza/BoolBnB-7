@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="descrizione">Descrizione</label>
-                                    <textarea class="form-control" name="descrizione" placeholder="Aggiungi una descrizione" id="Descrizione" rows="3" value="{{ old('descrizione') }}" required></textarea>
+                                    <textarea class="form-control" name="descrizione" placeholder="Aggiungi una descrizione" id="descrizione" rows="3" value="{{ old('descrizione') }}" required></textarea>
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_stanze">Numero stanze</label>

@@ -31,14 +31,14 @@ tl.fromTo(block1,1, {y:"-100%", opacity:0}, {y: "0%", opacity:1, ease: Power2.ea
     .fromTo(input, 1.5, {opacity:0, y:100}, {opacity: 1, y:0,  ease: Back.easeOut.config(1)})
     .fromTo(text3,1, {opacity:0, y:30}, {opacity: 1, y:0, ease: Power2.easeInOut }, "-=1")
     .fromTo(card, 1.5, {opacity:0, y:100}, {opacity: 1, y:0,   ease: Back.easeOut.config( 2)},"-=1");
-    
+
 
 const tl2 = gsap.timeline({ defaults: { ease: Back. easeIn.config( 1.7) } });
 
 $(document).ready(function(){
 
     $.ajax({
-    
+
         "url" : "http://localhost:8000/api/sponsor",
 
         "method" : "GET",
@@ -52,7 +52,7 @@ $(document).ready(function(){
                 var apartmentsponsor = sponsor[i];
                 disegno_card_2(apartmentsponsor.titolo_appartamento, apartmentsponsor.immagine_appartamento, apartmentsponsor.services, apartmentsponsor.id);
             };
-            
+
         },
     });
 
@@ -78,6 +78,33 @@ $(document).ready(function(){
         tl2.fromTo(card_register, 1, {y:"-50%", opacity:1}, {y: "200%", opacity:0});
     });
 
+    $('.form-registrati .card .card-body button').click(function(){
+        var nome = $('#nome').val();
+        var cognome = $('#cognome').val();
+        var email = $('#email').val();
+        var email_valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        console.log(email);
+        var password = $('#password').val();
+        var password_confirm = $('#password-confirm').val();
+        var data = $('#data').val();
+        if (nome == '' || nome == "undefined" || nome.length < 3 || nome.trim() == "") {
+            alert("Devi inserire un nome");
+            return false;
+        }
+        if (cognome == '' || cognome == "undefined" || cognome.length < 3 || cognome.trim() == "") {
+            alert("Devi inserire un cognome");
+            return false;
+        }
+        // if (!email_valid.test(email) || email == '' || email == "undefined" ) {
+        //     alert("Devi inserire un indirizzo mail nel formato corretto");
+        // }
+        // if (password == '' || password == undefined) {
+        //     alert("Devi inserire un'altra password");
+        //     $('#password').focus();
+        //     return false;
+        // }
+    });
+
     // preparo le variabili per handlebars
     var template_html = $('#card-template').html();
     var template = Handlebars.compile(template_html);
@@ -96,36 +123,36 @@ $(document).ready(function(){
             countries: ['it'], // Ricevo risultati per l'Italia
             type: ['city', 'address'], // Cerco per città e indirizzo
         });
-    
+
     var lat;
     var lon;
     var luogo;
-    // al change dell'input, e al click su search, svuoto e faccio partire la ricerca 
+    // al change dell'input, e al click su search, svuoto e faccio partire la ricerca
     placesAutocomplete.on('change', function prova (e)  {
-        
+
         luogo = e;
         lat = luogo.suggestion.latlng.lat;
         lon = luogo.suggestion.latlng.lng;
-        
+
     });
 
     $('.search').on('click', function(){
         $('.text-card h2').text('Risultati della ricerca:');
         var numerostanze = $('#numerostanze').children('option:selected').val();
-        
+
         var numeroletti = $('#numeroletti').children('option:selected').val();
-        
+
         var distanza = $('#distanza').children('option:selected').val();
-        
+
         parte_ricerca(lat, lon, luogo, numerostanze, numeroletti, distanza);
     });
 
     function parte_ricerca (lat, lon, e, numerostanze, numeroletti, distanza) {
 
         $.ajax({
-    
+
             "url" : "http://localhost:8000/api/apartment/search/filter",
-    
+
             "method" : "GET",
 
             "data" : {
@@ -136,16 +163,16 @@ $(document).ready(function(){
                 'servizi' : filtroservizi(),
                 'distanza': distanza
             },
-    
+
             "success" : function(answer) {
 
                 $('.img-evidence').empty();
-                
+
                 console.log(lat, lon);
-    
+
                 var apartment = answer.data;
                 var sponsor = answer.sponsorizzati;
-                
+
                 console.log(apartment);
                 console.log(sponsor);
 
@@ -154,7 +181,7 @@ $(document).ready(function(){
                 for (var i = 0; i < apartment.length; i++) {
                         var apartmentData = apartment[i]
                         var lat2 = apartment[i].latitudine
-                        var lon2 = apartment[i].longitudine    
+                        var lon2 = apartment[i].longitudine
                         var lat1 = e.suggestion.latlng.lat
                         var lon1 = e.suggestion.latlng.lng
                         distance(lat1,lon1,lat2,lon2,apartmentData, distanza);
@@ -164,8 +191,8 @@ $(document).ready(function(){
                     var apartmentsponsor = sponsor[i]
                     disegno_card_2(apartmentsponsor.titolo_appartamento, apartmentsponsor.immagine_appartamento, apartmentsponsor.services, apartmentsponsor.id)
                 };
-                
-    
+
+
                 if ($('.img-evidence').is(':empty')){
                     $('.img-evidence').append('<h4 class="no-results non-visible">Nessun appartamento trovato..prova ad aumentare la distanza o a cambiare città! :)</h4>');
                     $('.no-results').removeClass('non-visible');
@@ -179,7 +206,7 @@ $(document).ready(function(){
         var distanza_reale = distanza * 100;
         if ((lat1 == lat2) && (lon1 == lon2)) {
             disegno_card(apartmentData.titolo_appartamento, apartmentData.immagine_appartamento, apartmentData.services, apartmentData.id);
-            
+
             // return 0;
         }
         else {
@@ -232,7 +259,7 @@ $(document).ready(function(){
 
         for (let i = 0; i < array_servizi.length; i++) {
             servizi.push(array_servizi[i].titolo_servizio);
-            
+
         }
 
         // preparo i dati per il template
@@ -260,5 +287,5 @@ $(document).ready(function(){
 
         return selezionati;
     };
-    
+
 });

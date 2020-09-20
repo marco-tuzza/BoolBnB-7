@@ -37315,23 +37315,21 @@ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"
 
 $(function () {
   // qua imposto il messaggio di conferma di salvataggio dell'appartamento
-  var allowSubmit = false;
+  var allowSubmit = false; // if ( $('#non-visibile').is(':checked') ) {
+  //     $('#non-visibile').val('0');
+  // } else {
+  //     $('#non-visibile').val(1);
+  // }
+  // $("#non-visibile").on("click", function() {
+  //     if ( $(this).is(':checked') ) {
+  //         $('#non-visibile').val('0');
+  //         console.log(this);
+  //     } else {
+  //         $(this).val(1);
+  //         console.log(this);
+  //     }
+  // });
 
-  if ($('#non-visibile').is(':checked')) {
-    $('#non-visibile').val('0');
-  } else {
-    $('#non-visibile').val(1);
-  }
-
-  $("#non-visibile").on("click", function () {
-    if ($(this).is(':checked')) {
-      $('#non-visibile').val('0');
-      console.log(this);
-    } else {
-      $(this).val(1);
-      console.log(this);
-    }
-  });
   $("#form-salva").on("submit", function (event) {
     $('.wrapper-apartament').addClass('active');
     $('.form-success').addClass('mostra-form');
@@ -37386,7 +37384,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\edit.js */"./resources/js/edit.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean esercizi/boolbnb-7/resources/js/edit.js */"./resources/js/edit.js");
 
 
 /***/ })
