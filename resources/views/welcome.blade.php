@@ -377,7 +377,7 @@
 
         <script id="card-template-2" type="text/x-handlebars-template">
             <div class="card sponsorized">
-                <a href="/caratteristiche/@{{ id }}" }}">
+                <a href="/caratteristiche/@{{ id }}" target="_blank">
                     <img src="@{{{ imm }}}" class="poster" alt="@{{ titolo }}">
                     <div class="info">
                         <h4>@{{ titolo }}</h4>

@@ -21,14 +21,14 @@
                         <div class="logo">
                             <a href="{{ url('/') }}">
                                 <button class="btn-logos btn-create dashb" type="button" id="button-addon2">
-                                <img src="images/bnb-logo.svg" alt="">
+                                <img src="../images/bnb-logo.svg" alt="">
                             </button></a>
                         </div>
                         <div class="text-elements">
                             @if (Route::has('login'))
                                 <div class="account">
                                     <button class="btn-account btn-create" type="button" id="button-addon2">
-                                        <img src="images/account.svg" alt="">
+                                        <img src="../images/account.svg" alt="">
                                     </button>
 
                                     <div class="drop-menu">

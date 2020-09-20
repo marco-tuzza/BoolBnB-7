@@ -10,7 +10,7 @@ $(function() {
     if ( $('#non-visibile').is(':checked') ) {
         $('#non-visibile').val('0');
     } else {
-        $('#non-visibile').val('1');
+        $('#non-visibile').val(1);
     }
 
     $("#non-visibile").on("click", function() {

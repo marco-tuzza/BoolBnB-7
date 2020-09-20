@@ -156,8 +156,11 @@ class ApartmentController extends Controller
     {
         $appartamento = Apartment::find($id);
         $messaggi = Message::where('id_appartamento', $id);
+        $statistiche = Statistic::where('id_appartamento', $id);
         if($appartamento) {
             $appartamento->services()->detach();
+            $appartamento->sponsorships()->detach();
+            $statistiche->delete();
             $messaggi->delete();
             $appartamento->delete();
             return redirect()->route('apartment.index');
