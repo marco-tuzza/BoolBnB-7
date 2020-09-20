@@ -149,9 +149,9 @@
                                     <label for="immagine_appartamento">Immagine appartamento</label>
                                     <input type="text" name="immagine_appartamento" class="form-control" id="immagine_appartamento" placeholder="immagine_appartamento" value="{{ old('immagine_appartamento', $appartamento->immagine_appartamento) }}">
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group visib row">
                                     <label for="non-visibile">Rendi l'appartamento non visibile</label>
-                                    <input type="checkbox" name="visibile" class="form-control" id="non-visibile" value="0">
+                                    <input {{ $appartamento->visibile == 0 ? 'checked' : '' }} type="checkbox" name="visibile" class="form-control" id="non-visibile">
                                 </div>
                                 <div class="form-group row">
                                 @foreach ($servizi as $servizio)
@@ -247,6 +247,6 @@
         </div>
     </div>
 
-    <script src="{{ asset('js/appartment.js') }}" defer></script>
+    <script src="{{ asset('js/edit.js') }}" defer></script>
 </body>
 </html>
