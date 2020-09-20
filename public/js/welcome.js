@@ -42538,12 +42538,12 @@ $(document).ready(function () {
     var password_confirm = $('#password-confirm').val();
     var data = $('#data').val();
 
-    if (nome == '' || nome == "undefined" || nome.length < 3) {
+    if (nome == '' || nome == "undefined" || nome.length < 3 || nome.trim() == "") {
       alert("Devi inserire un nome");
       return false;
     }
 
-    if (cognome == '' || cognome == "undefined" || cognome.length < 3) {
+    if (cognome == '' || cognome == "undefined" || cognome.length < 3 || cognome.trim() == "") {
       alert("Devi inserire un cognome");
       return false;
     } // if (!email_valid.test(email) || email == '' || email == "undefined" ) {
@@ -42555,10 +42555,6 @@ $(document).ready(function () {
     //     return false;
     // }
 
-
-    if (cognome == '') {
-      alert("Devi inserire un cognome");
-    }
   }); // preparo le variabili per handlebars
 
   var template_html = $('#card-template').html();
@@ -42745,7 +42741,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean esercizi/boolbnb-7/resources/js/welcome.js */"./resources/js/welcome.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\welcome.js */"./resources/js/welcome.js");
 
 
 /***/ })

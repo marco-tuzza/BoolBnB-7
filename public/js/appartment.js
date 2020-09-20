@@ -37347,19 +37347,19 @@ $('.card-apartment button').click(function () {
   var città = $('#form-city').val();
   var zip_code = $('#form-zip').val();
 
-  if (titolo.length < 5 || titolo.length > 50 || titolo == '' || titolo == 'undefined' || titolo.trim() == "") {
-    alert('Inserisci un titolo da 10 a 50 caratteri');
+  if (titolo.length < 5 || titolo.length > 100 || titolo == '' || titolo == 'undefined' || titolo.trim() == "") {
+    alert('Inserisci un titolo da 10 a 100 caratteri');
     return false;
-  } else if (descrizione.length < 10 || descrizione.length > 255 || descrizione == '' || descrizione == 'undefined') {
-    alert('Inserisci una descrizione da 10 a 250 caratteri');
+  } else if (descrizione.length < 10 || descrizione.length > 3000 || descrizione == '' || descrizione == 'undefined' || descrizione.trim() == "") {
+    alert('Inserisci una descrizione da 10 a 3000 caratteri');
     return false;
-  } else if (metratura == '' || metratura == 'undefined' || metratura < 10 || metratura > 500) {
+  } else if (metratura == '' || metratura == 'undefined' || metratura < 10 || metratura > 500 || metratura.trim() == "") {
     alert('Inserisci il dato giusto!');
     return false;
-  } else if (indirizzo == '' || indirizzo == 'undefined') {
+  } else if (indirizzo == '' || indirizzo == 'undefined' || indirizzo.trim() == "") {
     alert('Non hai inserito nessun indirizzo');
     return false;
-  } else if (città == '' || città == 'undefined') {
+  } else if (città == '' || città == 'undefined' || città.trim() == "") {
     alert('Non hai inserito la città');
   } else if (zip_code.length < 5) {
     alert('Inserisci il codice postale giusto');
@@ -37431,8 +37431,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/boolean esercizi/boolbnb-7/resources/js/appartment.js */"./resources/js/appartment.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean esercizi/boolbnb-7/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\appartment.js */"./resources/js/appartment.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

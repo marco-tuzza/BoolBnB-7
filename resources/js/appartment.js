@@ -93,11 +93,11 @@ $('.card-apartment button').click(function() {
     var indirizzo = $('#form-address').val();
     var città = $('#form-city').val();
     var zip_code = $('#form-zip').val();
-    if (titolo.length < 5 || titolo.length > 50 ||  titolo == '' || titolo == 'undefined' || titolo.trim() == "") {
-        alert('Inserisci un titolo da 10 a 50 caratteri');
+    if (titolo.length < 5 || titolo.length > 100 ||  titolo == '' || titolo == 'undefined' || titolo.trim() == "") {
+        alert('Inserisci un titolo da 10 a 100 caratteri');
         return false;
-    } else if (descrizione.length < 10 || descrizione.length > 255 ||  descrizione == '' || descrizione == 'undefined' || descrizione.trim() == "") {
-        alert('Inserisci una descrizione da 10 a 250 caratteri');
+    } else if (descrizione.length < 10 || descrizione.length > 3000 ||  descrizione == '' || descrizione == 'undefined' || descrizione.trim() == "") {
+        alert('Inserisci una descrizione da 10 a 3000 caratteri');
         return false;
     } else if (metratura == '' || metratura == 'undefined' || metratura < 10 || metratura > 500 || metratura.trim() == "") {
         alert('Inserisci il dato giusto!');

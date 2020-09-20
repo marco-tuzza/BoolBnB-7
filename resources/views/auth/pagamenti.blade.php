@@ -64,7 +64,7 @@
             <div class="block-center-dash">
                 <div class="text-dash">
                     <div class="title-dash text-center">
-                        <h2>Sponsorizza  "titolo Appartamento":</h2>
+                        <h2>Sponsorizza {{$appartamento->titolo_appartamento}}</h2>
                     </div>
                 </div>
                 <div class="img-apartment">

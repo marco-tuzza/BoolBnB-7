@@ -37314,8 +37314,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 $(function () {
-  var leggo_valore = $('#id-apartment').val();
-  console.log(leggo_valore);
+  var leggo_valore = $('#id-apartment').val(); // console.log(leggo_valore);
+
   $.ajax({
     "url": "http://localhost:8000/api/statistiche/search/" + leggo_valore,
     "method": "GET",
@@ -37331,8 +37331,8 @@ $(function () {
   function statistichemensili(answer) {
     var stat = answer.data;
     var statistiche = stat.statistiche;
-    var month_data = Object.values(statistiche);
-    console.log(stat);
+    var month_data = Object.values(statistiche); // console.log(stat);
+
     var dates;
     var visualizzazioni_mensili = {
       'January': 20,
@@ -37350,10 +37350,10 @@ $(function () {
     };
 
     for (var i = 0; i < month_data.length; i++) {
-      var dates = month_data[i];
-      console.log(dates.data_visualizzazione);
-      var mese = moment(dates.data_visualizzazione, "DD-MM-YYYY");
-      console.log(mese);
+      var dates = month_data[i]; // console.log(dates.data_visualizzazione);
+
+      var mese = moment(dates.data_visualizzazione, "DD-MM-YYYY"); // console.log(mese);
+
       var count = 1;
       var mese_giusto = mese.format('MMMM');
 
@@ -37362,9 +37362,9 @@ $(function () {
       } else {
         visualizzazioni_mensili[mese.format('MMMM')] += parseInt(count);
       }
-    }
+    } // console.log(visualizzazioni_mensili);
 
-    console.log(visualizzazioni_mensili);
+
     var chiavi = Object.keys(visualizzazioni_mensili);
     var valori = Object.values(visualizzazioni_mensili);
     var ctx = $('#myChart1')[0].getContext('2d');
@@ -37417,7 +37417,8 @@ $(function () {
 
   function statistichemessaggi(answer) {
     var stat = answer.data;
-    console.log('statistiche');
+    var mex = stat.messaggi;
+    var mess_data = Object.values(mex);
     var messaggi_mensili = {
       'January': 23,
       'February': 19,
@@ -37433,23 +37434,22 @@ $(function () {
       'December': 0
     };
 
-    for (var i = 0; i < stat.messaggi.length; i++) {
-      var messaggi = stat.messaggi[i];
+    for (var i = 0; i < mess_data.length; i++) {
+      var messaggi = mess_data[i];
       console.log(messaggi);
       var data_messaggio = messaggi.data_invio;
       var mese = moment(data_messaggio, "YYYY-MM-DD");
       console.log(mese);
       var count = 1;
-      var mese_giusto = mese.format('MMMM');
 
       if (!messaggi_mensili.hasOwnProperty(mese.format('MMMM'))) {
         messaggi_mensili[mese.format('MMMM')] = parseInt(count);
       } else {
         messaggi_mensili[mese.format('MMMM')] += parseInt(count);
       }
-    }
+    } // console.log(messaggi_mensili);
 
-    console.log(messaggi_mensili);
+
     var chiavi = Object.keys(messaggi_mensili);
     var valori = Object.values(messaggi_mensili);
     var ctx = $('#myChart2')[0].getContext('2d');
@@ -37510,7 +37510,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/boolean esercizi/boolbnb-7/resources/js/stats.js */"./resources/js/stats.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\stats.js */"./resources/js/stats.js");
 
 
 /***/ })

@@ -262,7 +262,7 @@
             <div class="form-registrati">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('Register') }}
+                        {{ __('Registrati') }}
                         <img src="images/close.svg" alt="close" class="close tl2">
                     </div>
 

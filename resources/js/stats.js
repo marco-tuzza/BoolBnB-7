@@ -5,7 +5,7 @@ const $ = require('jquery');
 $(function() {
 
     var leggo_valore = $('#id-apartment').val();
-    console.log(leggo_valore);
+    // console.log(leggo_valore);
 
     $.ajax({
 
@@ -27,7 +27,7 @@ $(function() {
         var stat = answer.data;
         var statistiche = stat.statistiche;
         var month_data = Object.values(statistiche);
-        console.log(stat);
+        // console.log(stat);
 
         var dates;
 
@@ -48,9 +48,9 @@ $(function() {
 
         for (var i = 0; i < month_data.length; i++) {
             var dates = month_data[i];
-            console.log(dates.data_visualizzazione);
+            // console.log(dates.data_visualizzazione);
             var mese = moment(dates.data_visualizzazione, "DD-MM-YYYY");
-            console.log(mese);
+            // console.log(mese);
             var count = 1;
             var mese_giusto = mese.format('MMMM');
             if(!visualizzazioni_mensili.hasOwnProperty(mese.format('MMMM'))) {
@@ -60,7 +60,7 @@ $(function() {
             }
         }
 
-        console.log(visualizzazioni_mensili);
+        // console.log(visualizzazioni_mensili);
 
         var chiavi = Object.keys(visualizzazioni_mensili);
         var valori = Object.values(visualizzazioni_mensili);
@@ -124,7 +124,8 @@ $(function() {
 
     function statistichemessaggi(answer) {
         var stat = answer.data;
-        console.log('statistiche');
+        var mex = stat.messaggi;
+        var mess_data = Object.values(mex);
 
         var messaggi_mensili = {
             'January': 23,
@@ -141,14 +142,14 @@ $(function() {
             'December': 0,
         };
 
-        for (var i = 0; i < stat.messaggi.length; i++) {
-            var messaggi = stat.messaggi[i];
+        for (var i = 0; i < mess_data.length; i++) {
+            var messaggi = mess_data[i];
             console.log(messaggi);
             var data_messaggio = messaggi.data_invio;
             var mese = moment(data_messaggio, "YYYY-MM-DD");
             console.log(mese);
             var count = 1;
-            var mese_giusto = mese.format('MMMM');
+
             if(!messaggi_mensili.hasOwnProperty(mese.format('MMMM'))) {
                 messaggi_mensili[mese.format('MMMM')] = parseInt(count);
             } else {
@@ -156,7 +157,7 @@ $(function() {
             }
         }
 
-        console.log(messaggi_mensili);
+        // console.log(messaggi_mensili);
 
         var chiavi = Object.keys(messaggi_mensili);
         var valori = Object.values(messaggi_mensili);

@@ -112,18 +112,19 @@
                             <div class="infos-4">
                                 <h2>Contatta l'host</h2>
                                 <div class="">
-                                    <form action="{{ route('message_store') }}" method="post">
+                                <form class="" action="{{ route('message_store') }}" method="post">
                                     @csrf
                                     E-mail:<br>
-                                    <input type="text" name="email_mittente" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
+                                    <input type="text" name="email_mittente" class="form-control" value="{{(Auth::user()) ? Auth::user()->email : ''}}"><br>
                                     Testo:<br>
-                                    <input class="text" type="text" name="testo_messaggio">
+                                    <textarea name="testo_messaggio" class="text form-control" rows="3"></textarea>
+                                    {{-- <input class="text" class="form-control" type="text" name="testo_messaggio"> --}}
                                     <input type="text" name="id_appartamento" value="{{$appartamento->id}}" hidden>
                                     <input type="text" name="id_ricevente" value="{{$appartamento->id_proprietario}}" hidden>
                                     <input type="hidden" value="{{ $data_attuale }}" name="data_invio">
-                                    <button type="submit">Invia</button>
-                                    <input type="reset">
-                                    </form>
+                                    <button type="submit" class="btn btn-primary mt-2 mb-2">Invia</button>
+                                    <input class="btn btn-warning mt-2 mb-2" type="reset">
+                                </form>
                                 </div>
                             </div>
                         </div>
