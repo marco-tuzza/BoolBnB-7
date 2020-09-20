@@ -46,8 +46,5 @@ Route::get('/dashboard', 'ApartmentController@index')->middleware('auth');
 Route::resource('apartment', 'ApartmentController')->middleware('auth');
 Route::get('/messaggi', 'MessageController@index')->name('messaggi')->middleware('auth');
 Route::get('/stats/{id}', 'StatsController@index')->middleware('auth');
-
-
-Route::get('/pagamenti', 'PaymentController@index');
-
+Route::get('/pagamenti/{id}', 'PaymentController@index')->middleware('auth');
 Route::post('/checkout', 'PaymentController@checkout');

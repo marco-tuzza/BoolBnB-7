@@ -13,7 +13,7 @@ use DB;
 
 class PaymentController extends Controller
 {
-    public function index() {
+    public function index($id) {
         
         $gateway = new Braintree\Gateway([
             'environment' => 'sandbox',
@@ -22,9 +22,14 @@ class PaymentController extends Controller
             'privateKey' => 'f9ff94f7e9b68a84cf8141c73fc50b10'
         ]);
 
+        $appartamento = Apartment::find($id);
         $token = $gateway->ClientToken()->generate();
+        if ($appartamento->id_proprietario == Auth::id()) {
+            return view('auth.pagamenti', ['token' => $token, 'appartamento' => $appartamento]);
+        } else {
+            return view('welcome');
+        }
         
-        return view('auth.pagamenti', ['token' => $token]);
     }
 
     public function checkout(Request $request) {
@@ -66,15 +71,17 @@ class PaymentController extends Controller
             $pagamento->fill($dati_pagamento);
             $pagamento->save();
 
-            $check_sponsor = DB::select("SELECT * FROM `appart_sponsor` WHERE `apartment_id` = '10' ");
+            $appartamento_id = $request->appartamento_id;
+
+            $check_sponsor = DB::select("SELECT * FROM `appart_sponsor` WHERE `apartment_id` = $appartamento_id ");
             if ($check_sponsor) {
-                DB::select("DELETE FROM `appart_sponsor` WHERE `apartment_id` = '10' ");
+                DB::select("DELETE FROM `appart_sponsor` WHERE `apartment_id` = $appartamento_id ");
             }
             $sponsorizzazione = new Sponsorship();
             
             if ($amount < 3) {
                 $dati_sponsorizzazione = [
-                    "apartment_id" => '10',
+                    "apartment_id" => $appartamento_id,
                     "sponsorship_id" => '1',
                     "scadenza" => Carbon::now()->add(1, 'day')->format('y-m-d')
                 ];
@@ -83,18 +90,18 @@ class PaymentController extends Controller
                 $sponsorizzazione->save();
             } elseif ($amount < 6) {
                 $dati_sponsorizzazione = [
-                    "apartment_id" => '10',
+                    "apartment_id" => $appartamento_id,
                     "sponsorship_id" => '2',
-                    "scadenza" => Carbon::now()->add(2, 'day')->format('y-m-d')
+                    "scadenza" => Carbon::now()->add(3, 'day')->format('y-m-d')
                 ];
 
                 $sponsorizzazione->fill($dati_sponsorizzazione);
                 $sponsorizzazione->save();
             } else {
                 $dati_sponsorizzazione = [
-                    "apartment_id" => '10',
+                    "apartment_id" => $appartamento_id,
                     "sponsorship_id" => '3',
-                    "scadenza" => Carbon::now()->add(3, 'day')->format('y-m-d')
+                    "scadenza" => Carbon::now()->add(6, 'day')->format('y-m-d')
                 ];
 
                 $sponsorizzazione->fill($dati_sponsorizzazione);
@@ -109,7 +116,7 @@ class PaymentController extends Controller
             $errorString = "";
 
             $dati_pagamento = [
-                "id_utente" => 1,
+                "id_utente" => Auth::id(),
                 "data_pagamento" => Carbon::now()->format('y-m-d'),
                 "esito" => 'Pagamento Fallito'
             ];

@@ -19,11 +19,11 @@ class CreateAppartamentiHasSponsorizzazioniTable extends Migration
             $table->foreign('apartment_id')->references('id')->on('appartamenti');
 
             $table->unsignedBigInteger('sponsorship_id');
-            $table->foreign('sponsorship_id')->references('id')->on('sponsorizzazioni');
+            $table->foreign('sponsor_type_id')->references('id')->on('sponsorizzazioni');
 
             $table->date('scadenza');
 
-            $table->primary(['apartment_id', 'sponsorship_id']);
+            $table->primary(['apartment_id', 'sponsor_type_id']);
             $table->timestamps();
 
         });

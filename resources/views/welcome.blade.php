@@ -20,14 +20,14 @@
                     <nav class="nav-bar">
                         <div class="logo">
                             <button class="btn-logos" type="button" id="button-addon2">
-                                <img src="images/bnb-logo.svg" alt="">
+                                <img src="../images/bnb-logo.svg" alt="">
                             </button>
                         </div>
                         <div class="text-elements">
                             @if (Route::has('login'))
                                 <div class="account">
                                     <button class="btn-account" type="button" id="button-addon2">
-                                        <img src="images/account.svg" alt="">
+                                        <img src="../images/account.svg" alt="">
                                     </button>
 
                                     <div class="drop-menu">
