@@ -85,7 +85,8 @@ class ApartmentSearchController extends Controller
         $appartamenti = Apartment::all();
         foreach ($appartamenti as $appartamento) {
            if (in_array($appartamento->id, $sponsor)) {
-            array_push($array, $appartamento);
+               $servizi = $appartamento->services;
+                array_push($array, $appartamento);
            }
         };
         return response()->json([

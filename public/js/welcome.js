@@ -42605,10 +42605,6 @@ $(document).ready(function () {
 
         for (var i = 0; i < sponsor.length; i++) {
           var apartmentsponsor = sponsor[i];
-          var lat2 = apartment[i].latitudine;
-          var lon2 = apartment[i].longitudine;
-          var lat1 = e.suggestion.latlng.lat;
-          var lon1 = e.suggestion.latlng.lng;
           disegno_card_2(apartmentsponsor.titolo_appartamento, apartmentsponsor.immagine_appartamento, apartmentsponsor.services, apartmentsponsor.id);
         }
 
@@ -42717,7 +42713,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb-7\resources\js\welcome.js */"./resources/js/welcome.js");
+module.exports = __webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\Esercizi\boolbnb-7\resources\js\welcome.js */"./resources/js/welcome.js");
 
 
 /***/ })
