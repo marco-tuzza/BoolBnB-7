@@ -86,7 +86,7 @@
                                 <div class="form-group row">
                                     <label for="numero_stanze">Numero stanze</label>
                                     {{-- da risolvere old sulle select --}}
-                                    <select name="numero_stanze" id="numerostanze">
+                                    <select name="numero_stanze" id="numerostanze" class="form-control">
                                         <option value="1" {{ $appartamento->numero_stanze == 1 ? "selected" : "" }}>1</option>
                                         <option value="2" {{ $appartamento->numero_stanze == 2 ? "selected" : "" }}>2</option>
                                         <option value="3" {{ $appartamento->numero_stanze == 3 ? "selected" : "" }}>3</option>
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_letti">Numero letti</label>
-                                    <select name="numero_letti" id="numeroletti">
+                                    <select name="numero_letti" id="numeroletti" class="form-control">
                                         <option value="1" {{ $appartamento->numero_letti == 1 ? "selected" : "" }}>1</option>
                                         <option value="2" {{ $appartamento->numero_letti == 2 ? "selected" : "" }}>2</option>
                                         <option value="3" {{ $appartamento->numero_letti == 3 ? "selected" : "" }}>3</option>
@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_bagni">Numero bagni</label>
-                                    <select name="numero_bagni" id="numerobagni">
+                                    <select name="numero_bagni" id="numerobagni" class="form-control">
                                         <option value="1" {{ $appartamento->numero_bagni == 1 ? "selected" : "" }}>1</option>
                                         <option value="2" {{ $appartamento->numero_bagni == 2 ? "selected" : "" }}>2</option>
                                         <option value="3" {{ $appartamento->numero_bagni == 3 ? "selected" : "" }}>3</option>
@@ -151,7 +151,7 @@
                                 </div>
                                 <div class="form-group visib row">
                                     <label for="visibile">Visibilità Appartamento</label>
-                                    <select name="visibile" id="numerostanze">
+                                    <select name="visibile" id="numerostanze" class="form-control">
                                         <option value="1" {{ $appartamento->visibile == 1 ? 'selected' : '' }}>Visibile</option>
                                         <option value="0" {{ $appartamento->visibile == 0 ? "selected" : "" }}>Non Visibile</option>
                                     </select>
@@ -174,7 +174,7 @@
                                     </label>
                                 @endforeach
                                 </div>
-                                <button type="submit" class="btn btn-primary">Salva</button>
+                                <button type="submit" class="btn btn-primary mb-2">Salva</button>
                             </form>
                             <form class="d-inline" id="form-elimina" action="{{ route('apartment.destroy', ['apartment' => $appartamento->id]) }}" method="POST">
                                 @csrf

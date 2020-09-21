@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_stanze">Numero stanze</label>
-                                    <select name="numero_stanze" id="numerostanze">
+                                    <select name="numero_stanze" id="numerostanze" class="form-control">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_letti">Numero letti</label>
-                                    <select name="numero_letti" id="numeroletti">
+                                    <select name="numero_letti" id="numeroletti" class="form-control">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_bagni">Numero bagni</label>
-                                    <select name="numero_bagni" id="numerobagni">
+                                    <select name="numero_bagni" id="numerobagni" class="form-control">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
