@@ -91,15 +91,15 @@
                         <div class="card-body">
                             <div class="custom-control custom-radio custom-radios">
                                 <input type="radio" id="customRadio1" name="customRadio" value="2.99" class="custom-control-input">
-                                <label class="custom-control-label" for="customRadio1" value="2.99" ><h5>Base - 2,99€ </h5><span>24 ore tra gli appartamenti in evidenza</span></label>
+                                <label class="custom-control-label mb-4" for="customRadio1" value="2.99" ><h5>Base - 2,99€ </h5><span>24 ore tra gli appartamenti in evidenza</span></label>
                             </div>
                             <div class="custom-control custom-radio custom-radios">
                                 <input type="radio" id="customRadio2" name="customRadio" value="5.99" class="custom-control-input">
-                                <label class="custom-control-label" for="customRadio2" value="5.99"><h5>Plus - 5,99€ </h5><span>72 ore tra gli appartamenti in evidenza</span></label>
+                                <label class="custom-control-label mb-4" for="customRadio2" value="5.99"><h5>Plus - 5,99€ </h5><span>72 ore tra gli appartamenti in evidenza</span></label>
                             </div>
                             <div class="custom-control custom-radio custom-radios">
                                 <input type="radio" id="customRadio3" name="customRadio" value="9.99" class="custom-control-input">
-                                <label class="custom-control-label card-title" for="customRadio3" value="9.99"><h5>Pro - 9,99€ </h5><span>144 ore tra gli appartamenti in evidenza</span> </label>
+                                <label class="custom-control-label card-title mb-4" for="customRadio3" value="9.99"><h5>Pro - 9,99€ </h5><span>144 ore tra gli appartamenti in evidenza</span> </label>
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                         </section>
         
                         <input id="nonce" name="payment_method_nonce" type="hidden" />
-                        <button class="button btn btn-success" type="submit"><span>Paga!</span></button>
+                        <button class="button btn btn-success" id="pago" type="submit"><span>Paga!</span></button>
 
                         <input type="hidden" name="appartamento_id" value="{{ $appartamento->id }}">
                     </form>

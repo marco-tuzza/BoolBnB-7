@@ -14,3 +14,11 @@ console.log(numero_casuale);
 //     var card_finale = template_function(card);
 //     $('.img-apartment').append(card_finale);
 // }
+
+// const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
+
+$(document).ready(function(){
+
+
+
+});

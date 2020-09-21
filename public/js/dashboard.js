@@ -105,6 +105,9 @@ console.log(numero_casuale); // for (var i = 0; i < 5; i++) {
 //     var card_finale = template_function(card);
 //     $('.img-apartment').append(card_finale);
 // }
+// const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
+
+$(document).ready(function () {});
 
 /***/ }),
 

@@ -54,7 +54,7 @@
                                         @else
                                             <li id="login">Accedi</li>
                                             {{-- <li id="login"> <a href="{{ route('login') }}">Accedi</a> </li> --}}
-                                            <a href="{{ url('/register') }}">
+                                            <a href="{{ url('/register') }}" id="tolgo-a">
                                                 <li id="register">Registrati</li>
                                             </a>
                                             
@@ -71,7 +71,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">{{ __('Register') }}</div>
+                        <div class="card-header">{{ __('Registrati') }}</div>
         
                         <div class="card-body">
                             <form method="POST" action="{{ route('register') }}">

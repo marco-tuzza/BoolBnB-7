@@ -35,6 +35,13 @@
         visibility: hidden;
     }
 
+    #tolgo-a {
+        color: #212529;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
     .nav-create {
         max-width: 1150px;
         margin: auto;

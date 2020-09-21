@@ -193,7 +193,7 @@
             <div class="form-accedi">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('Login') }}
+                        {{ __('Accedi') }}
                         <img src="images/close.svg" alt="close" class="close tl1">
                     </div>
 

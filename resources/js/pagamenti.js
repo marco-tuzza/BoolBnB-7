@@ -11,4 +11,16 @@ $(document).ready(function(){
         $('#amount').val(valore_radio);
     });
 
+
+    // $("#pago").on("submit", function(event) {
+    //     console.log('entro');
+
+    //     if ($('.custom-control-input:checked')) {
+    //         $("#pago").submit();
+    //     } else {
+    //         event.preventDefault();
+    //         alert('Seleziona una delle sponsorizzazioni!')
+    //     }
+    // });
+
 });
