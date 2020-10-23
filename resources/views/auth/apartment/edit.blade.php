@@ -54,7 +54,6 @@
                                     </li>
                                         @else
                                             <li id="login">Accedi</li>
-                                            {{-- <li id="login"> <a href="{{ route('login') }}">Accedi</a> </li> --}}
                                             <li id="register">Registrati</li>
                                     @endauth
                                 </ul>
@@ -85,7 +84,6 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="numero_stanze">Numero stanze</label>
-                                    {{-- da risolvere old sulle select --}}
                                     <select name="numero_stanze" id="numerostanze" class="form-control">
                                         <option value="1" {{ $appartamento->numero_stanze == 1 ? "selected" : "" }}>1</option>
                                         <option value="2" {{ $appartamento->numero_stanze == 2 ? "selected" : "" }}>2</option>
@@ -156,10 +154,6 @@
                                         <option value="0" {{ $appartamento->visibile == 0 ? "selected" : "" }}>Non Visibile</option>
                                     </select>
                                 </div>
-                                {{-- <div class="form-group visib row">
-                                    <label for="non-visibile">Rendi l'appartamento non visibile</label>
-                                    <input {{ $appartamento->visibile == 0 ? 'checked' : '' }} type="checkbox" name="visibile" class="form-control" id="non-visibile">
-                                </div> --}}
                                 <div class="form-group row">
                                 @foreach ($servizi as $servizio)
                                     <label for="check">
@@ -230,9 +224,6 @@
 
                 <div class="card-body">
                     <h5>Sto Salvando i dati aggiornati dell'appartamento, non chiudere la scheda! <br> Verrai reindirizzato alla Homepage</h5>
-                    {{-- <button type="submit" class="btn btn-success" id="continue">
-                        Continua!
-                    </button> --}}
                 </div>
             </div>
         </div>
